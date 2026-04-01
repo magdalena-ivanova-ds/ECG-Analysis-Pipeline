@@ -1,0 +1,7 @@
+wfdb
+pandas
+numpy
+scipy
+scikit-learn
+tqdm
+requests
