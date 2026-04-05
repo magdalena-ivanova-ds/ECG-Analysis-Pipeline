@@ -329,6 +329,142 @@ You can directly:
 * used proper dataset splits
 
 
+---
+
+# Model 1 Status Update (Person 2)
+
+## Model 1 Implementation
+
+Model 1 has been implemented as a 1D CNN for sequence-based R-peak detection.
+
+### Input
+- ECG window of shape `(720,)`
+
+### Output
+- probability sequence of shape `(720,)`
+- post-processed into predicted R-peak indices using `find_peaks(...)`
+
+### Final Model
+- architecture: `SimpleCNN`
+- framework: PyTorch
+- post-processing:
+  - `height = 0.25`
+  - `distance = 30`
+- evaluation tolerance:
+  - `tolerance = 10`
+
+---
+
+## Model 1 Final Performance
+
+### Validation Set
+- Precision: `0.9844`
+- Recall: `0.9203`
+- F1 Score: `0.9513`
+
+### Test Set
+- Precision: `0.9834`
+- Recall: `0.9251`
+- F1 Score: `0.9534`
+
+These results show strong and stable R-peak detection performance with good generalization from validation to test data.
+
+---
+
+## Saved Model
+
+The trained Model 1 weights are saved as:
+
+```text
+models/model1_simplecnn.pth
+```
+
+---
+
+## Model 1 → Model 2 Handoff
+
+A pipeline script was implemented to connect Model 1 outputs with Model 2 inputs:
+
+```text
+scripts/pipeline_model1_to_model2.py
+```
+
+---
+
+## Exported Data for Model 2 (Ready to Use)
+
+To avoid running the pipeline manually, example outputs from Model 1 are already generated and saved.
+
+### Files
+
+```text
+data/processed/model2/model1_predicted_beats_example.npy
+data/processed/model2/model1_predicted_beats_example_metadata.csv
+```
+
+---
+
+### What is inside?
+
+#### `model1_predicted_beats_example.npy`
+
+- shape: `(n_beats, 70)`
+- each row = one ECG beat centered around a predicted R-peak
+- directly usable as input for Model 2
+
+---
+
+#### `model1_predicted_beats_example_metadata.csv`
+
+- columns:
+  - `signal_idx` → original ECG window index
+  - `peak_idx` → detected R-peak position
+
+- each row corresponds to one beat in the `.npy` file
+
+---
+
+## How to Use (Person 3)
+
+### Recommended (training)
+Use clean dataset:
+```text
+X_model2_beats.npy
+y_model2_beats.npy
+```
+
+---
+
+### ### Pipeline Simulation (using Model 1 output instead of ground truth)
+
+For testing the full pipeline:
+
+```text
+model1_predicted_beats_example.npy
+```
+
+---
+
+## Important Notes
+
+- Model 1 predictions are highly accurate but not perfect
+- recall < 1.0 → some beats may be missing
+- edge peaks are removed if no full 70-sample window exists
+- labels are NOT included → must be handled separately
+
+---
+
+## Status
+
+Model 1 is fully complete:
+- trained
+- evaluated (validation + test)
+- saved
+- integrated into pipeline
+- producing Model 2-ready input
+
+No further work required.
+
 
 
 
