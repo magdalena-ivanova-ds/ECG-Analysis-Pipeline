@@ -15,7 +15,13 @@ At this stage, the data preparation part is finished. The processed files are al
 
 ## Datasets used
 
-Two datasets are used because the two models need different types of labels.
+Two datasets are used because the two models need different types of labels:
+
+1. [MIT-BIH Arrhythmia Database](https://physionet.org/content/mitdb/1.0.0/)  
+   Used for Model 1 because it provides beat-level arrhythmia labels.
+
+2. [PTB-XL ECG Dataset](https://physionet.org/content/ptb-xl/1.0.3/)  
+   Used for Model 2 because it provides diagnostic ECG-level disease labels.
 
 ## MIT-BIH for model 1
 
