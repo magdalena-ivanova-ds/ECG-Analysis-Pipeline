@@ -1,11 +1,4 @@
-from config import (
-    RAW_DIR,
-    PROCESSED_DIR,
-    MITBIH_DIR,
-    PTBXL_DIR,
-    MODEL1_DIR,
-    MODEL2_DIR
-)
+from config import raw_dir, processed_dir, mitbih_dir, ptbxl_dir, model1_dir, model2_dir
 from utils_ecg import make_dirs
 from download_mitbih import download_mitbih
 from download_ptbxl import download_ptbxl
@@ -14,35 +7,41 @@ from preprocess_ptbxl import preprocess_ptbxl
 from create_splits import main as create_splits_main
 
 
+# Change these to True only if you want to run that step again
+run_downloads = False
+run_preprocessing = False
+run_splits = False
+
+
 def main():
-    # Create folders
     make_dirs([
-        RAW_DIR,
-        PROCESSED_DIR,
-        MITBIH_DIR,
-        PTBXL_DIR,
-        MODEL1_DIR,
-        MODEL2_DIR
+        raw_dir,
+        processed_dir,
+        mitbih_dir,
+        ptbxl_dir,
+        model1_dir,
+        model2_dir,
     ])
 
-    # Step 1: download MIT-BIH automatically
-    #print("Checking MIT-BIH...")
-    #download_mitbih()
+    if run_downloads:
+        print("Checking MIT-BIH data")
+        download_mitbih()
 
-    # Step 2: download PTB-XL automatically
-    #print("Checking PTB-XL...")
-    #download_ptbxl()
+        print("Checking PTB-XL data")
+        download_ptbxl()
 
-    # Step 3: preprocess MIT-BIH for Model 1
-    #preprocess_mitbih()
+    if run_preprocessing:
+        print("Preprocessing MIT-BIH data")
+        preprocess_mitbih()
 
-    # Step 4: preprocess PTB-XL for Model 2
-    #preprocess_ptbxl()
+        print("Preprocessing PTB-XL data")
+        preprocess_ptbxl()
 
-    # Step 5: create train/val/test splits
-    create_splits_main()
+    if run_splits:
+        print("Creating split files")
+        create_splits_main()
 
-    print("All preprocessing is finished.")
+    print("Selected pipeline steps completed.")
 
 
 if __name__ == "__main__":

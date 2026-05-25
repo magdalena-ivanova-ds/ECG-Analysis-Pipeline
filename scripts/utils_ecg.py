@@ -1,31 +1,27 @@
 import ast
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
 from scipy.signal import butter, filtfilt, find_peaks
 
 
+# Create folders if they do not exist
 def make_dirs(paths):
-    """Create folders if they do not exist."""
     for path in paths:
         Path(path).mkdir(parents=True, exist_ok=True)
 
 
+# Simple z-score normalization
 def zscore_signal(signal):
-    """Simple z-score normalization."""
     signal = np.asarray(signal, dtype=np.float32)
     std = np.std(signal)
     if std == 0:
         return signal
     return (signal - np.mean(signal)) / std
 
-
+# Simple ECG bandpass filter
+# Keeps the code understandable and not over-engineered
 def bandpass_filter(signal, fs, lowcut=0.5, highcut=40.0, order=3):
-    """
-    Simple ECG bandpass filter.
-    Keeps the code understandable and not over-engineered.
-    """
     nyquist = 0.5 * fs
     low = lowcut / nyquist
     high = highcut / nyquist
@@ -33,11 +29,9 @@ def bandpass_filter(signal, fs, lowcut=0.5, highcut=40.0, order=3):
     return filtfilt(b, a, signal)
 
 
+# Create binary label sequence for one ECG window
+# 1 means an R-peak at that sample
 def create_binary_peak_label(window_length, peak_positions):
-    """
-    Create binary label sequence for one ECG window.
-    1 means an R-peak at that sample.
-    """
     y = np.zeros(window_length, dtype=np.int8)
     for pos in peak_positions:
         if 0 <= pos < window_length:
@@ -45,12 +39,10 @@ def create_binary_peak_label(window_length, peak_positions):
     return y
 
 
+# Very simple automatic peak detector for PTB-XL preprocessing.
+# This is NOT the final model.
+# It is just to create heartbeat-centered windows for later use.
 def simple_peak_detector(signal, fs):
-    """
-    Very simple automatic peak detector for PTB-XL preprocessing.
-    This is NOT the final model.
-    It is just to create heartbeat-centered windows for later use.
-    """
     min_distance = int(0.25 * fs)  # at least 250 ms between peaks
     prominence = max(0.3, 0.5 * np.std(signal))
 
@@ -58,24 +50,19 @@ def simple_peak_detector(signal, fs):
     return peaks
 
 
+# PTB-XL stores diagnosis codes as text dictionaries.
+# Example: "{'NORM': 100.0, 'SR': 0.0}"
 def parse_scp_codes(text):
-    """
-    PTB-XL stores diagnosis codes as text dictionaries.
-    Example: "{'NORM': 100.0, 'SR': 0.0}"
-    """
     if pd.isna(text):
         return {}
     return ast.literal_eval(text)
 
 
+# Map detailed PTB-XL codes to one broad class
+# To keep the dataset simple:
+# - we only keep records that map to exactly one target superclass
+# - records with multiple target superclasses are skipped
 def choose_single_superclass(code_dict, scp_df, target_superclasses):
-    """
-    Map detailed PTB-XL codes to one broad class.
-
-    To keep the dataset simple for a student project:
-    - we only keep records that map to exactly one target superclass
-    - records with multiple target superclasses are skipped
-    """
     matched = set()
 
     for code in code_dict.keys():
@@ -97,11 +84,9 @@ def choose_single_superclass(code_dict, scp_df, target_superclasses):
     return None
 
 
+# Split long ECG into overlapping windows
+# Also create binary R-peak labels per window
 def extract_fixed_windows(signal, peaks, fs, window_sec, stride_sec):
-    """
-    Split long ECG into overlapping windows.
-    Also create binary R-peak labels per window.
-    """
     window_size = int(window_sec * fs)
     stride = int(stride_sec * fs)
 
@@ -123,10 +108,8 @@ def extract_fixed_windows(signal, peaks, fs, window_sec, stride_sec):
     return np.array(X, dtype=np.float32), np.array(Y, dtype=np.int8), meta
 
 
+# Extract heartbeat-centered windows around each detected peak
 def extract_beat_windows(signal, peaks, fs, before_sec, after_sec):
-    """
-    Extract heartbeat-centered windows around each detected peak.
-    """
     before = int(before_sec * fs)
     after = int(after_sec * fs)
 

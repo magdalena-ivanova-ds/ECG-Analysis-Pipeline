@@ -1,24 +1,23 @@
 import wfdb
-
-from config import MITBIH_DIR
+from config import mitbih_dir
 from utils_ecg import make_dirs
 
 
 def download_mitbih():
-    make_dirs([MITBIH_DIR])
+    make_dirs([mitbih_dir])
 
-    # strong existence check
-    needed_files = [
-        MITBIH_DIR / "100.dat",
-        MITBIH_DIR / "100.hea",
-        MITBIH_DIR / "100.atr",
-        MITBIH_DIR / "RECORDS"
+    # check for a few key files before downloading again
+    required_files = [
+        mitbih_dir / "100.dat",
+        mitbih_dir / "100.hea",
+        mitbih_dir / "100.atr",
+        mitbih_dir / "RECORDS",
     ]
 
-    if all(file.exists() for file in needed_files):
-        print("MIT-BIH already exists. Skipping download.")
+    if all(path.exists() for path in required_files):
+        print("Mit-bih data is already available, skipping download.")
         return
 
-    print("Downloading MIT-BIH dataset...")
-    wfdb.dl_database("mitdb", dl_dir=str(MITBIH_DIR))
-    print("MIT-BIH download finished.")
+    print("Downloading mit-bih data.")
+    wfdb.dl_database("mitdb", dl_dir=str(mitbih_dir))
+    print("Mit-bih download completed.")

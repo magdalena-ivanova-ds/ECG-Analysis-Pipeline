@@ -1,36 +1,46 @@
 from pathlib import Path
 
-# Base folders
-BASE_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = BASE_DIR / "data"
-RAW_DIR = DATA_DIR / "raw"
-PROCESSED_DIR = DATA_DIR / "processed"
+# project folders
+base_dir = Path(__file__).resolve().parents[1]
 
-MITBIH_DIR = RAW_DIR / "mitbih"
-PTBXL_DIR = RAW_DIR / "ptbxl"
+data_dir = base_dir / "data"
+raw_dir = data_dir / "raw"
+processed_dir = data_dir / "processed"
 
-MODEL1_DIR = PROCESSED_DIR / "model1"
-MODEL2_DIR = PROCESSED_DIR / "model2"
+mitbih_dir = raw_dir / "mitbih"
+ptbxl_dir = raw_dir / "ptbxl"
 
-# MIT-BIH settings
-MITBIH_FS = 360
-MITBIH_LEAD_INDEX = 0
-WINDOW_SEC = 2.0
-STRIDE_SEC = 1.0
+model1_dir = processed_dir / "model1"
+model2_dir = processed_dir / "model2"
 
-# PTB-XL settings
-PTBXL_FS = 100
-PTBXL_LEAD_INDEX = 0
-BEAT_BEFORE_SEC = 0.25
-BEAT_AFTER_SEC = 0.45
 
-# Keep labels simple and broad
-TARGET_SUPERCLASSES = ["NORM", "MI", "HYP", "CD", "STTC"]
+# settings for model 1
+# MIT-BIH is sampled at 360 Hz, so a 2-second window has 720 samples
+mitbih_fs = 360
+mitbih_lead_index = 0
 
-CLASS_NAME_MAP = {
+window_sec = 2.0
+stride_sec = 1.0
+
+
+# settings for model 2
+# PTB-XL records100 is sampled at 100 Hz
+ptbxl_fs = 100
+ptbxl_lead_index = 0
+
+# each beat segment has 25 samples before the peak
+# and 45 samples after the peak
+beat_before_sec = 0.25
+beat_after_sec = 0.45
+
+
+# broad diagnostic classes used for model 2
+target_superclasses = ["NORM", "MI", "HYP", "CD", "STTC"]
+
+class_name_map = {
     "NORM": "Normal",
     "MI": "Myocardial_Infarction",
     "HYP": "Hypertrophy",
     "CD": "Conduction_Disorder",
-    "STTC": "ST_T_Change"
+    "STTC": "ST_T_Change",
 }
