@@ -42,7 +42,7 @@ print("Number of peaks in first 20 windows: ",peak_counts[:20],"\n")
 plt.plot(X[0])
 peak_indices = np.where(y[0] == 1)[0]
 plt.scatter(peak_indices, X[0][peak_indices], color='red', s=30)
-# plt.show()
+#plt.show()
 
 # =============== IMPORT DATA: DATA SPLIT ===============
 
