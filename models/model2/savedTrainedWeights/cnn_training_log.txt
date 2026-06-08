@@ -1,0 +1,803 @@
+
+========================================================================
+MODEL 2 — CNN TRAINING
+========================================================================
+Device: cuda
+
+Full training set:
+  NORM : 143,554  (56.10%)
+  MI   :  40,245  (15.73%)
+  HYP  :   7,756  ( 3.03%)
+  CD   :  25,610  (10.01%)
+  STTC :  38,740  (15.14%)
+
+Mild NORM undersampling on TRAIN (keep_ratio=0.5)...
+
+Undersampled training set:
+  NORM :  71,777  (38.98%)
+  MI   :  40,245  (21.86%)
+  HYP  :   7,756  ( 4.21%)
+  CD   :  25,610  (13.91%)
+  STTC :  38,740  (21.04%)
+
+########################################################################
+EXPERIMENT A: CNN without class weights
+########################################################################
+
+BeatCNNClassifier parameters:
+  trainable_parameters: 150533
+  epochs: 20
+  batch_size: 256
+  learning_rate: 0.001
+  dropout: 0.5
+  class_weights_in_loss: False
+  early_stopping_patience: 10
+  device: cuda
+
+========================================================================
+Epoch 1/20 START
+Epoch 1 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 1 batches:   0%|          | 1/720 [00:00<07:46,  1.54batch/s]Epoch 1 batches:   2%|▏         | 16/720 [00:00<00:24, 28.28batch/s]Epoch 1 batches:   4%|▍         | 30/720 [00:00<00:13, 51.09batch/s]Epoch 1 batches:   6%|▋         | 46/720 [00:00<00:08, 75.31batch/s]Epoch 1 batches:   9%|▊         | 62/720 [00:01<00:06, 95.46batch/s]Epoch 1 batches:  11%|█         | 77/720 [00:01<00:05, 108.89batch/s]Epoch 1 batches:  13%|█▎        | 93/720 [00:01<00:05, 121.56batch/s]Epoch 1 batches:  15%|█▌        | 109/720 [00:01<00:04, 131.42batch/s]Epoch 1 batches:  17%|█▋        | 125/720 [00:01<00:04, 137.44batch/s]Epoch 1 batches:  20%|█▉        | 141/720 [00:01<00:04, 142.27batch/s]Epoch 1 batches:  22%|██▏       | 157/720 [00:01<00:03, 142.09batch/s]Epoch 1 batches:  24%|██▍       | 173/720 [00:01<00:03, 145.69batch/s]Epoch 1 batches:  26%|██▋       | 189/720 [00:01<00:03, 146.76batch/s]                                                                      Epoch 1 batches:  26%|██▋       | 189/720 [00:01<00:03, 146.76batch/s]Epoch 1 batches:  28%|██▊       | 205/720 [00:02<00:03, 142.65batch/s]Epoch 1 batches:  31%|███       | 221/720 [00:02<00:03, 144.96batch/s]Epoch 1 batches:  33%|███▎      | 237/720 [00:02<00:03, 148.09batch/s]Epoch 1 batches:  35%|███▌      | 252/720 [00:02<00:03, 147.65batch/s]Epoch 1 batches:  37%|███▋      | 269/720 [00:02<00:02, 151.65batch/s]Epoch 1 batches:  40%|███▉      | 285/720 [00:02<00:02, 151.46batch/s]Epoch 1 batches:  42%|████▏     | 301/720 [00:02<00:02, 151.58batch/s]Epoch 1 batches:  44%|████▍     | 317/720 [00:02<00:02, 151.17batch/s]Epoch 1 batches:  46%|████▋     | 333/720 [00:02<00:02, 147.16batch/s]Epoch 1 batches:  48%|████▊     | 349/720 [00:02<00:02, 150.30batch/s]Epoch 1 batches:  51%|█████     | 365/720 [00:03<00:02, 147.37batch/s]Epoch 1 batches:  53%|█████▎    | 381/720 [00:03<00:02, 148.81batch/s]Epoch 1 batches:  55%|█████▌    | 397/720 [00:03<00:02, 151.92batch/s]                                                                      Epoch 1 batches:  55%|█████▌    | 397/720 [00:03<00:02, 151.92batch/s]Epoch 1 batches:  57%|█████▋    | 413/720 [00:03<00:02, 152.48batch/s]Epoch 1 batches:  60%|█████▉    | 429/720 [00:03<00:01, 153.37batch/s]Epoch 1 batches:  62%|██████▏   | 446/720 [00:03<00:01, 155.87batch/s]Epoch 1 batches:  64%|██████▍   | 462/720 [00:03<00:02, 122.16batch/s]Epoch 1 batches:  66%|██████▌   | 476/720 [00:03<00:01, 125.97batch/s]Epoch 1 batches:  68%|██████▊   | 490/720 [00:04<00:01, 126.67batch/s]Epoch 1 batches:  70%|███████   | 504/720 [00:04<00:01, 125.59batch/s]Epoch 1 batches:  72%|███████▏  | 517/720 [00:04<00:01, 124.83batch/s]Epoch 1 batches:  74%|███████▍  | 532/720 [00:04<00:01, 129.88batch/s]Epoch 1 batches:  76%|███████▌  | 548/720 [00:04<00:01, 136.07batch/s]Epoch 1 batches:  78%|███████▊  | 563/720 [00:04<00:01, 139.96batch/s]Epoch 1 batches:  80%|████████  | 578/720 [00:04<00:01, 141.60batch/s]Epoch 1 batches:  82%|████████▏ | 593/720 [00:04<00:00, 143.32batch/s]                                                                      Epoch 1 batches:  82%|████████▏ | 593/720 [00:04<00:00, 143.32batch/s]Epoch 1 batches:  84%|████████▍ | 608/720 [00:04<00:00, 144.63batch/s]Epoch 1 batches:  87%|████████▋ | 624/720 [00:04<00:00, 147.50batch/s]Epoch 1 batches:  89%|████████▉ | 639/720 [00:05<00:00, 146.01batch/s]Epoch 1 batches:  91%|█████████ | 654/720 [00:05<00:00, 144.29batch/s]Epoch 1 batches:  93%|█████████▎| 669/720 [00:05<00:00, 141.86batch/s]Epoch 1 batches:  95%|█████████▌| 684/720 [00:05<00:00, 134.11batch/s]Epoch 1 batches:  97%|█████████▋| 698/720 [00:05<00:00, 132.34batch/s]Epoch 1 batches:  99%|█████████▉| 712/720 [00:05<00:00, 129.87batch/s]                                                                        batch 200/720 | loss=1.1584
+  batch 400/720 | loss=1.1777
+  batch 600/720 | loss=1.1454
+
+Epoch 1/20
+Loss: 1.2116
+Accuracy: 0.6393
+Macro F1: 0.3840
+Weighted F1: 0.5938
+Class F1:
+  NORM: 0.7948
+  MI: 0.1801
+  HYP: 0.0000
+  CD: 0.4516
+  STTC: 0.4937
+LR=0.001000 | epoch_time=6.3s
+  >> NEW BEST validation macro F1: 0.3840
+
+========================================================================
+Epoch 2/20 START
+Epoch 2 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 2 batches:   2%|▏         | 11/720 [00:00<00:07, 100.04batch/s]Epoch 2 batches:   3%|▎         | 22/720 [00:00<00:07, 99.51batch/s] Epoch 2 batches:   5%|▍         | 33/720 [00:00<00:06, 102.40batch/s]Epoch 2 batches:   6%|▌         | 44/720 [00:00<00:06, 105.13batch/s]Epoch 2 batches:   8%|▊         | 57/720 [00:00<00:05, 112.21batch/s]Epoch 2 batches:  10%|▉         | 70/720 [00:00<00:05, 117.47batch/s]Epoch 2 batches:  11%|█▏        | 82/720 [00:00<00:05, 115.23batch/s]Epoch 2 batches:  13%|█▎        | 94/720 [00:00<00:06, 94.86batch/s] Epoch 2 batches:  15%|█▍        | 106/720 [00:01<00:06, 101.31batch/s]Epoch 2 batches:  17%|█▋        | 119/720 [00:01<00:05, 107.62batch/s]Epoch 2 batches:  18%|█▊        | 133/720 [00:01<00:05, 116.14batch/s]Epoch 2 batches:  21%|██        | 148/720 [00:01<00:04, 123.73batch/s]Epoch 2 batches:  23%|██▎       | 164/720 [00:01<00:04, 132.52batch/s]Epoch 2 batches:  25%|██▌       | 180/720 [00:01<00:03, 139.24batch/s]Epoch 2 batches:  27%|██▋       | 196/720 [00:01<00:03, 144.97batch/s]                                                                      Epoch 2 batches:  27%|██▋       | 196/720 [00:01<00:03, 144.97batch/s]Epoch 2 batches:  29%|██▉       | 212/720 [00:01<00:03, 147.21batch/s]Epoch 2 batches:  32%|███▏      | 227/720 [00:01<00:03, 144.09batch/s]Epoch 2 batches:  34%|███▎      | 242/720 [00:01<00:03, 144.99batch/s]Epoch 2 batches:  36%|███▌      | 257/720 [00:02<00:03, 146.27batch/s]Epoch 2 batches:  38%|███▊      | 272/720 [00:02<00:03, 144.98batch/s]Epoch 2 batches:  40%|███▉      | 287/720 [00:02<00:02, 145.38batch/s]Epoch 2 batches:  42%|████▏     | 302/720 [00:02<00:03, 138.81batch/s]Epoch 2 batches:  44%|████▍     | 316/720 [00:02<00:02, 137.16batch/s]Epoch 2 batches:  46%|████▌     | 331/720 [00:02<00:02, 140.32batch/s]Epoch 2 batches:  48%|████▊     | 346/720 [00:02<00:02, 142.08batch/s]Epoch 2 batches:  50%|█████     | 361/720 [00:02<00:02, 143.12batch/s]Epoch 2 batches:  52%|█████▏    | 376/720 [00:02<00:02, 143.72batch/s]Epoch 2 batches:  54%|█████▍    | 391/720 [00:02<00:02, 143.61batch/s]                                                                      Epoch 2 batches:  54%|█████▍    | 391/720 [00:03<00:02, 143.61batch/s]Epoch 2 batches:  56%|█████▋    | 406/720 [00:03<00:02, 144.46batch/s]Epoch 2 batches:  58%|█████▊    | 421/720 [00:03<00:02, 143.62batch/s]Epoch 2 batches:  61%|██████    | 436/720 [00:03<00:02, 141.29batch/s]Epoch 2 batches:  63%|██████▎   | 451/720 [00:03<00:01, 141.95batch/s]Epoch 2 batches:  65%|██████▍   | 466/720 [00:03<00:01, 140.47batch/s]Epoch 2 batches:  67%|██████▋   | 481/720 [00:03<00:01, 139.98batch/s]Epoch 2 batches:  69%|██████▉   | 496/720 [00:03<00:01, 140.83batch/s]Epoch 2 batches:  71%|███████   | 511/720 [00:03<00:01, 140.87batch/s]Epoch 2 batches:  73%|███████▎  | 526/720 [00:03<00:01, 140.38batch/s]Epoch 2 batches:  75%|███████▌  | 541/720 [00:04<00:01, 138.95batch/s]Epoch 2 batches:  77%|███████▋  | 556/720 [00:04<00:01, 139.77batch/s]Epoch 2 batches:  79%|███████▉  | 571/720 [00:04<00:01, 141.42batch/s]Epoch 2 batches:  81%|████████▏ | 586/720 [00:04<00:00, 139.46batch/s]                                                                      Epoch 2 batches:  81%|████████▏ | 586/720 [00:04<00:00, 139.46batch/s]Epoch 2 batches:  83%|████████▎ | 601/720 [00:04<00:00, 139.86batch/s]Epoch 2 batches:  86%|████████▌ | 616/720 [00:04<00:00, 140.50batch/s]Epoch 2 batches:  88%|████████▊ | 631/720 [00:04<00:00, 134.35batch/s]Epoch 2 batches:  90%|████████▉ | 645/720 [00:04<00:00, 132.54batch/s]Epoch 2 batches:  92%|█████████▏| 659/720 [00:04<00:00, 122.74batch/s]Epoch 2 batches:  93%|█████████▎| 672/720 [00:05<00:00, 118.94batch/s]Epoch 2 batches:  95%|█████████▌| 685/720 [00:05<00:00, 119.44batch/s]Epoch 2 batches:  97%|█████████▋| 698/720 [00:05<00:00, 107.62batch/s]Epoch 2 batches:  99%|█████████▊| 710/720 [00:05<00:00, 101.58batch/s]                                                                        batch 200/720 | loss=1.1024
+  batch 400/720 | loss=1.1693
+  batch 600/720 | loss=1.2447
+
+Epoch 2/20
+Loss: 1.1542
+Accuracy: 0.6249
+Macro F1: 0.3815
+Weighted F1: 0.5891
+Class F1:
+  NORM: 0.7884
+  MI: 0.1693
+  HYP: 0.0000
+  CD: 0.4582
+  STTC: 0.4917
+LR=0.001000 | epoch_time=6.4s
+  >> No improvement (1/10)
+
+========================================================================
+Epoch 3/20 START
+Epoch 3 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 3 batches:   2%|▏         | 14/720 [00:00<00:05, 133.45batch/s]Epoch 3 batches:   4%|▍         | 29/720 [00:00<00:04, 139.08batch/s]Epoch 3 batches:   6%|▌         | 43/720 [00:00<00:05, 126.95batch/s]Epoch 3 batches:   8%|▊         | 56/720 [00:00<00:05, 118.88batch/s]Epoch 3 batches:  10%|▉         | 69/720 [00:00<00:05, 120.26batch/s]Epoch 3 batches:  12%|█▏        | 83/720 [00:00<00:05, 124.77batch/s]Epoch 3 batches:  14%|█▎        | 98/720 [00:00<00:04, 130.95batch/s]Epoch 3 batches:  16%|█▌        | 114/720 [00:00<00:04, 138.09batch/s]Epoch 3 batches:  18%|█▊        | 129/720 [00:00<00:04, 141.26batch/s]Epoch 3 batches:  20%|██        | 144/720 [00:01<00:04, 143.49batch/s]Epoch 3 batches:  22%|██▏       | 159/720 [00:01<00:03, 144.99batch/s]Epoch 3 batches:  24%|██▍       | 174/720 [00:01<00:03, 145.38batch/s]Epoch 3 batches:  26%|██▋       | 189/720 [00:01<00:03, 145.15batch/s]                                                                      Epoch 3 batches:  26%|██▋       | 189/720 [00:01<00:03, 145.15batch/s]Epoch 3 batches:  28%|██▊       | 204/720 [00:01<00:03, 143.61batch/s]Epoch 3 batches:  30%|███       | 219/720 [00:01<00:03, 140.48batch/s]Epoch 3 batches:  32%|███▎      | 234/720 [00:01<00:03, 140.79batch/s]Epoch 3 batches:  35%|███▍      | 249/720 [00:01<00:03, 139.13batch/s]Epoch 3 batches:  37%|███▋      | 263/720 [00:02<00:04, 109.60batch/s]Epoch 3 batches:  39%|███▊      | 278/720 [00:02<00:03, 118.05batch/s]Epoch 3 batches:  41%|████      | 293/720 [00:02<00:03, 125.49batch/s]Epoch 3 batches:  43%|████▎     | 309/720 [00:02<00:03, 132.49batch/s]Epoch 3 batches:  45%|████▌     | 324/720 [00:02<00:02, 134.75batch/s]Epoch 3 batches:  47%|████▋     | 338/720 [00:02<00:02, 136.19batch/s]Epoch 3 batches:  49%|████▉     | 353/720 [00:02<00:02, 137.46batch/s]Epoch 3 batches:  51%|█████     | 367/720 [00:02<00:02, 133.29batch/s]Epoch 3 batches:  53%|█████▎    | 381/720 [00:02<00:02, 132.92batch/s]Epoch 3 batches:  55%|█████▍    | 395/720 [00:02<00:02, 133.97batch/s]                                                                      Epoch 3 batches:  55%|█████▍    | 395/720 [00:02<00:02, 133.97batch/s]Epoch 3 batches:  57%|█████▋    | 410/720 [00:03<00:02, 136.85batch/s]Epoch 3 batches:  59%|█████▉    | 425/720 [00:03<00:02, 139.44batch/s]Epoch 3 batches:  61%|██████    | 440/720 [00:03<00:01, 141.58batch/s]Epoch 3 batches:  63%|██████▎   | 455/720 [00:03<00:01, 142.89batch/s]Epoch 3 batches:  65%|██████▌   | 470/720 [00:03<00:01, 143.50batch/s]Epoch 3 batches:  67%|██████▋   | 485/720 [00:03<00:01, 141.54batch/s]Epoch 3 batches:  69%|██████▉   | 500/720 [00:03<00:01, 143.01batch/s]Epoch 3 batches:  72%|███████▏  | 515/720 [00:03<00:01, 143.03batch/s]Epoch 3 batches:  74%|███████▎  | 530/720 [00:03<00:01, 138.54batch/s]Epoch 3 batches:  76%|███████▌  | 544/720 [00:04<00:01, 109.21batch/s]Epoch 3 batches:  77%|███████▋  | 556/720 [00:04<00:01, 97.56batch/s] Epoch 3 batches:  79%|███████▉  | 567/720 [00:04<00:01, 97.86batch/s]Epoch 3 batches:  81%|████████  | 580/720 [00:04<00:01, 105.64batch/s]Epoch 3 batches:  82%|████████▎ | 594/720 [00:04<00:01, 112.35batch/s]                                                                      Epoch 3 batches:  82%|████████▎ | 594/720 [00:04<00:01, 112.35batch/s]Epoch 3 batches:  84%|████████▍ | 606/720 [00:04<00:01, 113.28batch/s]Epoch 3 batches:  86%|████████▌ | 620/720 [00:04<00:00, 118.01batch/s]Epoch 3 batches:  88%|████████▊ | 634/720 [00:04<00:00, 121.79batch/s]Epoch 3 batches:  90%|████████▉ | 647/720 [00:05<00:00, 122.04batch/s]Epoch 3 batches:  92%|█████████▏| 661/720 [00:05<00:00, 126.53batch/s]Epoch 3 batches:  94%|█████████▍| 675/720 [00:05<00:00, 128.72batch/s]Epoch 3 batches:  96%|█████████▌| 688/720 [00:05<00:00, 125.00batch/s]Epoch 3 batches:  98%|█████████▊| 702/720 [00:05<00:00, 126.87batch/s]Epoch 3 batches: 100%|█████████▉| 717/720 [00:05<00:00, 131.30batch/s]                                                                        batch 200/720 | loss=1.1825
+  batch 400/720 | loss=1.0868
+  batch 600/720 | loss=1.1458
+
+Epoch 3/20
+Loss: 1.1342
+Accuracy: 0.6393
+Macro F1: 0.3903
+Weighted F1: 0.5982
+Class F1:
+  NORM: 0.7970
+  MI: 0.1784
+  HYP: 0.0000
+  CD: 0.4777
+  STTC: 0.4984
+LR=0.001000 | epoch_time=6.1s
+  >> NEW BEST validation macro F1: 0.3903
+
+========================================================================
+Epoch 4/20 START
+Epoch 4 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 4 batches:   2%|▏         | 13/720 [00:00<00:05, 126.97batch/s]Epoch 4 batches:   4%|▍         | 27/720 [00:00<00:05, 133.81batch/s]Epoch 4 batches:   6%|▌         | 41/720 [00:00<00:05, 126.18batch/s]Epoch 4 batches:   8%|▊         | 55/720 [00:00<00:05, 130.06batch/s]Epoch 4 batches:  10%|▉         | 69/720 [00:00<00:04, 133.33batch/s]Epoch 4 batches:  12%|█▏        | 84/720 [00:00<00:04, 137.56batch/s]Epoch 4 batches:  14%|█▍        | 99/720 [00:00<00:04, 139.50batch/s]Epoch 4 batches:  16%|█▌        | 113/720 [00:00<00:04, 129.09batch/s]Epoch 4 batches:  18%|█▊        | 127/720 [00:01<00:05, 112.71batch/s]Epoch 4 batches:  19%|█▉        | 139/720 [00:01<00:05, 96.85batch/s] Epoch 4 batches:  21%|██        | 152/720 [00:01<00:05, 103.85batch/s]Epoch 4 batches:  23%|██▎       | 164/720 [00:01<00:05, 107.09batch/s]Epoch 4 batches:  25%|██▍       | 177/720 [00:01<00:04, 112.25batch/s]Epoch 4 batches:  26%|██▋       | 190/720 [00:01<00:04, 116.28batch/s]                                                                      Epoch 4 batches:  26%|██▋       | 190/720 [00:01<00:04, 116.28batch/s]Epoch 4 batches:  28%|██▊       | 204/720 [00:01<00:04, 122.69batch/s]Epoch 4 batches:  30%|███       | 219/720 [00:01<00:03, 127.99batch/s]Epoch 4 batches:  32%|███▎      | 234/720 [00:01<00:03, 132.20batch/s]Epoch 4 batches:  34%|███▍      | 248/720 [00:02<00:03, 128.86batch/s]Epoch 4 batches:  36%|███▋      | 261/720 [00:02<00:03, 128.22batch/s]Epoch 4 batches:  38%|███▊      | 275/720 [00:02<00:03, 129.88batch/s]Epoch 4 batches:  40%|████      | 289/720 [00:02<00:03, 126.90batch/s]Epoch 4 batches:  42%|████▏     | 302/720 [00:02<00:03, 127.36batch/s]Epoch 4 batches:  44%|████▍     | 316/720 [00:02<00:03, 128.53batch/s]Epoch 4 batches:  46%|████▌     | 330/720 [00:02<00:02, 131.63batch/s]Epoch 4 batches:  48%|████▊     | 344/720 [00:02<00:02, 132.65batch/s]Epoch 4 batches:  50%|████▉     | 359/720 [00:02<00:02, 136.75batch/s]Epoch 4 batches:  52%|█████▏    | 373/720 [00:02<00:02, 135.20batch/s]Epoch 4 batches:  54%|█████▍    | 388/720 [00:03<00:02, 136.86batch/s]                                                                      Epoch 4 batches:  54%|█████▍    | 388/720 [00:03<00:02, 136.86batch/s]Epoch 4 batches:  56%|█████▌    | 403/720 [00:03<00:02, 138.91batch/s]Epoch 4 batches:  58%|█████▊    | 418/720 [00:03<00:02, 139.91batch/s]Epoch 4 batches:  60%|██████    | 432/720 [00:03<00:02, 134.76batch/s]Epoch 4 batches:  62%|██████▏   | 446/720 [00:03<00:02, 131.75batch/s]Epoch 4 batches:  64%|██████▍   | 461/720 [00:03<00:01, 135.55batch/s]Epoch 4 batches:  66%|██████▌   | 475/720 [00:03<00:01, 134.49batch/s]Epoch 4 batches:  68%|██████▊   | 489/720 [00:03<00:01, 118.11batch/s]Epoch 4 batches:  70%|██████▉   | 502/720 [00:04<00:01, 112.26batch/s]Epoch 4 batches:  72%|███████▏  | 517/720 [00:04<00:01, 120.73batch/s]Epoch 4 batches:  74%|███████▍  | 532/720 [00:04<00:01, 128.27batch/s]Epoch 4 batches:  76%|███████▌  | 547/720 [00:04<00:01, 133.91batch/s]Epoch 4 batches:  78%|███████▊  | 562/720 [00:04<00:01, 138.14batch/s]Epoch 4 batches:  80%|████████  | 577/720 [00:04<00:01, 141.07batch/s]Epoch 4 batches:  82%|████████▏ | 592/720 [00:04<00:00, 140.12batch/s]                                                                      Epoch 4 batches:  82%|████████▏ | 592/720 [00:04<00:00, 140.12batch/s]Epoch 4 batches:  84%|████████▍ | 607/720 [00:04<00:00, 142.94batch/s]Epoch 4 batches:  86%|████████▋ | 622/720 [00:04<00:00, 140.22batch/s]Epoch 4 batches:  88%|████████▊ | 637/720 [00:04<00:00, 141.80batch/s]Epoch 4 batches:  91%|█████████ | 652/720 [00:05<00:00, 142.00batch/s]Epoch 4 batches:  93%|█████████▎| 667/720 [00:05<00:00, 143.87batch/s]Epoch 4 batches:  95%|█████████▍| 682/720 [00:05<00:00, 144.48batch/s]Epoch 4 batches:  97%|█████████▋| 697/720 [00:05<00:00, 145.50batch/s]Epoch 4 batches:  99%|█████████▉| 712/720 [00:05<00:00, 146.35batch/s]                                                                        batch 200/720 | loss=1.0358
+  batch 400/720 | loss=1.1447
+  batch 600/720 | loss=1.1335
+
+Epoch 4/20
+Loss: 1.1217
+Accuracy: 0.6371
+Macro F1: 0.3870
+Weighted F1: 0.5948
+Class F1:
+  NORM: 0.7950
+  MI: 0.1559
+  HYP: 0.0000
+  CD: 0.4843
+  STTC: 0.4995
+LR=0.001000 | epoch_time=6.1s
+  >> No improvement (1/10)
+
+========================================================================
+Epoch 5/20 START
+Epoch 5 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 5 batches:   2%|▏         | 13/720 [00:00<00:05, 129.40batch/s]Epoch 5 batches:   4%|▎         | 26/720 [00:00<00:05, 128.72batch/s]Epoch 5 batches:   5%|▌         | 39/720 [00:00<00:05, 123.10batch/s]Epoch 5 batches:   7%|▋         | 52/720 [00:00<00:05, 122.09batch/s]Epoch 5 batches:   9%|▉         | 65/720 [00:00<00:06, 98.52batch/s] Epoch 5 batches:  11%|█▏        | 81/720 [00:00<00:05, 114.99batch/s]Epoch 5 batches:  13%|█▎        | 95/720 [00:00<00:05, 120.95batch/s]Epoch 5 batches:  15%|█▌        | 109/720 [00:00<00:04, 124.06batch/s]Epoch 5 batches:  17%|█▋        | 122/720 [00:01<00:04, 121.11batch/s]Epoch 5 batches:  19%|█▉        | 135/720 [00:01<00:04, 121.89batch/s]Epoch 5 batches:  21%|██        | 148/720 [00:01<00:04, 122.65batch/s]Epoch 5 batches:  22%|██▎       | 162/720 [00:01<00:04, 125.95batch/s]Epoch 5 batches:  24%|██▍       | 176/720 [00:01<00:04, 129.64batch/s]Epoch 5 batches:  27%|██▋       | 191/720 [00:01<00:03, 134.72batch/s]                                                                      Epoch 5 batches:  27%|██▋       | 191/720 [00:01<00:03, 134.72batch/s]Epoch 5 batches:  28%|██▊       | 205/720 [00:01<00:03, 135.09batch/s]Epoch 5 batches:  30%|███       | 219/720 [00:01<00:03, 126.44batch/s]Epoch 5 batches:  32%|███▏      | 232/720 [00:01<00:03, 123.54batch/s]Epoch 5 batches:  34%|███▍      | 245/720 [00:01<00:03, 123.89batch/s]Epoch 5 batches:  36%|███▌      | 260/720 [00:02<00:03, 128.97batch/s]Epoch 5 batches:  38%|███▊      | 274/720 [00:02<00:03, 131.46batch/s]Epoch 5 batches:  40%|████      | 289/720 [00:02<00:03, 135.57batch/s]Epoch 5 batches:  42%|████▏     | 304/720 [00:02<00:02, 138.94batch/s]Epoch 5 batches:  44%|████▍     | 319/720 [00:02<00:02, 141.73batch/s]Epoch 5 batches:  46%|████▋     | 334/720 [00:02<00:02, 143.40batch/s]Epoch 5 batches:  48%|████▊     | 349/720 [00:02<00:02, 135.39batch/s]Epoch 5 batches:  51%|█████     | 364/720 [00:02<00:02, 137.87batch/s]Epoch 5 batches:  53%|█████▎    | 379/720 [00:02<00:02, 140.08batch/s]Epoch 5 batches:  55%|█████▍    | 394/720 [00:03<00:02, 139.32batch/s]                                                                      Epoch 5 batches:  55%|█████▍    | 394/720 [00:03<00:02, 139.32batch/s]Epoch 5 batches:  57%|█████▋    | 409/720 [00:03<00:02, 141.28batch/s]Epoch 5 batches:  59%|█████▉    | 424/720 [00:03<00:02, 139.24batch/s]Epoch 5 batches:  61%|██████    | 439/720 [00:03<00:02, 140.40batch/s]Epoch 5 batches:  63%|██████▎   | 454/720 [00:03<00:01, 142.77batch/s]Epoch 5 batches:  65%|██████▌   | 469/720 [00:03<00:01, 142.13batch/s]Epoch 5 batches:  67%|██████▋   | 484/720 [00:03<00:01, 144.09batch/s]Epoch 5 batches:  69%|██████▉   | 499/720 [00:03<00:01, 145.07batch/s]Epoch 5 batches:  71%|███████▏  | 514/720 [00:03<00:01, 144.96batch/s]Epoch 5 batches:  73%|███████▎  | 529/720 [00:03<00:01, 144.54batch/s]Epoch 5 batches:  76%|███████▌  | 544/720 [00:04<00:01, 143.06batch/s]Epoch 5 batches:  78%|███████▊  | 559/720 [00:04<00:01, 140.21batch/s]Epoch 5 batches:  80%|███████▉  | 574/720 [00:04<00:01, 141.57batch/s]Epoch 5 batches:  82%|████████▏ | 589/720 [00:04<00:00, 139.56batch/s]                                                                      Epoch 5 batches:  82%|████████▏ | 589/720 [00:04<00:00, 139.56batch/s]Epoch 5 batches:  84%|████████▍ | 604/720 [00:04<00:00, 142.20batch/s]Epoch 5 batches:  86%|████████▌ | 619/720 [00:04<00:00, 143.05batch/s]Epoch 5 batches:  88%|████████▊ | 634/720 [00:04<00:00, 144.47batch/s]Epoch 5 batches:  90%|█████████ | 649/720 [00:04<00:00, 144.71batch/s]Epoch 5 batches:  92%|█████████▏| 664/720 [00:04<00:00, 144.67batch/s]Epoch 5 batches:  94%|█████████▍| 679/720 [00:05<00:00, 145.11batch/s]Epoch 5 batches:  96%|█████████▋| 694/720 [00:05<00:00, 144.84batch/s]Epoch 5 batches:  98%|█████████▊| 709/720 [00:05<00:00, 143.93batch/s]                                                                        batch 200/720 | loss=0.9714
+  batch 400/720 | loss=1.1086
+  batch 600/720 | loss=1.1388
+
+Epoch 5/20
+Loss: 1.1129
+Accuracy: 0.6397
+Macro F1: 0.3932
+Weighted F1: 0.6000
+Class F1:
+  NORM: 0.7973
+  MI: 0.1946
+  HYP: 0.0000
+  CD: 0.4867
+  STTC: 0.4874
+LR=0.001000 | epoch_time=5.8s
+
+Checkpoint confusion matrix (epoch 5):
+            NORM      MI     HYP      CD    STTC
+  NORM    15913     469       0     257    1402
+  MI       2070     644       0     148    1820
+  HYP       853      77       0       7     244
+  CD       1495     210       0    1252     397
+  STTC     1545     536       0     127    2886
+  >> NEW BEST validation macro F1: 0.3932
+
+========================================================================
+Epoch 6/20 START
+Epoch 6 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 6 batches:   2%|▏         | 14/720 [00:00<00:05, 134.20batch/s]Epoch 6 batches:   4%|▍         | 29/720 [00:00<00:04, 140.14batch/s]Epoch 6 batches:   6%|▌         | 44/720 [00:00<00:04, 140.33batch/s]Epoch 6 batches:   8%|▊         | 59/720 [00:00<00:04, 139.80batch/s]Epoch 6 batches:  10%|█         | 73/720 [00:00<00:04, 135.12batch/s]Epoch 6 batches:  12%|█▏        | 87/720 [00:00<00:04, 134.43batch/s]Epoch 6 batches:  14%|█▍        | 101/720 [00:00<00:04, 133.02batch/s]Epoch 6 batches:  16%|█▌        | 115/720 [00:00<00:04, 134.02batch/s]Epoch 6 batches:  18%|█▊        | 130/720 [00:00<00:04, 138.82batch/s]Epoch 6 batches:  20%|██        | 145/720 [00:01<00:04, 141.67batch/s]Epoch 6 batches:  22%|██▏       | 160/720 [00:01<00:03, 141.90batch/s]Epoch 6 batches:  24%|██▍       | 175/720 [00:01<00:03, 142.19batch/s]Epoch 6 batches:  26%|██▋       | 190/720 [00:01<00:03, 143.00batch/s]                                                                      Epoch 6 batches:  26%|██▋       | 190/720 [00:01<00:03, 143.00batch/s]Epoch 6 batches:  28%|██▊       | 205/720 [00:01<00:03, 144.86batch/s]Epoch 6 batches:  31%|███       | 220/720 [00:01<00:03, 146.34batch/s]Epoch 6 batches:  33%|███▎      | 235/720 [00:01<00:03, 144.82batch/s]Epoch 6 batches:  35%|███▍      | 250/720 [00:01<00:03, 141.61batch/s]Epoch 6 batches:  37%|███▋      | 265/720 [00:01<00:03, 140.02batch/s]Epoch 6 batches:  39%|███▉      | 280/720 [00:01<00:03, 141.89batch/s]Epoch 6 batches:  41%|████      | 296/720 [00:02<00:02, 144.95batch/s]Epoch 6 batches:  43%|████▎     | 311/720 [00:02<00:02, 144.86batch/s]Epoch 6 batches:  45%|████▌     | 326/720 [00:02<00:02, 144.94batch/s]Epoch 6 batches:  48%|████▊     | 342/720 [00:02<00:02, 147.13batch/s]Epoch 6 batches:  50%|████▉     | 358/720 [00:02<00:02, 148.34batch/s]Epoch 6 batches:  52%|█████▏    | 373/720 [00:02<00:02, 148.46batch/s]Epoch 6 batches:  54%|█████▍    | 388/720 [00:02<00:02, 147.15batch/s]                                                                      Epoch 6 batches:  54%|█████▍    | 388/720 [00:02<00:02, 147.15batch/s]Epoch 6 batches:  56%|█████▌    | 403/720 [00:02<00:02, 143.47batch/s]Epoch 6 batches:  58%|█████▊    | 418/720 [00:02<00:02, 144.90batch/s]Epoch 6 batches:  60%|██████    | 433/720 [00:03<00:02, 142.69batch/s]Epoch 6 batches:  62%|██████▏   | 448/720 [00:03<00:01, 143.32batch/s]Epoch 6 batches:  64%|██████▍   | 463/720 [00:03<00:01, 145.23batch/s]Epoch 6 batches:  67%|██████▋   | 479/720 [00:03<00:01, 147.21batch/s]Epoch 6 batches:  69%|██████▊   | 494/720 [00:03<00:01, 147.36batch/s]Epoch 6 batches:  71%|███████   | 509/720 [00:03<00:01, 147.40batch/s]Epoch 6 batches:  73%|███████▎  | 525/720 [00:03<00:01, 149.13batch/s]Epoch 6 batches:  75%|███████▌  | 540/720 [00:03<00:01, 147.41batch/s]Epoch 6 batches:  77%|███████▋  | 555/720 [00:03<00:01, 147.72batch/s]Epoch 6 batches:  79%|███████▉  | 570/720 [00:03<00:01, 144.09batch/s]Epoch 6 batches:  81%|████████▏ | 585/720 [00:04<00:00, 144.98batch/s]                                                                      Epoch 6 batches:  81%|████████▏ | 585/720 [00:04<00:00, 144.98batch/s]Epoch 6 batches:  83%|████████▎ | 600/720 [00:04<00:00, 141.99batch/s]Epoch 6 batches:  86%|████████▌ | 616/720 [00:04<00:00, 145.48batch/s]Epoch 6 batches:  88%|████████▊ | 632/720 [00:04<00:00, 147.25batch/s]Epoch 6 batches:  90%|████████▉ | 647/720 [00:04<00:00, 147.16batch/s]Epoch 6 batches:  92%|█████████▏| 663/720 [00:04<00:00, 148.12batch/s]Epoch 6 batches:  94%|█████████▍| 679/720 [00:04<00:00, 149.91batch/s]Epoch 6 batches:  96%|█████████▋| 694/720 [00:04<00:00, 147.80batch/s]Epoch 6 batches:  98%|█████████▊| 709/720 [00:05<00:00, 115.55batch/s]                                                                        batch 200/720 | loss=1.1104
+  batch 400/720 | loss=1.1239
+  batch 600/720 | loss=0.9999
+
+Epoch 6/20
+Loss: 1.1042
+Accuracy: 0.6416
+Macro F1: 0.4008
+Weighted F1: 0.6058
+Class F1:
+  NORM: 0.7988
+  MI: 0.2377
+  HYP: 0.0034
+  CD: 0.4824
+  STTC: 0.4820
+LR=0.001000 | epoch_time=5.6s
+  >> NEW BEST validation macro F1: 0.4008
+
+========================================================================
+Epoch 7/20 START
+Epoch 7 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 7 batches:   1%|          | 8/720 [00:00<00:09, 77.06batch/s]Epoch 7 batches:   3%|▎         | 20/720 [00:00<00:06, 100.54batch/s]Epoch 7 batches:   5%|▍         | 34/720 [00:00<00:05, 116.04batch/s]Epoch 7 batches:   7%|▋         | 49/720 [00:00<00:05, 128.52batch/s]Epoch 7 batches:   9%|▊         | 62/720 [00:00<00:05, 125.39batch/s]Epoch 7 batches:  10%|█         | 75/720 [00:00<00:05, 124.17batch/s]Epoch 7 batches:  12%|█▏        | 89/720 [00:00<00:04, 126.76batch/s]Epoch 7 batches:  14%|█▍        | 104/720 [00:00<00:04, 132.59batch/s]Epoch 7 batches:  17%|█▋        | 119/720 [00:00<00:04, 135.55batch/s]Epoch 7 batches:  19%|█▊        | 134/720 [00:01<00:04, 138.50batch/s]Epoch 7 batches:  21%|██        | 149/720 [00:01<00:04, 140.68batch/s]Epoch 7 batches:  23%|██▎       | 165/720 [00:01<00:03, 143.68batch/s]Epoch 7 batches:  25%|██▌       | 180/720 [00:01<00:03, 143.98batch/s]Epoch 7 batches:  27%|██▋       | 195/720 [00:01<00:03, 144.80batch/s]                                                                      Epoch 7 batches:  27%|██▋       | 195/720 [00:01<00:03, 144.80batch/s]Epoch 7 batches:  29%|██▉       | 210/720 [00:01<00:03, 142.13batch/s]Epoch 7 batches:  31%|███▏      | 225/720 [00:01<00:03, 142.80batch/s]Epoch 7 batches:  33%|███▎      | 240/720 [00:01<00:03, 141.37batch/s]Epoch 7 batches:  35%|███▌      | 255/720 [00:01<00:03, 141.17batch/s]Epoch 7 batches:  38%|███▊      | 270/720 [00:01<00:03, 141.51batch/s]Epoch 7 batches:  40%|███▉      | 285/720 [00:02<00:03, 141.73batch/s]Epoch 7 batches:  42%|████▏     | 300/720 [00:02<00:02, 143.25batch/s]Epoch 7 batches:  44%|████▍     | 315/720 [00:02<00:02, 143.99batch/s]Epoch 7 batches:  46%|████▌     | 330/720 [00:02<00:02, 144.51batch/s]Epoch 7 batches:  48%|████▊     | 346/720 [00:02<00:02, 147.25batch/s]Epoch 7 batches:  50%|█████     | 361/720 [00:02<00:02, 147.35batch/s]Epoch 7 batches:  52%|█████▏    | 376/720 [00:02<00:02, 143.46batch/s]Epoch 7 batches:  54%|█████▍    | 391/720 [00:02<00:02, 142.27batch/s]                                                                      Epoch 7 batches:  54%|█████▍    | 391/720 [00:02<00:02, 142.27batch/s]Epoch 7 batches:  56%|█████▋    | 406/720 [00:02<00:02, 141.98batch/s]Epoch 7 batches:  59%|█████▊    | 422/720 [00:03<00:02, 145.18batch/s]Epoch 7 batches:  61%|██████    | 438/720 [00:03<00:01, 146.57batch/s]Epoch 7 batches:  63%|██████▎   | 454/720 [00:03<00:01, 148.54batch/s]Epoch 7 batches:  65%|██████▌   | 470/720 [00:03<00:01, 149.56batch/s]Epoch 7 batches:  68%|██████▊   | 486/720 [00:03<00:01, 150.97batch/s]Epoch 7 batches:  70%|██████▉   | 502/720 [00:03<00:01, 147.90batch/s]Epoch 7 batches:  72%|███████▏  | 518/720 [00:03<00:01, 148.74batch/s]Epoch 7 batches:  74%|███████▍  | 534/720 [00:03<00:01, 149.86batch/s]Epoch 7 batches:  76%|███████▋  | 549/720 [00:03<00:01, 146.19batch/s]Epoch 7 batches:  78%|███████▊  | 564/720 [00:04<00:01, 145.81batch/s]Epoch 7 batches:  80%|████████  | 579/720 [00:04<00:00, 146.07batch/s]Epoch 7 batches:  83%|████████▎ | 595/720 [00:04<00:00, 149.10batch/s]                                                                      Epoch 7 batches:  83%|████████▎ | 595/720 [00:04<00:00, 149.10batch/s]Epoch 7 batches:  85%|████████▍ | 610/720 [00:04<00:00, 149.35batch/s]Epoch 7 batches:  87%|████████▋ | 626/720 [00:04<00:00, 151.23batch/s]Epoch 7 batches:  89%|████████▉ | 642/720 [00:04<00:00, 151.94batch/s]Epoch 7 batches:  91%|█████████▏| 658/720 [00:04<00:00, 149.04batch/s]Epoch 7 batches:  94%|█████████▎| 674/720 [00:04<00:00, 150.05batch/s]Epoch 7 batches:  96%|█████████▌| 690/720 [00:04<00:00, 151.11batch/s]Epoch 7 batches:  98%|█████████▊| 706/720 [00:04<00:00, 148.07batch/s]                                                                        batch 200/720 | loss=1.0698
+  batch 400/720 | loss=0.9782
+  batch 600/720 | loss=1.1477
+
+Epoch 7/20
+Loss: 1.0977
+Accuracy: 0.6449
+Macro F1: 0.3920
+Weighted F1: 0.5997
+Class F1:
+  NORM: 0.7992
+  MI: 0.1745
+  HYP: 0.0000
+  CD: 0.4920
+  STTC: 0.4941
+LR=0.001000 | epoch_time=5.5s
+  >> No improvement (1/10)
+
+========================================================================
+Epoch 8/20 START
+Epoch 8 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 8 batches:   2%|▏         | 13/720 [00:00<00:05, 125.85batch/s]Epoch 8 batches:   4%|▍         | 27/720 [00:00<00:05, 128.98batch/s]Epoch 8 batches:   6%|▌         | 43/720 [00:00<00:04, 138.62batch/s]Epoch 8 batches:   8%|▊         | 59/720 [00:00<00:04, 142.74batch/s]Epoch 8 batches:  10%|█         | 74/720 [00:00<00:04, 142.57batch/s]Epoch 8 batches:  12%|█▏        | 89/720 [00:00<00:04, 143.08batch/s]Epoch 8 batches:  14%|█▍        | 104/720 [00:00<00:04, 143.23batch/s]Epoch 8 batches:  17%|█▋        | 120/720 [00:00<00:04, 145.32batch/s]Epoch 8 batches:  19%|█▉        | 136/720 [00:00<00:03, 147.55batch/s]Epoch 8 batches:  21%|██        | 152/720 [00:01<00:03, 150.96batch/s]Epoch 8 batches:  23%|██▎       | 168/720 [00:01<00:03, 146.90batch/s]Epoch 8 batches:  25%|██▌       | 183/720 [00:01<00:03, 134.98batch/s]Epoch 8 batches:  28%|██▊       | 198/720 [00:01<00:03, 136.18batch/s]                                                                      Epoch 8 batches:  28%|██▊       | 198/720 [00:01<00:03, 136.18batch/s]Epoch 8 batches:  29%|██▉       | 212/720 [00:01<00:03, 128.49batch/s]Epoch 8 batches:  31%|███▏      | 225/720 [00:01<00:03, 125.31batch/s]Epoch 8 batches:  33%|███▎      | 238/720 [00:01<00:03, 122.30batch/s]Epoch 8 batches:  35%|███▍      | 251/720 [00:01<00:03, 118.76batch/s]Epoch 8 batches:  37%|███▋      | 264/720 [00:01<00:03, 121.17batch/s]Epoch 8 batches:  38%|███▊      | 277/720 [00:02<00:03, 123.40batch/s]Epoch 8 batches:  40%|████      | 290/720 [00:02<00:03, 122.20batch/s]Epoch 8 batches:  42%|████▏     | 303/720 [00:02<00:03, 118.16batch/s]Epoch 8 batches:  44%|████▍     | 315/720 [00:02<00:03, 115.85batch/s]Epoch 8 batches:  45%|████▌     | 327/720 [00:02<00:03, 116.58batch/s]Epoch 8 batches:  47%|████▋     | 339/720 [00:02<00:03, 115.93batch/s]Epoch 8 batches:  49%|████▉     | 351/720 [00:02<00:03, 114.16batch/s]Epoch 8 batches:  50%|█████     | 363/720 [00:02<00:03, 114.39batch/s]Epoch 8 batches:  52%|█████▏    | 375/720 [00:02<00:03, 113.32batch/s]Epoch 8 batches:  54%|█████▍    | 387/720 [00:03<00:03, 110.06batch/s]                                                                      Epoch 8 batches:  54%|█████▍    | 387/720 [00:03<00:03, 110.06batch/s]Epoch 8 batches:  56%|█████▌    | 400/720 [00:03<00:02, 114.31batch/s]Epoch 8 batches:  58%|█████▊    | 416/720 [00:03<00:02, 126.81batch/s]Epoch 8 batches:  60%|█████▉    | 429/720 [00:03<00:02, 126.06batch/s]Epoch 8 batches:  61%|██████▏   | 442/720 [00:03<00:02, 117.64batch/s]Epoch 8 batches:  63%|██████▎   | 456/720 [00:03<00:02, 122.13batch/s]Epoch 8 batches:  65%|██████▌   | 471/720 [00:03<00:01, 129.09batch/s]Epoch 8 batches:  68%|██████▊   | 487/720 [00:03<00:01, 136.34batch/s]Epoch 8 batches:  70%|██████▉   | 502/720 [00:03<00:01, 138.14batch/s]Epoch 8 batches:  72%|███████▏  | 516/720 [00:04<00:01, 108.50batch/s]Epoch 8 batches:  74%|███████▍  | 531/720 [00:04<00:01, 117.78batch/s]Epoch 8 batches:  76%|███████▌  | 547/720 [00:04<00:01, 127.27batch/s]Epoch 8 batches:  78%|███████▊  | 561/720 [00:04<00:01, 128.75batch/s]Epoch 8 batches:  80%|████████  | 576/720 [00:04<00:01, 134.38batch/s]Epoch 8 batches:  82%|████████▏ | 592/720 [00:04<00:00, 138.33batch/s]                                                                      Epoch 8 batches:  82%|████████▏ | 592/720 [00:04<00:00, 138.33batch/s]Epoch 8 batches:  84%|████████▍ | 607/720 [00:04<00:00, 140.41batch/s]Epoch 8 batches:  87%|████████▋ | 623/720 [00:04<00:00, 139.36batch/s]Epoch 8 batches:  89%|████████▊ | 638/720 [00:05<00:00, 117.18batch/s]Epoch 8 batches:  91%|█████████ | 653/720 [00:05<00:00, 124.29batch/s]Epoch 8 batches:  93%|█████████▎| 668/720 [00:05<00:00, 129.61batch/s]Epoch 8 batches:  95%|█████████▌| 684/720 [00:05<00:00, 135.85batch/s]Epoch 8 batches:  97%|█████████▋| 698/720 [00:05<00:00, 132.35batch/s]Epoch 8 batches:  99%|█████████▉| 712/720 [00:05<00:00, 131.23batch/s]                                                                        batch 200/720 | loss=1.0536
+  batch 400/720 | loss=1.2175
+  batch 600/720 | loss=1.0496
+
+Epoch 8/20
+Loss: 1.0908
+Accuracy: 0.6374
+Macro F1: 0.3966
+Weighted F1: 0.6010
+Class F1:
+  NORM: 0.7943
+  MI: 0.2014
+  HYP: 0.0000
+  CD: 0.4937
+  STTC: 0.4937
+LR=0.001000 | epoch_time=6.1s
+  >> No improvement (2/10)
+
+========================================================================
+Epoch 9/20 START
+Epoch 9 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 9 batches:   2%|▏         | 11/720 [00:00<00:06, 107.92batch/s]Epoch 9 batches:   3%|▎         | 25/720 [00:00<00:05, 125.73batch/s]Epoch 9 batches:   6%|▌         | 40/720 [00:00<00:05, 134.97batch/s]Epoch 9 batches:   8%|▊         | 56/720 [00:00<00:04, 142.07batch/s]Epoch 9 batches:  10%|█         | 72/720 [00:00<00:04, 146.84batch/s]Epoch 9 batches:  12%|█▏        | 88/720 [00:00<00:04, 149.57batch/s]Epoch 9 batches:  14%|█▍        | 104/720 [00:00<00:04, 149.76batch/s]Epoch 9 batches:  17%|█▋        | 119/720 [00:00<00:04, 148.14batch/s]Epoch 9 batches:  19%|█▉        | 135/720 [00:00<00:03, 149.98batch/s]Epoch 9 batches:  21%|██        | 151/720 [00:01<00:03, 152.73batch/s]Epoch 9 batches:  23%|██▎       | 167/720 [00:01<00:03, 153.42batch/s]Epoch 9 batches:  25%|██▌       | 183/720 [00:01<00:03, 149.76batch/s]Epoch 9 batches:  28%|██▊       | 198/720 [00:01<00:03, 147.47batch/s]                                                                      Epoch 9 batches:  28%|██▊       | 198/720 [00:01<00:03, 147.47batch/s]Epoch 9 batches:  30%|██▉       | 214/720 [00:01<00:03, 148.59batch/s]Epoch 9 batches:  32%|███▏      | 230/720 [00:01<00:03, 149.79batch/s]Epoch 9 batches:  34%|███▍      | 245/720 [00:01<00:03, 148.99batch/s]Epoch 9 batches:  36%|███▋      | 261/720 [00:01<00:03, 149.17batch/s]Epoch 9 batches:  38%|███▊      | 276/720 [00:01<00:03, 147.57batch/s]Epoch 9 batches:  41%|████      | 292/720 [00:01<00:02, 149.61batch/s]Epoch 9 batches:  43%|████▎     | 308/720 [00:02<00:02, 150.82batch/s]Epoch 9 batches:  45%|████▌     | 324/720 [00:02<00:02, 152.19batch/s]Epoch 9 batches:  47%|████▋     | 340/720 [00:02<00:02, 151.60batch/s]Epoch 9 batches:  49%|████▉     | 356/720 [00:02<00:02, 148.92batch/s]Epoch 9 batches:  52%|█████▏    | 371/720 [00:02<00:02, 148.46batch/s]Epoch 9 batches:  54%|█████▍    | 387/720 [00:02<00:02, 150.44batch/s]                                                                      Epoch 9 batches:  54%|█████▍    | 387/720 [00:02<00:02, 150.44batch/s]Epoch 9 batches:  56%|█████▌    | 403/720 [00:02<00:02, 151.96batch/s]Epoch 9 batches:  58%|█████▊    | 419/720 [00:02<00:01, 152.02batch/s]Epoch 9 batches:  60%|██████    | 435/720 [00:02<00:01, 149.52batch/s]Epoch 9 batches:  62%|██████▎   | 450/720 [00:03<00:01, 148.63batch/s]Epoch 9 batches:  65%|██████▍   | 465/720 [00:03<00:01, 148.55batch/s]Epoch 9 batches:  67%|██████▋   | 481/720 [00:03<00:01, 149.85batch/s]Epoch 9 batches:  69%|██████▉   | 497/720 [00:03<00:01, 151.49batch/s]Epoch 9 batches:  71%|███████▏  | 513/720 [00:03<00:01, 149.85batch/s]Epoch 9 batches:  73%|███████▎  | 528/720 [00:03<00:01, 147.94batch/s]Epoch 9 batches:  76%|███████▌  | 544/720 [00:03<00:01, 148.93batch/s]Epoch 9 batches:  78%|███████▊  | 560/720 [00:03<00:01, 151.36batch/s]Epoch 9 batches:  80%|████████  | 576/720 [00:03<00:00, 152.52batch/s]Epoch 9 batches:  82%|████████▏ | 592/720 [00:03<00:00, 151.65batch/s]                                                                      Epoch 9 batches:  82%|████████▏ | 592/720 [00:04<00:00, 151.65batch/s]Epoch 9 batches:  84%|████████▍ | 608/720 [00:04<00:00, 152.34batch/s]Epoch 9 batches:  87%|████████▋ | 624/720 [00:04<00:00, 153.23batch/s]Epoch 9 batches:  89%|████████▉ | 640/720 [00:04<00:00, 155.10batch/s]Epoch 9 batches:  91%|█████████ | 656/720 [00:04<00:00, 154.72batch/s]Epoch 9 batches:  93%|█████████▎| 672/720 [00:04<00:00, 155.15batch/s]Epoch 9 batches:  96%|█████████▌| 688/720 [00:04<00:00, 150.78batch/s]Epoch 9 batches:  98%|█████████▊| 704/720 [00:04<00:00, 146.53batch/s]Epoch 9 batches: 100%|██████████| 720/720 [00:04<00:00, 146.23batch/s]                                                                        batch 200/720 | loss=1.0213
+  batch 400/720 | loss=1.0704
+  batch 600/720 | loss=1.0603
+
+Epoch 9/20
+Loss: 1.0853
+Accuracy: 0.6397
+Macro F1: 0.4035
+Weighted F1: 0.6060
+Class F1:
+  NORM: 0.7992
+  MI: 0.2405
+  HYP: 0.0181
+  CD: 0.4867
+  STTC: 0.4730
+LR=0.001000 | epoch_time=5.3s
+  >> NEW BEST validation macro F1: 0.4035
+
+========================================================================
+Epoch 10/20 START
+Epoch 10 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 10 batches:   2%|▏         | 12/720 [00:00<00:06, 111.67batch/s]Epoch 10 batches:   4%|▎         | 26/720 [00:00<00:05, 125.66batch/s]Epoch 10 batches:   6%|▌         | 41/720 [00:00<00:05, 132.91batch/s]Epoch 10 batches:   8%|▊         | 55/720 [00:00<00:05, 132.89batch/s]Epoch 10 batches:  10%|▉         | 69/720 [00:00<00:04, 131.48batch/s]Epoch 10 batches:  12%|█▏        | 85/720 [00:00<00:04, 138.52batch/s]Epoch 10 batches:  14%|█▍        | 101/720 [00:00<00:04, 144.22batch/s]Epoch 10 batches:  16%|█▌        | 116/720 [00:00<00:04, 142.93batch/s]Epoch 10 batches:  18%|█▊        | 131/720 [00:00<00:04, 144.01batch/s]Epoch 10 batches:  20%|██        | 147/720 [00:01<00:03, 147.74batch/s]Epoch 10 batches:  23%|██▎       | 163/720 [00:01<00:03, 149.94batch/s]Epoch 10 batches:  25%|██▍       | 179/720 [00:01<00:03, 151.09batch/s]Epoch 10 batches:  27%|██▋       | 195/720 [00:01<00:03, 152.99batch/s]                                                                       Epoch 10 batches:  27%|██▋       | 195/720 [00:01<00:03, 152.99batch/s]Epoch 10 batches:  29%|██▉       | 211/720 [00:01<00:03, 150.62batch/s]Epoch 10 batches:  32%|███▏      | 227/720 [00:01<00:03, 148.39batch/s]Epoch 10 batches:  34%|███▎      | 242/720 [00:01<00:03, 147.54batch/s]Epoch 10 batches:  36%|███▌      | 258/720 [00:01<00:03, 149.53batch/s]Epoch 10 batches:  38%|███▊      | 274/720 [00:01<00:02, 151.50batch/s]Epoch 10 batches:  40%|████      | 290/720 [00:01<00:02, 149.55batch/s]Epoch 10 batches:  42%|████▏     | 305/720 [00:02<00:02, 149.25batch/s]Epoch 10 batches:  44%|████▍     | 320/720 [00:02<00:03, 118.73batch/s]Epoch 10 batches:  47%|████▋     | 335/720 [00:02<00:03, 125.64batch/s]Epoch 10 batches:  49%|████▉     | 351/720 [00:02<00:02, 132.60batch/s]Epoch 10 batches:  51%|█████     | 366/720 [00:02<00:02, 135.16batch/s]Epoch 10 batches:  53%|█████▎    | 381/720 [00:02<00:02, 137.62batch/s]Epoch 10 batches:  55%|█████▌    | 397/720 [00:02<00:02, 141.62batch/s]                                                                       Epoch 10 batches:  55%|█████▌    | 397/720 [00:02<00:02, 141.62batch/s]Epoch 10 batches:  57%|█████▋    | 412/720 [00:02<00:02, 141.56batch/s]Epoch 10 batches:  59%|█████▉    | 427/720 [00:03<00:02, 143.88batch/s]Epoch 10 batches:  62%|██████▏   | 443/720 [00:03<00:01, 146.86batch/s]Epoch 10 batches:  64%|██████▎   | 458/720 [00:03<00:01, 137.26batch/s]Epoch 10 batches:  66%|██████▌   | 472/720 [00:03<00:01, 131.59batch/s]Epoch 10 batches:  68%|██████▊   | 486/720 [00:03<00:01, 133.69batch/s]Epoch 10 batches:  70%|██████▉   | 502/720 [00:03<00:01, 140.37batch/s]Epoch 10 batches:  72%|███████▏  | 518/720 [00:03<00:01, 143.78batch/s]Epoch 10 batches:  74%|███████▍  | 533/720 [00:03<00:01, 143.95batch/s]Epoch 10 batches:  76%|███████▌  | 548/720 [00:03<00:01, 142.06batch/s]Epoch 10 batches:  78%|███████▊  | 564/720 [00:03<00:01, 146.43batch/s]Epoch 10 batches:  81%|████████  | 580/720 [00:04<00:00, 148.43batch/s]Epoch 10 batches:  83%|████████▎ | 595/720 [00:04<00:00, 146.91batch/s]                                                                       Epoch 10 batches:  83%|████████▎ | 595/720 [00:04<00:00, 146.91batch/s]Epoch 10 batches:  85%|████████▍ | 611/720 [00:04<00:00, 148.61batch/s]Epoch 10 batches:  87%|████████▋ | 626/720 [00:04<00:00, 148.85batch/s]Epoch 10 batches:  89%|████████▉ | 643/720 [00:04<00:00, 152.62batch/s]Epoch 10 batches:  92%|█████████▏| 659/720 [00:04<00:00, 152.09batch/s]Epoch 10 batches:  94%|█████████▍| 675/720 [00:04<00:00, 153.52batch/s]Epoch 10 batches:  96%|█████████▌| 691/720 [00:04<00:00, 151.34batch/s]Epoch 10 batches:  98%|█████████▊| 707/720 [00:04<00:00, 149.00batch/s]                                                                         batch 200/720 | loss=1.1094
+  batch 400/720 | loss=1.0632
+  batch 600/720 | loss=0.9690
+
+Epoch 10/20
+Loss: 1.0791
+Accuracy: 0.6482
+Macro F1: 0.4089
+Weighted F1: 0.6088
+Class F1:
+  NORM: 0.8005
+  MI: 0.2240
+  HYP: 0.0325
+  CD: 0.4972
+  STTC: 0.4905
+LR=0.001000 | epoch_time=5.5s
+
+Checkpoint confusion matrix (epoch 10):
+            NORM      MI     HYP      CD    STTC
+  NORM    16180     439      19     183    1220
+  MI       2144     755       1     120    1662
+  HYP       861      75      20       5     220
+  CD       1574     190       1    1239     350
+  STTC     1626     601       7      83    2777
+  >> NEW BEST validation macro F1: 0.4089
+
+========================================================================
+Epoch 11/20 START
+Epoch 11 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 11 batches:   2%|▏         | 13/720 [00:00<00:05, 126.16batch/s]Epoch 11 batches:   4%|▍         | 28/720 [00:00<00:05, 134.98batch/s]Epoch 11 batches:   6%|▌         | 44/720 [00:00<00:04, 143.35batch/s]Epoch 11 batches:   8%|▊         | 60/720 [00:00<00:04, 146.26batch/s]Epoch 11 batches:  10%|█         | 75/720 [00:00<00:04, 145.97batch/s]Epoch 11 batches:  12%|█▎        | 90/720 [00:00<00:04, 145.49batch/s]Epoch 11 batches:  15%|█▍        | 106/720 [00:00<00:04, 147.07batch/s]Epoch 11 batches:  17%|█▋        | 121/720 [00:00<00:04, 146.65batch/s]Epoch 11 batches:  19%|█▉        | 136/720 [00:01<00:05, 113.40batch/s]Epoch 11 batches:  21%|██        | 151/720 [00:01<00:04, 121.47batch/s]Epoch 11 batches:  23%|██▎       | 167/720 [00:01<00:04, 129.64batch/s]Epoch 11 batches:  25%|██▌       | 183/720 [00:01<00:03, 136.67batch/s]Epoch 11 batches:  28%|██▊       | 199/720 [00:01<00:03, 141.04batch/s]                                                                       Epoch 11 batches:  28%|██▊       | 199/720 [00:01<00:03, 141.04batch/s]Epoch 11 batches:  30%|██▉       | 214/720 [00:01<00:03, 141.20batch/s]Epoch 11 batches:  32%|███▏      | 229/720 [00:01<00:03, 142.06batch/s]Epoch 11 batches:  34%|███▍      | 244/720 [00:01<00:03, 143.95batch/s]Epoch 11 batches:  36%|███▌      | 259/720 [00:01<00:03, 145.29batch/s]Epoch 11 batches:  38%|███▊      | 275/720 [00:01<00:03, 147.22batch/s]Epoch 11 batches:  40%|████      | 291/720 [00:02<00:02, 149.26batch/s]Epoch 11 batches:  43%|████▎     | 307/720 [00:02<00:02, 149.25batch/s]Epoch 11 batches:  45%|████▍     | 323/720 [00:02<00:02, 150.83batch/s]Epoch 11 batches:  47%|████▋     | 339/720 [00:02<00:02, 151.12batch/s]Epoch 11 batches:  49%|████▉     | 355/720 [00:02<00:02, 150.41batch/s]Epoch 11 batches:  52%|█████▏    | 371/720 [00:02<00:02, 151.04batch/s]Epoch 11 batches:  54%|█████▍    | 387/720 [00:02<00:02, 148.42batch/s]                                                                       Epoch 11 batches:  54%|█████▍    | 387/720 [00:02<00:02, 148.42batch/s]Epoch 11 batches:  56%|█████▌    | 402/720 [00:02<00:02, 146.27batch/s]Epoch 11 batches:  58%|█████▊    | 417/720 [00:02<00:02, 146.44batch/s]Epoch 11 batches:  60%|██████    | 433/720 [00:03<00:01, 147.85batch/s]Epoch 11 batches:  62%|██████▏   | 449/720 [00:03<00:01, 149.07batch/s]Epoch 11 batches:  64%|██████▍   | 464/720 [00:03<00:01, 149.31batch/s]Epoch 11 batches:  67%|██████▋   | 480/720 [00:03<00:01, 150.54batch/s]Epoch 11 batches:  69%|██████▉   | 496/720 [00:03<00:01, 153.26batch/s]Epoch 11 batches:  71%|███████   | 512/720 [00:03<00:01, 153.78batch/s]Epoch 11 batches:  73%|███████▎  | 528/720 [00:03<00:01, 153.88batch/s]Epoch 11 batches:  76%|███████▌  | 544/720 [00:03<00:01, 154.11batch/s]Epoch 11 batches:  78%|███████▊  | 560/720 [00:03<00:01, 151.47batch/s]Epoch 11 batches:  80%|████████  | 576/720 [00:03<00:00, 148.51batch/s]Epoch 11 batches:  82%|████████▏ | 592/720 [00:04<00:00, 150.49batch/s]                                                                       Epoch 11 batches:  82%|████████▏ | 592/720 [00:04<00:00, 150.49batch/s]Epoch 11 batches:  84%|████████▍ | 608/720 [00:04<00:00, 150.93batch/s]Epoch 11 batches:  87%|████████▋ | 624/720 [00:04<00:00, 151.49batch/s]Epoch 11 batches:  89%|████████▉ | 640/720 [00:04<00:00, 152.17batch/s]Epoch 11 batches:  91%|█████████ | 656/720 [00:04<00:00, 151.98batch/s]Epoch 11 batches:  93%|█████████▎| 672/720 [00:04<00:00, 152.32batch/s]Epoch 11 batches:  96%|█████████▌| 688/720 [00:04<00:00, 152.26batch/s]Epoch 11 batches:  98%|█████████▊| 704/720 [00:04<00:00, 152.99batch/s]Epoch 11 batches: 100%|██████████| 720/720 [00:04<00:00, 147.49batch/s]                                                                         batch 200/720 | loss=1.0156
+  batch 400/720 | loss=1.0205
+  batch 600/720 | loss=1.0613
+
+Epoch 11/20
+Loss: 1.0748
+Accuracy: 0.6390
+Macro F1: 0.4024
+Weighted F1: 0.6046
+Class F1:
+  NORM: 0.7969
+  MI: 0.2178
+  HYP: 0.0149
+  CD: 0.4936
+  STTC: 0.4888
+LR=0.001000 | epoch_time=5.4s
+  >> No improvement (1/10)
+
+========================================================================
+Epoch 12/20 START
+Epoch 12 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 12 batches:   2%|▏         | 14/720 [00:00<00:05, 139.53batch/s]Epoch 12 batches:   4%|▍         | 29/720 [00:00<00:04, 141.30batch/s]Epoch 12 batches:   6%|▋         | 46/720 [00:00<00:04, 151.32batch/s]Epoch 12 batches:   9%|▊         | 62/720 [00:00<00:04, 153.13batch/s]Epoch 12 batches:  11%|█         | 79/720 [00:00<00:04, 157.24batch/s]Epoch 12 batches:  13%|█▎        | 95/720 [00:00<00:04, 152.66batch/s]Epoch 12 batches:  15%|█▌        | 111/720 [00:00<00:05, 119.56batch/s]Epoch 12 batches:  18%|█▊        | 127/720 [00:00<00:04, 129.83batch/s]Epoch 12 batches:  20%|█▉        | 143/720 [00:01<00:04, 136.58batch/s]Epoch 12 batches:  22%|██▏       | 159/720 [00:01<00:03, 141.61batch/s]Epoch 12 batches:  24%|██▍       | 175/720 [00:01<00:03, 144.36batch/s]Epoch 12 batches:  27%|██▋       | 191/720 [00:01<00:03, 147.61batch/s]                                                                       Epoch 12 batches:  27%|██▋       | 191/720 [00:01<00:03, 147.61batch/s]Epoch 12 batches:  29%|██▉       | 207/720 [00:01<00:03, 144.26batch/s]Epoch 12 batches:  31%|███       | 222/720 [00:01<00:03, 137.91batch/s]Epoch 12 batches:  33%|███▎      | 236/720 [00:01<00:03, 133.95batch/s]Epoch 12 batches:  35%|███▍      | 250/720 [00:01<00:03, 129.23batch/s]Epoch 12 batches:  37%|███▋      | 264/720 [00:01<00:03, 126.06batch/s]Epoch 12 batches:  38%|███▊      | 277/720 [00:02<00:03, 123.66batch/s]Epoch 12 batches:  40%|████      | 290/720 [00:02<00:03, 122.14batch/s]Epoch 12 batches:  42%|████▏     | 303/720 [00:02<00:03, 121.55batch/s]Epoch 12 batches:  44%|████▍     | 316/720 [00:02<00:03, 120.28batch/s]Epoch 12 batches:  46%|████▌     | 329/720 [00:02<00:03, 119.65batch/s]Epoch 12 batches:  48%|████▊     | 342/720 [00:02<00:03, 119.72batch/s]Epoch 12 batches:  49%|████▉     | 354/720 [00:02<00:03, 118.90batch/s]Epoch 12 batches:  51%|█████     | 366/720 [00:02<00:03, 117.24batch/s]Epoch 12 batches:  52%|█████▎    | 378/720 [00:02<00:03, 112.28batch/s]Epoch 12 batches:  54%|█████▍    | 391/720 [00:03<00:02, 115.31batch/s]                                                                       Epoch 12 batches:  54%|█████▍    | 391/720 [00:03<00:02, 115.31batch/s]Epoch 12 batches:  56%|█████▋    | 406/720 [00:03<00:02, 125.07batch/s]Epoch 12 batches:  58%|█████▊    | 419/720 [00:03<00:02, 124.02batch/s]Epoch 12 batches:  60%|██████    | 432/720 [00:03<00:02, 123.67batch/s]Epoch 12 batches:  62%|██████▏   | 446/720 [00:03<00:02, 127.22batch/s]Epoch 12 batches:  64%|██████▍   | 462/720 [00:03<00:01, 135.44batch/s]Epoch 12 batches:  66%|██████▋   | 478/720 [00:03<00:01, 140.48batch/s]Epoch 12 batches:  69%|██████▊   | 494/720 [00:03<00:01, 145.72batch/s]Epoch 12 batches:  71%|███████   | 510/720 [00:03<00:01, 148.29batch/s]Epoch 12 batches:  73%|███████▎  | 526/720 [00:03<00:01, 149.57batch/s]Epoch 12 batches:  75%|███████▌  | 541/720 [00:04<00:01, 148.73batch/s]Epoch 12 batches:  77%|███████▋  | 556/720 [00:04<00:01, 147.74batch/s]Epoch 12 batches:  79%|███████▉  | 571/720 [00:04<00:01, 146.15batch/s]Epoch 12 batches:  82%|████████▏ | 587/720 [00:04<00:00, 147.80batch/s]                                                                       Epoch 12 batches:  82%|████████▏ | 587/720 [00:04<00:00, 147.80batch/s]Epoch 12 batches:  84%|████████▍ | 603/720 [00:04<00:00, 149.70batch/s]Epoch 12 batches:  86%|████████▌ | 619/720 [00:04<00:00, 150.17batch/s]Epoch 12 batches:  88%|████████▊ | 635/720 [00:04<00:00, 150.99batch/s]Epoch 12 batches:  90%|█████████ | 651/720 [00:04<00:00, 152.74batch/s]Epoch 12 batches:  93%|█████████▎| 667/720 [00:04<00:00, 151.73batch/s]Epoch 12 batches:  95%|█████████▍| 683/720 [00:05<00:00, 125.73batch/s]Epoch 12 batches:  97%|█████████▋| 697/720 [00:05<00:00, 122.93batch/s]Epoch 12 batches:  99%|█████████▉| 711/720 [00:05<00:00, 126.87batch/s]                                                                         batch 200/720 | loss=1.0082
+  batch 400/720 | loss=1.0647
+  batch 600/720 | loss=1.0056
+
+Epoch 12/20
+Loss: 1.0693
+Accuracy: 0.6378
+Macro F1: 0.4002
+Weighted F1: 0.6022
+Class F1:
+  NORM: 0.7954
+  MI: 0.2125
+  HYP: 0.0166
+  CD: 0.4913
+  STTC: 0.4851
+LR=0.001000 | epoch_time=6.0s
+  >> No improvement (2/10)
+
+========================================================================
+Epoch 13/20 START
+Epoch 13 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 13 batches:   1%|          | 7/720 [00:00<00:11, 61.07batch/s]Epoch 13 batches:   2%|▎         | 18/720 [00:00<00:08, 85.86batch/s]Epoch 13 batches:   4%|▍         | 32/720 [00:00<00:06, 109.38batch/s]Epoch 13 batches:   6%|▋         | 46/720 [00:00<00:05, 119.67batch/s]Epoch 13 batches:   8%|▊         | 61/720 [00:00<00:05, 129.29batch/s]Epoch 13 batches:  11%|█         | 77/720 [00:00<00:04, 138.21batch/s]Epoch 13 batches:  13%|█▎        | 91/720 [00:00<00:04, 133.77batch/s]Epoch 13 batches:  15%|█▍        | 106/720 [00:00<00:04, 135.87batch/s]Epoch 13 batches:  17%|█▋        | 122/720 [00:00<00:04, 141.61batch/s]Epoch 13 batches:  19%|█▉        | 137/720 [00:01<00:04, 142.15batch/s]Epoch 13 batches:  21%|██        | 152/720 [00:01<00:03, 142.78batch/s]Epoch 13 batches:  23%|██▎       | 168/720 [00:01<00:03, 145.21batch/s]Epoch 13 batches:  25%|██▌       | 183/720 [00:01<00:04, 128.48batch/s]Epoch 13 batches:  27%|██▋       | 197/720 [00:01<00:04, 127.46batch/s]                                                                       Epoch 13 batches:  27%|██▋       | 197/720 [00:01<00:04, 127.46batch/s]Epoch 13 batches:  29%|██▉       | 211/720 [00:01<00:03, 129.32batch/s]Epoch 13 batches:  31%|███▏      | 226/720 [00:01<00:03, 133.18batch/s]Epoch 13 batches:  33%|███▎      | 240/720 [00:01<00:03, 127.96batch/s]Epoch 13 batches:  35%|███▌      | 253/720 [00:01<00:03, 121.99batch/s]Epoch 13 batches:  37%|███▋      | 266/720 [00:02<00:03, 115.35batch/s]Epoch 13 batches:  39%|███▊      | 278/720 [00:02<00:03, 112.28batch/s]Epoch 13 batches:  40%|████      | 290/720 [00:02<00:03, 110.82batch/s]Epoch 13 batches:  42%|████▏     | 302/720 [00:02<00:03, 111.40batch/s]Epoch 13 batches:  44%|████▎     | 314/720 [00:02<00:03, 108.75batch/s]Epoch 13 batches:  45%|████▌     | 325/720 [00:02<00:03, 104.83batch/s]Epoch 13 batches:  47%|████▋     | 336/720 [00:02<00:03, 103.39batch/s]Epoch 13 batches:  48%|████▊     | 347/720 [00:02<00:03, 93.65batch/s] Epoch 13 batches:  50%|████▉     | 357/720 [00:03<00:03, 95.10batch/s]Epoch 13 batches:  51%|█████▏    | 369/720 [00:03<00:03, 101.18batch/s]Epoch 13 batches:  53%|█████▎    | 381/720 [00:03<00:03, 103.81batch/s]Epoch 13 batches:  54%|█████▍    | 392/720 [00:03<00:03, 101.06batch/s]                                                                       Epoch 13 batches:  54%|█████▍    | 392/720 [00:03<00:03, 101.06batch/s]Epoch 13 batches:  56%|█████▌    | 403/720 [00:03<00:03, 100.41batch/s]Epoch 13 batches:  57%|█████▊    | 414/720 [00:03<00:03, 100.83batch/s]Epoch 13 batches:  59%|█████▉    | 425/720 [00:03<00:02, 99.82batch/s] Epoch 13 batches:  61%|██████    | 436/720 [00:03<00:02, 102.16batch/s]Epoch 13 batches:  63%|██████▎   | 451/720 [00:03<00:02, 113.95batch/s]Epoch 13 batches:  65%|██████▍   | 467/720 [00:03<00:01, 126.96batch/s]Epoch 13 batches:  67%|██████▋   | 481/720 [00:04<00:01, 130.14batch/s]Epoch 13 batches:  69%|██████▉   | 495/720 [00:04<00:01, 129.31batch/s]Epoch 13 batches:  71%|███████   | 511/720 [00:04<00:01, 135.00batch/s]Epoch 13 batches:  73%|███████▎  | 527/720 [00:04<00:01, 139.42batch/s]Epoch 13 batches:  75%|███████▌  | 543/720 [00:04<00:01, 144.26batch/s]Epoch 13 batches:  78%|███████▊  | 559/720 [00:04<00:01, 148.37batch/s]Epoch 13 batches:  80%|████████  | 576/720 [00:04<00:00, 152.12batch/s]Epoch 13 batches:  82%|████████▏ | 592/720 [00:04<00:00, 143.86batch/s]                                                                       Epoch 13 batches:  82%|████████▏ | 592/720 [00:04<00:00, 143.86batch/s]Epoch 13 batches:  84%|████████▍ | 607/720 [00:05<00:00, 124.22batch/s]Epoch 13 batches:  86%|████████▌ | 620/720 [00:05<00:00, 119.30batch/s]Epoch 13 batches:  88%|████████▊ | 633/720 [00:05<00:00, 115.29batch/s]Epoch 13 batches:  90%|████████▉ | 645/720 [00:05<00:00, 112.71batch/s]Epoch 13 batches:  91%|█████████▏| 657/720 [00:05<00:00, 108.96batch/s]Epoch 13 batches:  93%|█████████▎| 668/720 [00:05<00:00, 108.36batch/s]Epoch 13 batches:  94%|█████████▍| 679/720 [00:05<00:00, 107.88batch/s]Epoch 13 batches:  96%|█████████▌| 691/720 [00:05<00:00, 108.66batch/s]Epoch 13 batches:  98%|█████████▊| 702/720 [00:05<00:00, 106.29batch/s]Epoch 13 batches:  99%|█████████▉| 713/720 [00:06<00:00, 106.23batch/s]                                                                         batch 200/720 | loss=1.1190
+  batch 400/720 | loss=0.9933
+  batch 600/720 | loss=1.0815
+
+Epoch 13/20
+Loss: 1.0646
+Accuracy: 0.6460
+Macro F1: 0.4020
+Weighted F1: 0.6061
+Class F1:
+  NORM: 0.7997
+  MI: 0.2336
+  HYP: 0.0067
+  CD: 0.4951
+  STTC: 0.4750
+LR=0.001000 | epoch_time=6.9s
+  >> No improvement (3/10)
+
+========================================================================
+Epoch 14/20 START
+Epoch 14 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 14 batches:   2%|▏         | 13/720 [00:00<00:05, 128.38batch/s]Epoch 14 batches:   4%|▍         | 27/720 [00:00<00:05, 129.33batch/s]Epoch 14 batches:   6%|▌         | 41/720 [00:00<00:05, 131.97batch/s]Epoch 14 batches:   8%|▊         | 55/720 [00:00<00:04, 133.61batch/s]Epoch 14 batches:  10%|▉         | 69/720 [00:00<00:05, 117.26batch/s]Epoch 14 batches:  11%|█▏        | 82/720 [00:00<00:05, 116.97batch/s]Epoch 14 batches:  14%|█▎        | 98/720 [00:00<00:04, 126.94batch/s]Epoch 14 batches:  16%|█▌        | 114/720 [00:00<00:04, 136.22batch/s]Epoch 14 batches:  18%|█▊        | 129/720 [00:00<00:04, 138.19batch/s]Epoch 14 batches:  20%|██        | 144/720 [00:01<00:04, 140.52batch/s]Epoch 14 batches:  22%|██▏       | 159/720 [00:01<00:04, 139.49batch/s]Epoch 14 batches:  24%|██▍       | 175/720 [00:01<00:03, 143.89batch/s]Epoch 14 batches:  27%|██▋       | 191/720 [00:01<00:03, 146.05batch/s]                                                                       Epoch 14 batches:  27%|██▋       | 191/720 [00:01<00:03, 146.05batch/s]Epoch 14 batches:  29%|██▉       | 207/720 [00:01<00:03, 146.57batch/s]Epoch 14 batches:  31%|███       | 222/720 [00:01<00:03, 140.83batch/s]Epoch 14 batches:  33%|███▎      | 237/720 [00:01<00:03, 139.48batch/s]Epoch 14 batches:  35%|███▍      | 251/720 [00:01<00:03, 137.35batch/s]Epoch 14 batches:  37%|███▋      | 265/720 [00:01<00:03, 130.22batch/s]Epoch 14 batches:  39%|███▉      | 279/720 [00:02<00:03, 126.03batch/s]Epoch 14 batches:  41%|████      | 294/720 [00:02<00:03, 131.37batch/s]Epoch 14 batches:  43%|████▎     | 311/720 [00:02<00:02, 139.98batch/s]Epoch 14 batches:  45%|████▌     | 327/720 [00:02<00:02, 144.34batch/s]Epoch 14 batches:  48%|████▊     | 342/720 [00:02<00:02, 144.96batch/s]Epoch 14 batches:  50%|████▉     | 357/720 [00:02<00:02, 146.12batch/s]Epoch 14 batches:  52%|█████▏    | 372/720 [00:02<00:02, 142.29batch/s]Epoch 14 batches:  54%|█████▍    | 388/720 [00:02<00:02, 145.26batch/s]                                                                       Epoch 14 batches:  54%|█████▍    | 388/720 [00:02<00:02, 145.26batch/s]Epoch 14 batches:  56%|█████▌    | 404/720 [00:02<00:02, 147.28batch/s]Epoch 14 batches:  58%|█████▊    | 420/720 [00:03<00:01, 150.49batch/s]Epoch 14 batches:  61%|██████    | 437/720 [00:03<00:01, 153.53batch/s]Epoch 14 batches:  63%|██████▎   | 454/720 [00:03<00:01, 157.30batch/s]Epoch 14 batches:  65%|██████▌   | 471/720 [00:03<00:01, 159.14batch/s]Epoch 14 batches:  68%|██████▊   | 487/720 [00:03<00:01, 156.25batch/s]Epoch 14 batches:  70%|██████▉   | 503/720 [00:03<00:01, 156.37batch/s]Epoch 14 batches:  72%|███████▏  | 520/720 [00:03<00:01, 158.74batch/s]Epoch 14 batches:  74%|███████▍  | 536/720 [00:03<00:01, 157.70batch/s]Epoch 14 batches:  77%|███████▋  | 552/720 [00:03<00:01, 148.37batch/s]Epoch 14 batches:  79%|███████▉  | 569/720 [00:03<00:00, 151.91batch/s]Epoch 14 batches:  81%|████████▏ | 586/720 [00:04<00:00, 155.76batch/s]                                                                       Epoch 14 batches:  81%|████████▏ | 586/720 [00:04<00:00, 155.76batch/s]Epoch 14 batches:  84%|████████▍ | 603/720 [00:04<00:00, 156.65batch/s]Epoch 14 batches:  86%|████████▌ | 619/720 [00:04<00:00, 157.61batch/s]Epoch 14 batches:  88%|████████▊ | 635/720 [00:04<00:00, 152.95batch/s]Epoch 14 batches:  90%|█████████ | 651/720 [00:04<00:00, 153.64batch/s]Epoch 14 batches:  93%|█████████▎| 667/720 [00:04<00:00, 148.24batch/s]Epoch 14 batches:  95%|█████████▍| 682/720 [00:04<00:00, 147.48batch/s]Epoch 14 batches:  97%|█████████▋| 697/720 [00:04<00:00, 146.09batch/s]Epoch 14 batches:  99%|█████████▉| 712/720 [00:04<00:00, 146.25batch/s]                                                                         batch 200/720 | loss=1.1079
+  batch 400/720 | loss=1.0959
+  batch 600/720 | loss=1.1182
+
+Epoch 14/20
+Loss: 1.0596
+Accuracy: 0.6382
+Macro F1: 0.4005
+Weighted F1: 0.6041
+Class F1:
+  NORM: 0.7962
+  MI: 0.2199
+  HYP: 0.0050
+  CD: 0.4924
+  STTC: 0.4890
+LR=0.001000 | epoch_time=5.5s
+  >> No improvement (4/10)
+
+========================================================================
+Epoch 15/20 START
+Epoch 15 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 15 batches:   2%|▏         | 15/720 [00:00<00:04, 141.94batch/s]Epoch 15 batches:   4%|▍         | 31/720 [00:00<00:04, 148.49batch/s]Epoch 15 batches:   7%|▋         | 48/720 [00:00<00:04, 155.42batch/s]Epoch 15 batches:   9%|▉         | 65/720 [00:00<00:04, 157.99batch/s]Epoch 15 batches:  11%|█▏        | 81/720 [00:00<00:05, 126.98batch/s]Epoch 15 batches:  13%|█▎        | 95/720 [00:00<00:05, 122.76batch/s]Epoch 15 batches:  16%|█▌        | 112/720 [00:00<00:04, 133.66batch/s]Epoch 15 batches:  18%|█▊        | 129/720 [00:00<00:04, 143.45batch/s]Epoch 15 batches:  20%|██        | 146/720 [00:01<00:03, 148.44batch/s]Epoch 15 batches:  23%|██▎       | 163/720 [00:01<00:03, 153.19batch/s]Epoch 15 batches:  25%|██▍       | 179/720 [00:01<00:03, 154.80batch/s]Epoch 15 batches:  27%|██▋       | 195/720 [00:01<00:03, 153.05batch/s]                                                                       Epoch 15 batches:  27%|██▋       | 195/720 [00:01<00:03, 153.05batch/s]Epoch 15 batches:  29%|██▉       | 211/720 [00:01<00:03, 154.13batch/s]Epoch 15 batches:  33%|███▎      | 237/720 [00:01<00:02, 183.14batch/s]Epoch 15 batches:  36%|███▌      | 260/720 [00:01<00:02, 196.69batch/s]Epoch 15 batches:  39%|███▉      | 281/720 [00:01<00:02, 198.92batch/s]Epoch 15 batches:  42%|████▏     | 304/720 [00:01<00:02, 205.42batch/s]Epoch 15 batches:  46%|████▌     | 329/720 [00:01<00:01, 217.50batch/s]Epoch 15 batches:  49%|████▉     | 351/720 [00:02<00:01, 209.37batch/s]Epoch 15 batches:  52%|█████▏    | 374/720 [00:02<00:01, 215.28batch/s]                                                                       Epoch 15 batches:  52%|█████▏    | 374/720 [00:02<00:01, 215.28batch/s]Epoch 15 batches:  56%|█████▌    | 400/720 [00:02<00:01, 227.88batch/s]Epoch 15 batches:  59%|█████▉    | 428/720 [00:02<00:01, 241.78batch/s]Epoch 15 batches:  63%|██████▎   | 456/720 [00:02<00:01, 251.35batch/s]Epoch 15 batches:  67%|██████▋   | 482/720 [00:02<00:00, 247.94batch/s]Epoch 15 batches:  70%|███████   | 507/720 [00:02<00:00, 242.20batch/s]Epoch 15 batches:  74%|███████▍  | 532/720 [00:02<00:00, 239.72batch/s]Epoch 15 batches:  77%|███████▋  | 557/720 [00:02<00:00, 237.83batch/s]Epoch 15 batches:  81%|████████  | 581/720 [00:03<00:00, 179.38batch/s]                                                                       Epoch 15 batches:  81%|████████  | 581/720 [00:03<00:00, 179.38batch/s]Epoch 15 batches:  84%|████████▍ | 606/720 [00:03<00:00, 195.35batch/s]Epoch 15 batches:  88%|████████▊ | 633/720 [00:03<00:00, 213.80batch/s]Epoch 15 batches:  92%|█████████▏| 661/720 [00:03<00:00, 231.10batch/s]Epoch 15 batches:  96%|█████████▌| 688/720 [00:03<00:00, 239.77batch/s]Epoch 15 batches: 100%|█████████▉| 717/720 [00:03<00:00, 251.14batch/s]                                                                         batch 200/720 | loss=1.0693
+  batch 400/720 | loss=1.0320
+  batch 600/720 | loss=1.0760
+
+Epoch 15/20
+Loss: 1.0556
+Accuracy: 0.6435
+Macro F1: 0.4047
+Weighted F1: 0.6069
+Class F1:
+  NORM: 0.8001
+  MI: 0.2308
+  HYP: 0.0198
+  CD: 0.4940
+  STTC: 0.4788
+LR=0.000500 | epoch_time=4.0s
+
+Checkpoint confusion matrix (epoch 15):
+            NORM      MI     HYP      CD    STTC
+  NORM    16069     519      13     215    1225
+  MI       2090     822       1     131    1638
+  HYP       858      95      12       5     211
+  CD       1534     247       1    1242     330
+  STTC     1577     758       3      81    2675
+  >> No improvement (5/10)
+
+========================================================================
+Epoch 16/20 START
+Epoch 16 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 16 batches:   2%|▏         | 11/720 [00:00<00:06, 101.77batch/s]Epoch 16 batches:   3%|▎         | 23/720 [00:00<00:06, 110.32batch/s]Epoch 16 batches:   6%|▋         | 45/720 [00:00<00:04, 157.94batch/s]Epoch 16 batches:  10%|▉         | 70/720 [00:00<00:03, 193.42batch/s]Epoch 16 batches:  13%|█▎        | 96/720 [00:00<00:02, 214.66batch/s]Epoch 16 batches:  16%|█▋        | 118/720 [00:00<00:02, 214.95batch/s]Epoch 16 batches:  19%|█▉        | 140/720 [00:00<00:02, 206.92batch/s]Epoch 16 batches:  23%|██▎       | 166/720 [00:00<00:02, 222.99batch/s]Epoch 16 batches:  27%|██▋       | 193/720 [00:00<00:02, 236.73batch/s]                                                                       Epoch 16 batches:  27%|██▋       | 193/720 [00:00<00:02, 236.73batch/s]Epoch 16 batches:  31%|███       | 220/720 [00:01<00:02, 244.63batch/s]Epoch 16 batches:  34%|███▍      | 246/720 [00:01<00:01, 248.98batch/s]Epoch 16 batches:  38%|███▊      | 274/720 [00:01<00:01, 256.22batch/s]Epoch 16 batches:  42%|████▏     | 300/720 [00:01<00:01, 248.74batch/s]Epoch 16 batches:  45%|████▌     | 327/720 [00:01<00:01, 250.99batch/s]Epoch 16 batches:  49%|████▉     | 353/720 [00:01<00:01, 251.16batch/s]Epoch 16 batches:  53%|█████▎    | 379/720 [00:01<00:01, 251.28batch/s]                                                                       Epoch 16 batches:  53%|█████▎    | 379/720 [00:01<00:01, 251.28batch/s]Epoch 16 batches:  56%|█████▋    | 405/720 [00:01<00:01, 243.23batch/s]Epoch 16 batches:  60%|█████▉    | 430/720 [00:01<00:01, 243.42batch/s]Epoch 16 batches:  63%|██████▎   | 457/720 [00:01<00:01, 250.90batch/s]Epoch 16 batches:  67%|██████▋   | 484/720 [00:02<00:00, 253.87batch/s]Epoch 16 batches:  71%|███████   | 511/720 [00:02<00:00, 256.83batch/s]Epoch 16 batches:  75%|███████▍  | 538/720 [00:02<00:00, 260.08batch/s]Epoch 16 batches:  78%|███████▊  | 565/720 [00:02<00:00, 252.65batch/s]Epoch 16 batches:  82%|████████▏ | 591/720 [00:02<00:00, 236.50batch/s]                                                                       Epoch 16 batches:  82%|████████▏ | 591/720 [00:02<00:00, 236.50batch/s]Epoch 16 batches:  86%|████████▌ | 616/720 [00:02<00:00, 239.84batch/s]Epoch 16 batches:  89%|████████▉ | 644/720 [00:02<00:00, 251.11batch/s]Epoch 16 batches:  93%|█████████▎| 672/720 [00:02<00:00, 258.78batch/s]Epoch 16 batches:  97%|█████████▋| 701/720 [00:02<00:00, 265.03batch/s]                                                                         batch 200/720 | loss=1.0277
+  batch 400/720 | loss=1.0710
+  batch 600/720 | loss=1.0239
+
+Epoch 16/20
+Loss: 1.0402
+Accuracy: 0.6363
+Macro F1: 0.4061
+Weighted F1: 0.6051
+Class F1:
+  NORM: 0.7948
+  MI: 0.2224
+  HYP: 0.0248
+  CD: 0.4996
+  STTC: 0.4887
+LR=0.000500 | epoch_time=3.4s
+  >> No improvement (6/10)
+
+========================================================================
+Epoch 17/20 START
+Epoch 17 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 17 batches:   2%|▏         | 16/720 [00:00<00:04, 149.76batch/s]Epoch 17 batches:   4%|▍         | 31/720 [00:00<00:04, 140.83batch/s]Epoch 17 batches:   7%|▋         | 50/720 [00:00<00:04, 160.63batch/s]Epoch 17 batches:  10%|▉         | 69/720 [00:00<00:03, 167.67batch/s]Epoch 17 batches:  12%|█▏        | 86/720 [00:00<00:04, 156.81batch/s]Epoch 17 batches:  14%|█▍        | 102/720 [00:00<00:04, 154.22batch/s]Epoch 17 batches:  17%|█▋        | 122/720 [00:00<00:03, 167.67batch/s]Epoch 17 batches:  21%|██        | 148/720 [00:00<00:02, 194.42batch/s]Epoch 17 batches:  24%|██▍       | 174/720 [00:00<00:02, 213.96batch/s]                                                                       Epoch 17 batches:  24%|██▍       | 174/720 [00:01<00:02, 213.96batch/s]Epoch 17 batches:  28%|██▊       | 200/720 [00:01<00:02, 227.43batch/s]Epoch 17 batches:  31%|███▏      | 226/720 [00:01<00:02, 236.47batch/s]Epoch 17 batches:  35%|███▍      | 250/720 [00:01<00:01, 236.13batch/s]Epoch 17 batches:  38%|███▊      | 274/720 [00:01<00:01, 235.05batch/s]Epoch 17 batches:  41%|████▏     | 298/720 [00:01<00:02, 200.32batch/s]Epoch 17 batches:  44%|████▍     | 319/720 [00:01<00:02, 189.24batch/s]Epoch 17 batches:  47%|████▋     | 339/720 [00:01<00:02, 181.94batch/s]Epoch 17 batches:  50%|████▉     | 358/720 [00:01<00:02, 175.10batch/s]Epoch 17 batches:  52%|█████▏    | 376/720 [00:02<00:02, 141.92batch/s]Epoch 17 batches:  55%|█████▍    | 393/720 [00:02<00:02, 147.40batch/s]                                                                       Epoch 17 batches:  55%|█████▍    | 393/720 [00:02<00:02, 147.40batch/s]Epoch 17 batches:  57%|█████▋    | 409/720 [00:02<00:02, 150.39batch/s]Epoch 17 batches:  59%|█████▉    | 426/720 [00:02<00:01, 154.55batch/s]Epoch 17 batches:  61%|██████▏   | 442/720 [00:02<00:01, 155.93batch/s]Epoch 17 batches:  64%|██████▎   | 458/720 [00:02<00:01, 152.40batch/s]Epoch 17 batches:  66%|██████▌   | 475/720 [00:02<00:01, 157.00batch/s]Epoch 17 batches:  68%|██████▊   | 491/720 [00:02<00:01, 157.15batch/s]Epoch 17 batches:  71%|███████   | 508/720 [00:02<00:01, 160.59batch/s]Epoch 17 batches:  73%|███████▎  | 525/720 [00:03<00:01, 161.17batch/s]Epoch 17 batches:  75%|███████▌  | 542/720 [00:03<00:01, 162.82batch/s]Epoch 17 batches:  78%|███████▊  | 559/720 [00:03<00:00, 161.63batch/s]Epoch 17 batches:  80%|████████  | 576/720 [00:03<00:00, 159.39batch/s]Epoch 17 batches:  82%|████████▏ | 593/720 [00:03<00:00, 160.21batch/s]                                                                       Epoch 17 batches:  82%|████████▏ | 593/720 [00:03<00:00, 160.21batch/s]Epoch 17 batches:  85%|████████▍ | 610/720 [00:03<00:00, 160.91batch/s]Epoch 17 batches:  87%|████████▋ | 627/720 [00:03<00:00, 157.19batch/s]Epoch 17 batches:  89%|████████▉ | 643/720 [00:03<00:00, 153.87batch/s]Epoch 17 batches:  92%|█████████▏| 660/720 [00:03<00:00, 156.09batch/s]Epoch 17 batches:  94%|█████████▍| 676/720 [00:03<00:00, 156.67batch/s]Epoch 17 batches:  96%|█████████▌| 692/720 [00:04<00:00, 156.54batch/s]Epoch 17 batches:  98%|█████████▊| 708/720 [00:04<00:00, 157.47batch/s]                                                                         batch 200/720 | loss=0.9182
+  batch 400/720 | loss=1.0264
+  batch 600/720 | loss=1.0737
+
+Epoch 17/20
+Loss: 1.0355
+Accuracy: 0.6367
+Macro F1: 0.4008
+Weighted F1: 0.6023
+Class F1:
+  NORM: 0.7959
+  MI: 0.2062
+  HYP: 0.0215
+  CD: 0.4943
+  STTC: 0.4862
+LR=0.000500 | epoch_time=4.7s
+  >> No improvement (7/10)
+
+========================================================================
+Epoch 18/20 START
+Epoch 18 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 18 batches:   2%|▏         | 14/720 [00:00<00:05, 135.99batch/s]Epoch 18 batches:   4%|▍         | 29/720 [00:00<00:04, 141.47batch/s]Epoch 18 batches:   6%|▋         | 45/720 [00:00<00:04, 146.36batch/s]Epoch 18 batches:   8%|▊         | 61/720 [00:00<00:04, 151.17batch/s]Epoch 18 batches:  11%|█         | 77/720 [00:00<00:04, 151.58batch/s]Epoch 18 batches:  13%|█▎        | 93/720 [00:00<00:04, 154.13batch/s]Epoch 18 batches:  15%|█▌        | 109/720 [00:00<00:04, 152.23batch/s]Epoch 18 batches:  17%|█▋        | 125/720 [00:00<00:03, 153.29batch/s]Epoch 18 batches:  20%|█▉        | 141/720 [00:00<00:03, 154.94batch/s]Epoch 18 batches:  22%|██▏       | 157/720 [00:01<00:03, 156.45batch/s]Epoch 18 batches:  24%|██▍       | 173/720 [00:01<00:03, 151.47batch/s]Epoch 18 batches:  26%|██▋       | 189/720 [00:01<00:03, 152.28batch/s]                                                                       Epoch 18 batches:  26%|██▋       | 189/720 [00:01<00:03, 152.28batch/s]Epoch 18 batches:  28%|██▊       | 205/720 [00:01<00:03, 152.28batch/s]Epoch 18 batches:  31%|███       | 222/720 [00:01<00:03, 155.21batch/s]Epoch 18 batches:  33%|███▎      | 239/720 [00:01<00:03, 156.54batch/s]Epoch 18 batches:  35%|███▌      | 255/720 [00:01<00:02, 155.91batch/s]Epoch 18 batches:  38%|███▊      | 271/720 [00:01<00:02, 157.02batch/s]Epoch 18 batches:  40%|████      | 288/720 [00:01<00:02, 158.16batch/s]Epoch 18 batches:  42%|████▏     | 305/720 [00:01<00:02, 158.87batch/s]Epoch 18 batches:  45%|████▍     | 321/720 [00:02<00:02, 159.10batch/s]Epoch 18 batches:  47%|████▋     | 338/720 [00:02<00:02, 159.52batch/s]Epoch 18 batches:  49%|████▉     | 354/720 [00:02<00:02, 155.69batch/s]Epoch 18 batches:  51%|█████▏    | 370/720 [00:02<00:02, 155.75batch/s]Epoch 18 batches:  54%|█████▎    | 386/720 [00:02<00:02, 155.49batch/s]                                                                       Epoch 18 batches:  54%|█████▎    | 386/720 [00:02<00:02, 155.49batch/s]Epoch 18 batches:  56%|█████▌    | 402/720 [00:02<00:02, 155.91batch/s]Epoch 18 batches:  58%|█████▊    | 418/720 [00:02<00:01, 156.73batch/s]Epoch 18 batches:  60%|██████    | 435/720 [00:02<00:01, 158.61batch/s]Epoch 18 batches:  63%|██████▎   | 451/720 [00:02<00:01, 158.31batch/s]Epoch 18 batches:  65%|██████▍   | 467/720 [00:03<00:01, 158.77batch/s]Epoch 18 batches:  67%|██████▋   | 484/720 [00:03<00:01, 160.07batch/s]Epoch 18 batches:  70%|██████▉   | 501/720 [00:03<00:01, 159.97batch/s]Epoch 18 batches:  72%|███████▏  | 517/720 [00:03<00:01, 157.20batch/s]Epoch 18 batches:  74%|███████▍  | 533/720 [00:03<00:01, 154.98batch/s]Epoch 18 batches:  76%|███████▋  | 549/720 [00:03<00:01, 125.46batch/s]Epoch 18 batches:  79%|███████▊  | 566/720 [00:03<00:01, 134.82batch/s]Epoch 18 batches:  81%|████████  | 582/720 [00:03<00:00, 141.01batch/s]Epoch 18 batches:  83%|████████▎ | 599/720 [00:03<00:00, 147.36batch/s]                                                                       Epoch 18 batches:  83%|████████▎ | 599/720 [00:03<00:00, 147.36batch/s]Epoch 18 batches:  86%|████████▌ | 616/720 [00:04<00:00, 151.56batch/s]Epoch 18 batches:  88%|████████▊ | 632/720 [00:04<00:00, 153.92batch/s]Epoch 18 batches:  90%|█████████ | 649/720 [00:04<00:00, 156.25batch/s]Epoch 18 batches:  92%|█████████▎| 666/720 [00:04<00:00, 158.29batch/s]Epoch 18 batches:  95%|█████████▍| 682/720 [00:04<00:00, 154.46batch/s]Epoch 18 batches:  97%|█████████▋| 698/720 [00:04<00:00, 153.85batch/s]Epoch 18 batches:  99%|█████████▉| 714/720 [00:04<00:00, 154.37batch/s]                                                                         batch 200/720 | loss=1.1126
+  batch 400/720 | loss=1.0651
+  batch 600/720 | loss=1.0661
+
+Epoch 18/20
+Loss: 1.0309
+Accuracy: 0.6424
+Macro F1: 0.3999
+Weighted F1: 0.6039
+Class F1:
+  NORM: 0.7979
+  MI: 0.2093
+  HYP: 0.0067
+  CD: 0.4970
+  STTC: 0.4885
+LR=0.000500 | epoch_time=5.1s
+  >> No improvement (8/10)
+
+========================================================================
+Epoch 19/20 START
+Epoch 19 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 19 batches:   2%|▏         | 15/720 [00:00<00:04, 143.29batch/s]Epoch 19 batches:   4%|▍         | 30/720 [00:00<00:04, 141.80batch/s]Epoch 19 batches:   6%|▋         | 45/720 [00:00<00:05, 133.41batch/s]Epoch 19 batches:   8%|▊         | 59/720 [00:00<00:05, 125.75batch/s]Epoch 19 batches:  10%|█         | 72/720 [00:00<00:05, 126.30batch/s]Epoch 19 batches:  12%|█▏        | 86/720 [00:00<00:04, 128.91batch/s]Epoch 19 batches:  14%|█▍        | 100/720 [00:00<00:04, 129.83batch/s]Epoch 19 batches:  16%|█▌        | 114/720 [00:00<00:04, 130.22batch/s]Epoch 19 batches:  18%|█▊        | 128/720 [00:00<00:04, 131.86batch/s]Epoch 19 batches:  20%|█▉        | 142/720 [00:01<00:04, 133.70batch/s]Epoch 19 batches:  22%|██▏       | 156/720 [00:01<00:04, 134.21batch/s]Epoch 19 batches:  24%|██▎       | 170/720 [00:01<00:04, 134.54batch/s]Epoch 19 batches:  26%|██▌       | 184/720 [00:01<00:04, 107.86batch/s]Epoch 19 batches:  27%|██▋       | 197/720 [00:01<00:04, 111.85batch/s]                                                                       Epoch 19 batches:  27%|██▋       | 197/720 [00:01<00:04, 111.85batch/s]Epoch 19 batches:  29%|██▉       | 211/720 [00:01<00:04, 117.16batch/s]Epoch 19 batches:  31%|███▏      | 225/720 [00:01<00:04, 120.59batch/s]Epoch 19 batches:  33%|███▎      | 238/720 [00:01<00:04, 116.17batch/s]Epoch 19 batches:  35%|███▍      | 251/720 [00:02<00:03, 117.88batch/s]Epoch 19 batches:  37%|███▋      | 264/720 [00:02<00:03, 118.97batch/s]Epoch 19 batches:  39%|███▊      | 278/720 [00:02<00:03, 123.20batch/s]Epoch 19 batches:  41%|████      | 292/720 [00:02<00:03, 126.10batch/s]Epoch 19 batches:  42%|████▏     | 305/720 [00:02<00:03, 111.90batch/s]Epoch 19 batches:  44%|████▍     | 317/720 [00:02<00:03, 112.36batch/s]Epoch 19 batches:  46%|████▌     | 330/720 [00:02<00:03, 115.71batch/s]Epoch 19 batches:  48%|████▊     | 344/720 [00:02<00:03, 120.88batch/s]Epoch 19 batches:  50%|████▉     | 358/720 [00:02<00:02, 125.44batch/s]Epoch 19 batches:  52%|█████▏    | 372/720 [00:03<00:02, 127.29batch/s]Epoch 19 batches:  54%|█████▎    | 386/720 [00:03<00:02, 130.81batch/s]                                                                       Epoch 19 batches:  54%|█████▎    | 386/720 [00:03<00:02, 130.81batch/s]Epoch 19 batches:  56%|█████▌    | 400/720 [00:03<00:02, 131.93batch/s]Epoch 19 batches:  57%|█████▊    | 414/720 [00:03<00:02, 133.07batch/s]Epoch 19 batches:  59%|█████▉    | 428/720 [00:03<00:02, 134.30batch/s]Epoch 19 batches:  61%|██████▏   | 442/720 [00:03<00:02, 134.72batch/s]Epoch 19 batches:  63%|██████▎   | 457/720 [00:03<00:01, 138.10batch/s]Epoch 19 batches:  66%|██████▌   | 473/720 [00:03<00:01, 142.82batch/s]Epoch 19 batches:  68%|██████▊   | 490/720 [00:03<00:01, 149.82batch/s]Epoch 19 batches:  71%|███████   | 508/720 [00:03<00:01, 156.42batch/s]Epoch 19 batches:  73%|███████▎  | 525/720 [00:04<00:01, 158.51batch/s]Epoch 19 batches:  75%|███████▌  | 542/720 [00:04<00:01, 161.46batch/s]Epoch 19 batches:  78%|███████▊  | 559/720 [00:04<00:01, 156.11batch/s]Epoch 19 batches:  80%|███████▉  | 575/720 [00:04<00:00, 149.95batch/s]Epoch 19 batches:  82%|████████▏ | 591/720 [00:04<00:00, 144.73batch/s]                                                                       Epoch 19 batches:  82%|████████▏ | 591/720 [00:04<00:00, 144.73batch/s]Epoch 19 batches:  84%|████████▍ | 606/720 [00:04<00:00, 143.75batch/s]Epoch 19 batches:  86%|████████▋ | 621/720 [00:04<00:00, 143.04batch/s]Epoch 19 batches:  88%|████████▊ | 636/720 [00:04<00:00, 138.38batch/s]Epoch 19 batches:  90%|█████████ | 650/720 [00:04<00:00, 133.05batch/s]Epoch 19 batches:  92%|█████████▏| 664/720 [00:05<00:00, 132.88batch/s]Epoch 19 batches:  94%|█████████▍| 678/720 [00:05<00:00, 133.92batch/s]Epoch 19 batches:  96%|█████████▌| 692/720 [00:05<00:00, 134.07batch/s]Epoch 19 batches:  98%|█████████▊| 706/720 [00:05<00:00, 134.19batch/s]Epoch 19 batches: 100%|██████████| 720/720 [00:05<00:00, 133.31batch/s]                                                                         batch 200/720 | loss=1.0576
+  batch 400/720 | loss=0.9772
+  batch 600/720 | loss=0.9913
+
+Epoch 19/20
+Loss: 1.0291
+Accuracy: 0.6345
+Macro F1: 0.4074
+Weighted F1: 0.6051
+Class F1:
+  NORM: 0.7938
+  MI: 0.2375
+  HYP: 0.0294
+  CD: 0.4963
+  STTC: 0.4798
+LR=0.000500 | epoch_time=5.9s
+  >> No improvement (9/10)
+
+========================================================================
+Epoch 20/20 START
+Epoch 20 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 20 batches:   2%|▏         | 13/720 [00:00<00:05, 129.03batch/s]Epoch 20 batches:   4%|▍         | 29/720 [00:00<00:04, 143.50batch/s]Epoch 20 batches:   6%|▋         | 45/720 [00:00<00:04, 147.83batch/s]Epoch 20 batches:   8%|▊         | 61/720 [00:00<00:04, 150.63batch/s]Epoch 20 batches:  11%|█         | 77/720 [00:00<00:05, 114.78batch/s]Epoch 20 batches:  13%|█▎        | 93/720 [00:00<00:04, 126.73batch/s]Epoch 20 batches:  15%|█▌        | 109/720 [00:00<00:04, 134.29batch/s]Epoch 20 batches:  17%|█▋        | 125/720 [00:00<00:04, 140.62batch/s]Epoch 20 batches:  20%|█▉        | 141/720 [00:01<00:03, 145.74batch/s]Epoch 20 batches:  22%|██▏       | 157/720 [00:01<00:03, 146.48batch/s]Epoch 20 batches:  24%|██▍       | 173/720 [00:01<00:03, 148.64batch/s]Epoch 20 batches:  26%|██▋       | 189/720 [00:01<00:03, 151.89batch/s]                                                                       Epoch 20 batches:  26%|██▋       | 189/720 [00:01<00:03, 151.89batch/s]Epoch 20 batches:  29%|██▊       | 206/720 [00:01<00:03, 154.44batch/s]Epoch 20 batches:  31%|███       | 222/720 [00:01<00:03, 155.53batch/s]Epoch 20 batches:  33%|███▎      | 238/720 [00:01<00:03, 156.29batch/s]Epoch 20 batches:  35%|███▌      | 254/720 [00:01<00:02, 157.29batch/s]Epoch 20 batches:  38%|███▊      | 270/720 [00:01<00:02, 157.70batch/s]Epoch 20 batches:  40%|███▉      | 287/720 [00:01<00:02, 159.25batch/s]Epoch 20 batches:  42%|████▏     | 304/720 [00:02<00:02, 159.52batch/s]Epoch 20 batches:  45%|████▍     | 321/720 [00:02<00:02, 159.77batch/s]Epoch 20 batches:  47%|████▋     | 337/720 [00:02<00:02, 154.03batch/s]Epoch 20 batches:  49%|████▉     | 353/720 [00:02<00:02, 155.35batch/s]Epoch 20 batches:  51%|█████▏    | 369/720 [00:02<00:02, 155.36batch/s]Epoch 20 batches:  54%|█████▎    | 386/720 [00:02<00:02, 156.94batch/s]                                                                       Epoch 20 batches:  54%|█████▎    | 386/720 [00:02<00:02, 156.94batch/s]Epoch 20 batches:  56%|█████▌    | 403/720 [00:02<00:02, 157.83batch/s]Epoch 20 batches:  58%|█████▊    | 420/720 [00:02<00:01, 159.24batch/s]Epoch 20 batches:  61%|██████    | 436/720 [00:02<00:01, 159.31batch/s]Epoch 20 batches:  63%|██████▎   | 453/720 [00:02<00:01, 159.80batch/s]Epoch 20 batches:  65%|██████▌   | 469/720 [00:03<00:01, 159.37batch/s]Epoch 20 batches:  67%|██████▋   | 485/720 [00:03<00:01, 158.94batch/s]Epoch 20 batches:  70%|██████▉   | 501/720 [00:03<00:01, 156.90batch/s]Epoch 20 batches:  72%|███████▏  | 517/720 [00:03<00:01, 154.20batch/s]Epoch 20 batches:  74%|███████▍  | 534/720 [00:03<00:01, 157.34batch/s]Epoch 20 batches:  76%|███████▋  | 550/720 [00:03<00:01, 157.43batch/s]Epoch 20 batches:  79%|███████▉  | 567/720 [00:03<00:00, 159.46batch/s]Epoch 20 batches:  81%|████████  | 583/720 [00:03<00:00, 159.44batch/s]Epoch 20 batches:  83%|████████▎ | 599/720 [00:03<00:00, 158.93batch/s]                                                                       Epoch 20 batches:  83%|████████▎ | 599/720 [00:03<00:00, 158.93batch/s]Epoch 20 batches:  85%|████████▌ | 615/720 [00:04<00:00, 159.15batch/s]Epoch 20 batches:  88%|████████▊ | 631/720 [00:04<00:00, 159.08batch/s]Epoch 20 batches:  90%|████████▉ | 647/720 [00:04<00:00, 159.32batch/s]Epoch 20 batches:  92%|█████████▏| 663/720 [00:04<00:00, 158.30batch/s]Epoch 20 batches:  94%|█████████▍| 679/720 [00:04<00:00, 155.51batch/s]Epoch 20 batches:  97%|█████████▋| 695/720 [00:04<00:00, 154.62batch/s]Epoch 20 batches:  99%|█████████▉| 711/720 [00:04<00:00, 154.91batch/s]                                                                         batch 200/720 | loss=1.0783
+  batch 400/720 | loss=1.1173
+  batch 600/720 | loss=1.1303
+
+Epoch 20/20
+Loss: 1.0266
+Accuracy: 0.6436
+Macro F1: 0.4062
+Weighted F1: 0.6072
+Class F1:
+  NORM: 0.7985
+  MI: 0.2347
+  HYP: 0.0197
+  CD: 0.4974
+  STTC: 0.4809
+LR=0.000250 | epoch_time=5.3s
+
+Checkpoint confusion matrix (epoch 20):
+            NORM      MI     HYP      CD    STTC
+  NORM    16049     567      21     225    1179
+  MI       2101     838       2     134    1607
+  HYP       868      93      12       7     201
+  CD       1528     239       1    1264     322
+  STTC     1613     722       1      98    2660
+  >> No improvement (10/10)
+
+Early stopping at epoch 20
+
+[CNN training] finished in 111.1s (1.85 min)
+
+########################################################################
+EXPERIMENT B: CNN with class weights (PRIMARY)
+########################################################################
+
+BeatCNNClassifier parameters:
+  trainable_parameters: 150533
+  epochs: 40
+  batch_size: 256
+  learning_rate: 0.001
+  dropout: 0.5
+  class_weights_in_loss: True
+  early_stopping_patience: 10
+  device: cuda
+
+Class weights in loss: {'NORM': np.float64(0.513), 'MI': np.float64(0.915), 'HYP': np.float64(4.748), 'CD': np.float64(1.438), 'STTC': np.float64(0.951)}
+
+========================================================================
+Epoch 1/40 START
+Epoch 1 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 1 batches:   2%|▏         | 12/720 [00:00<00:06, 113.35batch/s]Epoch 1 batches:   4%|▎         | 26/720 [00:00<00:05, 124.16batch/s]Epoch 1 batches:   6%|▌         | 40/720 [00:00<00:05, 129.63batch/s]Epoch 1 batches:   8%|▊         | 54/720 [00:00<00:05, 130.73batch/s]Epoch 1 batches:   9%|▉         | 68/720 [00:00<00:04, 133.60batch/s]Epoch 1 batches:  12%|█▏        | 83/720 [00:00<00:04, 137.78batch/s]Epoch 1 batches:  14%|█▍        | 100/720 [00:00<00:04, 147.67batch/s]Epoch 1 batches:  16%|█▋        | 118/720 [00:00<00:03, 155.42batch/s]Epoch 1 batches:  19%|█▉        | 135/720 [00:00<00:03, 158.77batch/s]Epoch 1 batches:  21%|██        | 152/720 [00:01<00:03, 160.49batch/s]Epoch 1 batches:  23%|██▎       | 169/720 [00:01<00:03, 159.22batch/s]Epoch 1 batches:  26%|██▌       | 185/720 [00:01<00:03, 157.12batch/s]                                                                      Epoch 1 batches:  26%|██▌       | 185/720 [00:01<00:03, 157.12batch/s]Epoch 1 batches:  28%|██▊       | 203/720 [00:01<00:03, 161.52batch/s]Epoch 1 batches:  31%|███       | 220/720 [00:01<00:03, 163.95batch/s]Epoch 1 batches:  33%|███▎      | 237/720 [00:01<00:02, 162.26batch/s]Epoch 1 batches:  35%|███▌      | 254/720 [00:01<00:02, 164.51batch/s]Epoch 1 batches:  38%|███▊      | 272/720 [00:01<00:02, 167.38batch/s]Epoch 1 batches:  40%|████      | 290/720 [00:01<00:02, 169.60batch/s]Epoch 1 batches:  43%|████▎     | 307/720 [00:01<00:02, 168.52batch/s]Epoch 1 batches:  45%|████▌     | 325/720 [00:02<00:02, 170.93batch/s]Epoch 1 batches:  48%|████▊     | 343/720 [00:02<00:02, 171.33batch/s]Epoch 1 batches:  50%|█████     | 361/720 [00:02<00:02, 164.51batch/s]Epoch 1 batches:  52%|█████▎    | 378/720 [00:02<00:02, 157.58batch/s]Epoch 1 batches:  55%|█████▍    | 395/720 [00:02<00:02, 160.07batch/s]                                                                      Epoch 1 batches:  55%|█████▍    | 395/720 [00:02<00:02, 160.07batch/s]Epoch 1 batches:  57%|█████▋    | 412/720 [00:02<00:01, 162.63batch/s]Epoch 1 batches:  60%|█████▉    | 429/720 [00:02<00:01, 163.76batch/s]Epoch 1 batches:  62%|██████▏   | 446/720 [00:02<00:01, 164.46batch/s]Epoch 1 batches:  64%|██████▍   | 463/720 [00:02<00:01, 164.78batch/s]Epoch 1 batches:  67%|██████▋   | 480/720 [00:03<00:01, 165.34batch/s]Epoch 1 batches:  69%|██████▉   | 498/720 [00:03<00:01, 166.72batch/s]Epoch 1 batches:  72%|███████▏  | 515/720 [00:03<00:01, 166.78batch/s]Epoch 1 batches:  74%|███████▍  | 532/720 [00:03<00:01, 163.62batch/s]Epoch 1 batches:  76%|███████▋  | 549/720 [00:03<00:01, 161.07batch/s]Epoch 1 batches:  79%|███████▊  | 566/720 [00:03<00:00, 162.53batch/s]Epoch 1 batches:  81%|████████  | 583/720 [00:03<00:00, 161.21batch/s]                                                                      Epoch 1 batches:  81%|████████  | 583/720 [00:03<00:00, 161.21batch/s]Epoch 1 batches:  83%|████████▎ | 600/720 [00:03<00:00, 160.23batch/s]Epoch 1 batches:  86%|████████▌ | 617/720 [00:03<00:00, 161.59batch/s]Epoch 1 batches:  88%|████████▊ | 634/720 [00:03<00:00, 162.77batch/s]Epoch 1 batches:  90%|█████████ | 651/720 [00:04<00:00, 163.91batch/s]Epoch 1 batches:  93%|█████████▎| 668/720 [00:04<00:00, 165.09batch/s]Epoch 1 batches:  95%|█████████▌| 685/720 [00:04<00:00, 164.97batch/s]Epoch 1 batches:  98%|█████████▊| 702/720 [00:04<00:00, 164.85batch/s]Epoch 1 batches: 100%|█████████▉| 719/720 [00:04<00:00, 160.60batch/s]                                                                        batch 200/720 | loss=1.3226
+  batch 400/720 | loss=1.3592
+  batch 600/720 | loss=1.2608
+
+Epoch 1/40
+Loss: 1.3699
+Accuracy: 0.5304
+Macro F1: 0.3897
+Weighted F1: 0.5461
+Class F1:
+  NORM: 0.7098
+  MI: 0.1844
+  HYP: 0.1628
+  CD: 0.4219
+  STTC: 0.4697
+LR=0.001000 | epoch_time=5.0s
+  >> NEW BEST validation macro F1: 0.3897
+
+========================================================================
+Epoch 2/40 START
+Epoch 2 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 2 batches:   2%|▏         | 15/720 [00:00<00:04, 149.41batch/s]Epoch 2 batches:   4%|▍         | 30/720 [00:00<00:04, 143.61batch/s]Epoch 2 batches:   6%|▋         | 46/720 [00:00<00:04, 150.40batch/s]Epoch 2 batches:   9%|▊         | 62/720 [00:00<00:04, 153.36batch/s]Epoch 2 batches:  11%|█         | 78/720 [00:00<00:04, 145.43batch/s]Epoch 2 batches:  13%|█▎        | 93/720 [00:00<00:04, 140.68batch/s]Epoch 2 batches:  15%|█▌        | 108/720 [00:00<00:04, 141.32batch/s]Epoch 2 batches:  17%|█▋        | 124/720 [00:00<00:04, 146.31batch/s]Epoch 2 batches:  19%|█▉        | 140/720 [00:00<00:03, 148.26batch/s]Epoch 2 batches:  22%|██▏       | 157/720 [00:01<00:03, 152.16batch/s]Epoch 2 batches:  24%|██▍       | 173/720 [00:01<00:03, 154.44batch/s]Epoch 2 batches:  26%|██▋       | 190/720 [00:01<00:03, 156.72batch/s]                                                                      Epoch 2 batches:  26%|██▋       | 190/720 [00:01<00:03, 156.72batch/s]Epoch 2 batches:  29%|██▊       | 206/720 [00:01<00:03, 157.13batch/s]Epoch 2 batches:  31%|███       | 222/720 [00:01<00:03, 157.71batch/s]Epoch 2 batches:  33%|███▎      | 238/720 [00:01<00:03, 130.48batch/s]Epoch 2 batches:  35%|███▌      | 253/720 [00:01<00:03, 134.74batch/s]Epoch 2 batches:  37%|███▋      | 268/720 [00:01<00:03, 138.79batch/s]Epoch 2 batches:  40%|███▉      | 285/720 [00:01<00:02, 145.57batch/s]Epoch 2 batches:  42%|████▏     | 301/720 [00:02<00:02, 148.77batch/s]Epoch 2 batches:  44%|████▍     | 318/720 [00:02<00:02, 153.11batch/s]Epoch 2 batches:  46%|████▋     | 334/720 [00:02<00:02, 155.07batch/s]Epoch 2 batches:  49%|████▉     | 351/720 [00:02<00:02, 157.06batch/s]Epoch 2 batches:  51%|█████     | 367/720 [00:02<00:02, 157.87batch/s]Epoch 2 batches:  53%|█████▎    | 384/720 [00:02<00:02, 159.09batch/s]                                                                      Epoch 2 batches:  53%|█████▎    | 384/720 [00:02<00:02, 159.09batch/s]Epoch 2 batches:  56%|█████▌    | 401/720 [00:02<00:01, 160.12batch/s]Epoch 2 batches:  58%|█████▊    | 418/720 [00:02<00:01, 160.08batch/s]Epoch 2 batches:  60%|██████    | 435/720 [00:02<00:01, 156.72batch/s]Epoch 2 batches:  63%|██████▎   | 451/720 [00:02<00:01, 155.75batch/s]Epoch 2 batches:  65%|██████▍   | 467/720 [00:03<00:01, 156.65batch/s]Epoch 2 batches:  67%|██████▋   | 483/720 [00:03<00:01, 157.55batch/s]Epoch 2 batches:  69%|██████▉   | 499/720 [00:03<00:01, 157.90batch/s]Epoch 2 batches:  72%|███████▏  | 515/720 [00:03<00:01, 158.39batch/s]Epoch 2 batches:  74%|███████▍  | 532/720 [00:03<00:01, 159.46batch/s]Epoch 2 batches:  76%|███████▋  | 549/720 [00:03<00:01, 160.30batch/s]Epoch 2 batches:  79%|███████▊  | 566/720 [00:03<00:00, 160.70batch/s]Epoch 2 batches:  81%|████████  | 583/720 [00:03<00:00, 160.91batch/s]                                                                      Epoch 2 batches:  81%|████████  | 583/720 [00:03<00:00, 160.91batch/s]Epoch 2 batches:  83%|████████▎ | 600/720 [00:03<00:00, 159.63batch/s]Epoch 2 batches:  86%|████████▌ | 616/720 [00:04<00:00, 126.54batch/s]Epoch 2 batches:  88%|████████▊ | 633/720 [00:04<00:00, 135.41batch/s]Epoch 2 batches:  90%|█████████ | 649/720 [00:04<00:00, 141.14batch/s]Epoch 2 batches:  92%|█████████▎| 666/720 [00:04<00:00, 146.76batch/s]Epoch 2 batches:  95%|█████████▍| 682/720 [00:04<00:00, 149.26batch/s]Epoch 2 batches:  97%|█████████▋| 698/720 [00:04<00:00, 152.18batch/s]Epoch 2 batches:  99%|█████████▉| 715/720 [00:04<00:00, 154.86batch/s]                                                                        batch 200/720 | loss=1.2489
+  batch 400/720 | loss=1.3082
+  batch 600/720 | loss=1.3102
+
+Epoch 2/40
+Loss: 1.3059
+Accuracy: 0.5168
+Macro F1: 0.3871
+Weighted F1: 0.5289
+Class F1:
+  NORM: 0.6786
+  MI: 0.1661
+  HYP: 0.1857
+  CD: 0.4251
+  STTC: 0.4800
+LR=0.001000 | epoch_time=5.2s
+  >> No improvement (1/10)
+
+========================================================================
+Epoch 3/40 START
+Epoch 3 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 3 batches:   2%|▏         | 14/720 [00:00<00:05, 136.33batch/s]Epoch 3 batches:   4%|▍         | 29/720 [00:00<00:04, 141.04batch/s]Epoch 3 batches:   6%|▌         | 44/720 [00:00<00:05, 129.52batch/s]Epoch 3 batches:   8%|▊         | 58/720 [00:00<00:05, 129.80batch/s]Epoch 3 batches:  10%|█         | 72/720 [00:00<00:04, 131.89batch/s]Epoch 3 batches:  12%|█▏        | 86/720 [00:00<00:04, 132.67batch/s]Epoch 3 batches:  14%|█▍        | 100/720 [00:00<00:04, 132.92batch/s]Epoch 3 batches:  16%|█▌        | 114/720 [00:00<00:04, 131.88batch/s]Epoch 3 batches:  18%|█▊        | 128/720 [00:00<00:04, 130.08batch/s]Epoch 3 batches:  20%|█▉        | 142/720 [00:01<00:04, 130.58batch/s]Epoch 3 batches:  22%|██▏       | 156/720 [00:01<00:04, 132.63batch/s]Epoch 3 batches:  24%|██▎       | 170/720 [00:01<00:04, 133.45batch/s]Epoch 3 batches:  26%|██▌       | 184/720 [00:01<00:04, 133.05batch/s]Epoch 3 batches:  28%|██▊       | 198/720 [00:01<00:03, 134.19batch/s]                                                                      Epoch 3 batches:  28%|██▊       | 198/720 [00:01<00:03, 134.19batch/s]Epoch 3 batches:  29%|██▉       | 212/720 [00:01<00:03, 134.54batch/s]Epoch 3 batches:  31%|███▏      | 226/720 [00:01<00:03, 135.09batch/s]Epoch 3 batches:  33%|███▎      | 240/720 [00:01<00:03, 134.49batch/s]Epoch 3 batches:  35%|███▌      | 254/720 [00:01<00:03, 135.31batch/s]Epoch 3 batches:  37%|███▋      | 268/720 [00:02<00:03, 133.23batch/s]Epoch 3 batches:  39%|███▉      | 282/720 [00:02<00:03, 130.85batch/s]Epoch 3 batches:  41%|████      | 296/720 [00:02<00:03, 128.55batch/s]Epoch 3 batches:  43%|████▎     | 310/720 [00:02<00:03, 129.80batch/s]Epoch 3 batches:  45%|████▌     | 324/720 [00:02<00:03, 129.78batch/s]Epoch 3 batches:  47%|████▋     | 338/720 [00:02<00:02, 130.81batch/s]Epoch 3 batches:  49%|████▉     | 352/720 [00:02<00:02, 128.71batch/s]Epoch 3 batches:  51%|█████     | 366/720 [00:02<00:02, 130.68batch/s]Epoch 3 batches:  53%|█████▎    | 380/720 [00:02<00:02, 129.45batch/s]Epoch 3 batches:  55%|█████▍    | 394/720 [00:02<00:02, 130.54batch/s]                                                                      Epoch 3 batches:  55%|█████▍    | 394/720 [00:03<00:02, 130.54batch/s]Epoch 3 batches:  57%|█████▋    | 408/720 [00:03<00:02, 130.22batch/s]Epoch 3 batches:  59%|█████▊    | 422/720 [00:03<00:02, 128.34batch/s]Epoch 3 batches:  61%|██████    | 436/720 [00:03<00:02, 129.73batch/s]Epoch 3 batches:  62%|██████▎   | 450/720 [00:03<00:02, 130.97batch/s]Epoch 3 batches:  64%|██████▍   | 464/720 [00:03<00:01, 132.07batch/s]Epoch 3 batches:  67%|██████▋   | 479/720 [00:03<00:01, 134.36batch/s]Epoch 3 batches:  68%|██████▊   | 493/720 [00:03<00:01, 134.38batch/s]Epoch 3 batches:  70%|███████   | 507/720 [00:03<00:01, 133.90batch/s]Epoch 3 batches:  72%|███████▏  | 521/720 [00:03<00:01, 133.49batch/s]Epoch 3 batches:  74%|███████▍  | 535/720 [00:04<00:01, 134.22batch/s]Epoch 3 batches:  76%|███████▋  | 549/720 [00:04<00:01, 134.27batch/s]Epoch 3 batches:  78%|███████▊  | 563/720 [00:04<00:01, 132.53batch/s]Epoch 3 batches:  80%|████████  | 577/720 [00:04<00:01, 132.37batch/s]Epoch 3 batches:  82%|████████▏ | 591/720 [00:04<00:00, 132.51batch/s]                                                                      Epoch 3 batches:  82%|████████▏ | 591/720 [00:04<00:00, 132.51batch/s]Epoch 3 batches:  84%|████████▍ | 605/720 [00:04<00:00, 131.44batch/s]Epoch 3 batches:  86%|████████▌ | 619/720 [00:04<00:00, 132.11batch/s]Epoch 3 batches:  88%|████████▊ | 633/720 [00:04<00:00, 133.65batch/s]Epoch 3 batches:  90%|████████▉ | 647/720 [00:04<00:00, 135.02batch/s]Epoch 3 batches:  92%|█████████▏| 661/720 [00:04<00:00, 134.75batch/s]Epoch 3 batches:  94%|█████████▍| 675/720 [00:05<00:00, 135.54batch/s]Epoch 3 batches:  96%|█████████▌| 689/720 [00:05<00:00, 135.95batch/s]Epoch 3 batches:  98%|█████████▊| 703/720 [00:05<00:00, 133.75batch/s]Epoch 3 batches: 100%|█████████▉| 717/720 [00:05<00:00, 131.72batch/s]                                                                        batch 200/720 | loss=1.3640
+  batch 400/720 | loss=1.3158
+  batch 600/720 | loss=1.2455
+
+Epoch 3/40
+Loss: 1.2826
+Accuracy: 0.5550
+Macro F1: 0.4043
+Weighted F1: 0.5614
+Class F1:
+  NORM: 0.7278
+  MI: 0.1827
+  HYP: 0.1806
+  CD: 0.4477
+  STTC: 0.4828
+LR=0.001000 | epoch_time=6.0s
+  >> NEW BEST validation macro F1: 0.4043
+
+========================================================================
+Epoch 4/40 START
+Epoch 4 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 4 batches:   2%|▏         | 11/720 [00:00<00:06, 109.83batch/s]Epoch 4 batches:   3%|▎         | 25/720 [00:00<00:05, 123.99batch/s]Epoch 4 batches:   5%|▌         | 39/720 [00:00<00:05, 128.43batch/s]Epoch 4 batches:   7%|▋         | 53/720 [00:00<00:05, 130.51batch/s]Epoch 4 batches:  10%|▉         | 69/720 [00:00<00:04, 138.31batch/s]Epoch 4 batches:  12%|█▏        | 83/720 [00:00<00:05, 127.18batch/s]Epoch 4 batches:  13%|█▎        | 96/720 [00:00<00:05, 121.87batch/s]Epoch 4 batches:  16%|█▌        | 113/720 [00:00<00:04, 135.01batch/s]Epoch 4 batches:  18%|█▊        | 130/720 [00:00<00:04, 145.22batch/s]Epoch 4 batches:  20%|██        | 147/720 [00:01<00:03, 151.36batch/s]Epoch 4 batches:  23%|██▎       | 164/720 [00:01<00:03, 155.60batch/s]Epoch 4 batches:  25%|██▌       | 181/720 [00:01<00:03, 159.59batch/s]Epoch 4 batches:  28%|██▊       | 198/720 [00:01<00:03, 162.21batch/s]                                                                      Epoch 4 batches:  28%|██▊       | 198/720 [00:01<00:03, 162.21batch/s]Epoch 4 batches:  30%|███       | 216/720 [00:01<00:03, 165.77batch/s]Epoch 4 batches:  32%|███▏      | 233/720 [00:01<00:03, 161.01batch/s]Epoch 4 batches:  35%|███▍      | 250/720 [00:01<00:02, 160.06batch/s]Epoch 4 batches:  37%|███▋      | 267/720 [00:01<00:02, 162.52batch/s]Epoch 4 batches:  40%|███▉      | 285/720 [00:01<00:02, 166.32batch/s]Epoch 4 batches:  42%|████▏     | 302/720 [00:02<00:02, 166.47batch/s]Epoch 4 batches:  44%|████▍     | 320/720 [00:02<00:02, 167.73batch/s]Epoch 4 batches:  47%|████▋     | 338/720 [00:02<00:02, 169.06batch/s]Epoch 4 batches:  49%|████▉     | 355/720 [00:02<00:02, 168.77batch/s]Epoch 4 batches:  52%|█████▏    | 372/720 [00:02<00:02, 167.82batch/s]Epoch 4 batches:  54%|█████▍    | 389/720 [00:02<00:01, 167.91batch/s]                                                                      Epoch 4 batches:  54%|█████▍    | 389/720 [00:02<00:01, 167.91batch/s]Epoch 4 batches:  56%|█████▋    | 406/720 [00:02<00:01, 167.59batch/s]Epoch 4 batches:  59%|█████▉    | 423/720 [00:02<00:02, 129.68batch/s]Epoch 4 batches:  61%|██████    | 440/720 [00:02<00:02, 138.89batch/s]Epoch 4 batches:  63%|██████▎   | 457/720 [00:03<00:01, 145.56batch/s]Epoch 4 batches:  66%|██████▌   | 474/720 [00:03<00:01, 151.07batch/s]Epoch 4 batches:  68%|██████▊   | 491/720 [00:03<00:01, 154.63batch/s]Epoch 4 batches:  70%|███████   | 507/720 [00:03<00:01, 131.60batch/s]Epoch 4 batches:  73%|███████▎  | 523/720 [00:03<00:01, 137.15batch/s]Epoch 4 batches:  75%|███████▍  | 539/720 [00:03<00:01, 142.85batch/s]Epoch 4 batches:  77%|███████▋  | 556/720 [00:03<00:01, 148.32batch/s]Epoch 4 batches:  79%|███████▉  | 572/720 [00:03<00:00, 148.96batch/s]Epoch 4 batches:  82%|████████▏ | 588/720 [00:03<00:00, 150.39batch/s]                                                                      Epoch 4 batches:  82%|████████▏ | 588/720 [00:04<00:00, 150.39batch/s]Epoch 4 batches:  84%|████████▍ | 604/720 [00:04<00:00, 146.25batch/s]Epoch 4 batches:  86%|████████▌ | 619/720 [00:04<00:00, 140.75batch/s]Epoch 4 batches:  88%|████████▊ | 634/720 [00:04<00:00, 136.64batch/s]Epoch 4 batches:  90%|█████████ | 648/720 [00:04<00:00, 127.26batch/s]Epoch 4 batches:  92%|█████████▏| 661/720 [00:04<00:00, 115.83batch/s]Epoch 4 batches:  93%|█████████▎| 673/720 [00:04<00:00, 112.31batch/s]Epoch 4 batches:  95%|█████████▌| 686/720 [00:04<00:00, 114.58batch/s]Epoch 4 batches:  97%|█████████▋| 698/720 [00:04<00:00, 115.51batch/s]Epoch 4 batches:  99%|█████████▉| 711/720 [00:04<00:00, 119.03batch/s]                                                                        batch 200/720 | loss=1.2456
+  batch 400/720 | loss=1.3128
+  batch 600/720 | loss=1.2629
+
+Epoch 4/40
+Loss: 1.2699
+Accuracy: 0.5819
+Macro F1: 0.4140
+Weighted F1: 0.5762
+Class F1:
+  NORM: 0.7491
+  MI: 0.1853
+  HYP: 0.1824
+  CD: 0.4663
+  STTC: 0.4869
+LR=0.001000 | epoch_time=5.5s
+  >> NEW BEST validation macro F1: 0.4140
+
+========================================================================
+Epoch 5/40 START
+Epoch 5 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 5 batches:   2%|▏         | 15/720 [00:00<00:04, 143.73batch/s]Epoch 5 batches:   4%|▍         | 30/720 [00:00<00:05, 132.42batch/s]Epoch 5 batches:   6%|▌         | 44/720 [00:00<00:05, 129.94batch/s]Epoch 5 batches:   8%|▊         | 58/720 [00:00<00:05, 131.27batch/s]Epoch 5 batches:  10%|█         | 72/720 [00:00<00:05, 128.59batch/s]Epoch 5 batches:  12%|█▏        | 86/720 [00:00<00:04, 130.48batch/s]Epoch 5 batches:  14%|█▍        | 100/720 [00:00<00:04, 131.81batch/s]Epoch 5 batches:  16%|█▌        | 114/720 [00:00<00:04, 132.60batch/s]Epoch 5 batches:  18%|█▊        | 128/720 [00:00<00:04, 134.76batch/s]Epoch 5 batches:  20%|█▉        | 142/720 [00:01<00:04, 134.81batch/s]Epoch 5 batches:  22%|██▏       | 156/720 [00:01<00:04, 134.74batch/s]Epoch 5 batches:  24%|██▎       | 170/720 [00:01<00:04, 135.67batch/s]Epoch 5 batches:  26%|██▌       | 184/720 [00:01<00:03, 136.01batch/s]Epoch 5 batches:  28%|██▊       | 198/720 [00:01<00:03, 136.34batch/s]                                                                      Epoch 5 batches:  28%|██▊       | 198/720 [00:01<00:03, 136.34batch/s]Epoch 5 batches:  29%|██▉       | 212/720 [00:01<00:03, 134.96batch/s]Epoch 5 batches:  31%|███▏      | 226/720 [00:01<00:03, 131.04batch/s]Epoch 5 batches:  33%|███▎      | 240/720 [00:01<00:03, 132.16batch/s]Epoch 5 batches:  35%|███▌      | 254/720 [00:01<00:03, 133.49batch/s]Epoch 5 batches:  37%|███▋      | 268/720 [00:02<00:03, 134.59batch/s]Epoch 5 batches:  39%|███▉      | 282/720 [00:02<00:03, 134.41batch/s]Epoch 5 batches:  41%|████      | 296/720 [00:02<00:03, 135.03batch/s]Epoch 5 batches:  43%|████▎     | 310/720 [00:02<00:03, 134.56batch/s]Epoch 5 batches:  45%|████▌     | 324/720 [00:02<00:02, 133.98batch/s]Epoch 5 batches:  47%|████▋     | 338/720 [00:02<00:02, 128.99batch/s]Epoch 5 batches:  49%|████▉     | 351/720 [00:02<00:02, 127.57batch/s]Epoch 5 batches:  51%|█████     | 364/720 [00:02<00:02, 123.55batch/s]Epoch 5 batches:  52%|█████▏    | 377/720 [00:02<00:02, 121.59batch/s]Epoch 5 batches:  54%|█████▍    | 390/720 [00:02<00:02, 119.40batch/s]                                                                      Epoch 5 batches:  54%|█████▍    | 390/720 [00:03<00:02, 119.40batch/s]Epoch 5 batches:  56%|█████▌    | 402/720 [00:03<00:02, 119.22batch/s]Epoch 5 batches:  57%|█████▊    | 414/720 [00:03<00:02, 117.75batch/s]Epoch 5 batches:  59%|█████▉    | 426/720 [00:03<00:02, 114.35batch/s]Epoch 5 batches:  61%|██████    | 439/720 [00:03<00:02, 115.67batch/s]Epoch 5 batches:  63%|██████▎   | 451/720 [00:03<00:02, 113.97batch/s]Epoch 5 batches:  64%|██████▍   | 463/720 [00:03<00:02, 113.20batch/s]Epoch 5 batches:  66%|██████▌   | 475/720 [00:03<00:02, 112.87batch/s]Epoch 5 batches:  68%|██████▊   | 487/720 [00:03<00:02, 110.41batch/s]Epoch 5 batches:  69%|██████▉   | 499/720 [00:03<00:01, 110.85batch/s]Epoch 5 batches:  71%|███████▏  | 513/720 [00:04<00:01, 117.30batch/s]Epoch 5 batches:  73%|███████▎  | 526/720 [00:04<00:01, 119.73batch/s]Epoch 5 batches:  75%|███████▌  | 540/720 [00:04<00:01, 125.12batch/s]Epoch 5 batches:  77%|███████▋  | 554/720 [00:04<00:01, 128.61batch/s]Epoch 5 batches:  79%|███████▉  | 568/720 [00:04<00:01, 130.78batch/s]Epoch 5 batches:  81%|████████  | 582/720 [00:04<00:01, 131.61batch/s]Epoch 5 batches:  83%|████████▎ | 596/720 [00:04<00:00, 133.30batch/s]                                                                      Epoch 5 batches:  83%|████████▎ | 596/720 [00:04<00:00, 133.30batch/s]Epoch 5 batches:  85%|████████▍ | 610/720 [00:04<00:00, 133.55batch/s]Epoch 5 batches:  87%|████████▋ | 624/720 [00:04<00:00, 134.78batch/s]Epoch 5 batches:  89%|████████▊ | 638/720 [00:04<00:00, 133.62batch/s]Epoch 5 batches:  91%|█████████ | 652/720 [00:05<00:00, 132.65batch/s]Epoch 5 batches:  92%|█████████▎| 666/720 [00:05<00:00, 134.40batch/s]Epoch 5 batches:  94%|█████████▍| 680/720 [00:05<00:00, 135.23batch/s]Epoch 5 batches:  96%|█████████▋| 694/720 [00:05<00:00, 136.05batch/s]Epoch 5 batches:  98%|█████████▊| 708/720 [00:05<00:00, 135.57batch/s]                                                                        batch 200/720 | loss=1.1556
+  batch 400/720 | loss=1.2900
+  batch 600/720 | loss=1.3003
+
+Epoch 5/40
+Loss: 1.2546
+Accuracy: 0.5371
+Macro F1: 0.3982
+Weighted F1: 0.5510
+Class F1:
+  NORM: 0.7113
+  MI: 0.1879
+  HYP: 0.1736
+  CD: 0.4424
+  STTC: 0.4761
+LR=0.001000 | epoch_time=6.2s
+
+Checkpoint confusion matrix (epoch 5):
+            NORM      MI     HYP      CD    STTC
+  NORM    11719     764    2308    1479    1771
+  MI       1284     653     409     415    1921
+  HYP       365      85     446      58     227
+  CD        910     161     242    1606     435
+  STTC      633     607     553     349    2952
+  >> No improvement (1/10)
+
+========================================================================
+Epoch 6/40 START
+Epoch 6 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 6 batches:   2%|▏         | 13/720 [00:00<00:05, 124.41batch/s]Epoch 6 batches:   4%|▍         | 27/720 [00:00<00:05, 126.96batch/s]Epoch 6 batches:   6%|▌         | 41/720 [00:00<00:05, 129.37batch/s]Epoch 6 batches:   8%|▊         | 55/720 [00:00<00:05, 132.38batch/s]Epoch 6 batches:  10%|▉         | 69/720 [00:00<00:04, 134.15batch/s]Epoch 6 batches:  12%|█▏        | 86/720 [00:00<00:04, 143.45batch/s]Epoch 6 batches:  14%|█▍        | 101/720 [00:00<00:04, 144.05batch/s]Epoch 6 batches:  17%|█▋        | 119/720 [00:00<00:03, 152.93batch/s]Epoch 6 batches:  19%|█▉        | 136/720 [00:00<00:03, 157.56batch/s]Epoch 6 batches:  21%|██        | 152/720 [00:01<00:03, 156.02batch/s]Epoch 6 batches:  23%|██▎       | 169/720 [00:01<00:03, 158.26batch/s]Epoch 6 batches:  26%|██▌       | 186/720 [00:01<00:03, 160.79batch/s]                                                                      Epoch 6 batches:  26%|██▌       | 186/720 [00:01<00:03, 160.79batch/s]Epoch 6 batches:  28%|██▊       | 203/720 [00:01<00:03, 161.69batch/s]Epoch 6 batches:  31%|███       | 220/720 [00:01<00:03, 132.75batch/s]Epoch 6 batches:  33%|███▎      | 237/720 [00:01<00:03, 141.90batch/s]Epoch 6 batches:  35%|███▌      | 254/720 [00:01<00:03, 148.88batch/s]Epoch 6 batches:  38%|███▊      | 272/720 [00:01<00:02, 155.85batch/s]Epoch 6 batches:  40%|████      | 290/720 [00:01<00:02, 160.40batch/s]Epoch 6 batches:  43%|████▎     | 307/720 [00:02<00:02, 161.90batch/s]Epoch 6 batches:  45%|████▌     | 324/720 [00:02<00:02, 157.75batch/s]Epoch 6 batches:  47%|████▋     | 341/720 [00:02<00:02, 158.94batch/s]Epoch 6 batches:  50%|████▉     | 359/720 [00:02<00:02, 162.74batch/s]Epoch 6 batches:  52%|█████▏    | 376/720 [00:02<00:02, 164.29batch/s]Epoch 6 batches:  55%|█████▍    | 393/720 [00:02<00:02, 138.90batch/s]                                                                      Epoch 6 batches:  55%|█████▍    | 393/720 [00:02<00:02, 138.90batch/s]Epoch 6 batches:  57%|█████▋    | 410/720 [00:02<00:02, 145.79batch/s]Epoch 6 batches:  59%|█████▉    | 427/720 [00:02<00:01, 151.00batch/s]Epoch 6 batches:  62%|██████▏   | 444/720 [00:02<00:01, 155.00batch/s]Epoch 6 batches:  64%|██████▍   | 461/720 [00:03<00:01, 157.71batch/s]Epoch 6 batches:  66%|██████▋   | 478/720 [00:03<00:01, 158.37batch/s]Epoch 6 batches:  69%|██████▉   | 495/720 [00:03<00:01, 155.31batch/s]Epoch 6 batches:  71%|███████   | 511/720 [00:03<00:01, 156.17batch/s]Epoch 6 batches:  73%|███████▎  | 528/720 [00:03<00:01, 157.68batch/s]Epoch 6 batches:  76%|███████▌  | 545/720 [00:03<00:01, 160.77batch/s]Epoch 6 batches:  78%|███████▊  | 562/720 [00:03<00:00, 162.41batch/s]Epoch 6 batches:  80%|████████  | 579/720 [00:03<00:00, 163.15batch/s]Epoch 6 batches:  83%|████████▎ | 596/720 [00:03<00:00, 162.73batch/s]                                                                      Epoch 6 batches:  83%|████████▎ | 596/720 [00:03<00:00, 162.73batch/s]Epoch 6 batches:  85%|████████▌ | 613/720 [00:03<00:00, 163.29batch/s]Epoch 6 batches:  88%|████████▊ | 630/720 [00:04<00:00, 163.55batch/s]Epoch 6 batches:  90%|████████▉ | 647/720 [00:04<00:00, 164.56batch/s]Epoch 6 batches:  92%|█████████▏| 664/720 [00:04<00:00, 159.34batch/s]Epoch 6 batches:  94%|█████████▍| 680/720 [00:04<00:00, 157.32batch/s]Epoch 6 batches:  97%|█████████▋| 697/720 [00:04<00:00, 159.08batch/s]Epoch 6 batches:  99%|█████████▉| 713/720 [00:04<00:00, 158.91batch/s]                                                                        batch 200/720 | loss=1.3587
+  batch 400/720 | loss=1.2477
+  batch 600/720 | loss=1.0962
+
+Epoch 6/40
+Loss: 1.2433
+Accuracy: 0.5331
+Macro F1: 0.4029
+Weighted F1: 0.5550
+Class F1:
+  NORM: 0.7115
+  MI: 0.2101
+  HYP: 0.1591
+  CD: 0.4654
+  STTC: 0.4686
+LR=0.001000 | epoch_time=5.1s
+  >> No improvement (2/10)
+
+========================================================================
+Epoch 7/40 START
+Epoch 7 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 7 batches:   2%|▏         | 15/720 [00:00<00:04, 145.90batch/s]Epoch 7 batches:   4%|▍         | 30/720 [00:00<00:04, 145.85batch/s]Epoch 7 batches:   6%|▋         | 45/720 [00:00<00:04, 146.90batch/s]Epoch 7 batches:   8%|▊         | 60/720 [00:00<00:04, 146.96batch/s]Epoch 7 batches:  11%|█         | 76/720 [00:00<00:04, 151.08batch/s]Epoch 7 batches:  13%|█▎        | 92/720 [00:00<00:04, 151.17batch/s]Epoch 7 batches:  15%|█▌        | 108/720 [00:00<00:03, 153.60batch/s]Epoch 7 batches:  17%|█▋        | 124/720 [00:00<00:03, 154.97batch/s]Epoch 7 batches:  19%|█▉        | 140/720 [00:00<00:03, 156.14batch/s]Epoch 7 batches:  22%|██▏       | 156/720 [00:01<00:03, 157.21batch/s]Epoch 7 batches:  24%|██▍       | 172/720 [00:01<00:03, 157.69batch/s]Epoch 7 batches:  26%|██▌       | 188/720 [00:01<00:03, 158.30batch/s]                                                                      Epoch 7 batches:  26%|██▌       | 188/720 [00:01<00:03, 158.30batch/s]Epoch 7 batches:  28%|██▊       | 204/720 [00:01<00:03, 158.64batch/s]Epoch 7 batches:  31%|███       | 220/720 [00:01<00:03, 155.35batch/s]Epoch 7 batches:  33%|███▎      | 236/720 [00:01<00:03, 153.73batch/s]Epoch 7 batches:  35%|███▌      | 252/720 [00:01<00:03, 155.22batch/s]Epoch 7 batches:  37%|███▋      | 269/720 [00:01<00:02, 156.67batch/s]Epoch 7 batches:  40%|███▉      | 286/720 [00:01<00:02, 157.71batch/s]Epoch 7 batches:  42%|████▏     | 303/720 [00:01<00:02, 158.76batch/s]Epoch 7 batches:  44%|████▍     | 320/720 [00:02<00:02, 160.72batch/s]Epoch 7 batches:  47%|████▋     | 337/720 [00:02<00:02, 160.63batch/s]Epoch 7 batches:  49%|████▉     | 354/720 [00:02<00:02, 159.00batch/s]Epoch 7 batches:  52%|█████▏    | 371/720 [00:02<00:02, 159.81batch/s]Epoch 7 batches:  54%|█████▍    | 387/720 [00:02<00:02, 159.15batch/s]                                                                      Epoch 7 batches:  54%|█████▍    | 387/720 [00:02<00:02, 159.15batch/s]Epoch 7 batches:  56%|█████▌    | 403/720 [00:02<00:02, 146.01batch/s]Epoch 7 batches:  58%|█████▊    | 418/720 [00:02<00:02, 143.82batch/s]Epoch 7 batches:  60%|██████    | 433/720 [00:02<00:02, 143.31batch/s]Epoch 7 batches:  62%|██████▏   | 449/720 [00:02<00:01, 147.11batch/s]Epoch 7 batches:  65%|██████▍   | 465/720 [00:03<00:01, 150.67batch/s]Epoch 7 batches:  67%|██████▋   | 481/720 [00:03<00:01, 153.16batch/s]Epoch 7 batches:  69%|██████▉   | 498/720 [00:03<00:01, 155.53batch/s]Epoch 7 batches:  71%|███████▏  | 514/720 [00:03<00:01, 156.62batch/s]Epoch 7 batches:  74%|███████▎  | 530/720 [00:03<00:01, 157.49batch/s]Epoch 7 batches:  76%|███████▌  | 547/720 [00:03<00:01, 158.44batch/s]Epoch 7 batches:  78%|███████▊  | 563/720 [00:03<00:01, 155.08batch/s]Epoch 7 batches:  80%|████████  | 579/720 [00:03<00:00, 152.70batch/s]Epoch 7 batches:  83%|████████▎ | 595/720 [00:03<00:00, 152.90batch/s]                                                                      Epoch 7 batches:  83%|████████▎ | 595/720 [00:03<00:00, 152.90batch/s]Epoch 7 batches:  85%|████████▍ | 611/720 [00:03<00:00, 154.20batch/s]Epoch 7 batches:  87%|████████▋ | 627/720 [00:04<00:00, 155.39batch/s]Epoch 7 batches:  89%|████████▉ | 643/720 [00:04<00:00, 154.18batch/s]Epoch 7 batches:  92%|█████████▏| 659/720 [00:04<00:00, 155.23batch/s]Epoch 7 batches:  94%|█████████▍| 675/720 [00:04<00:00, 156.16batch/s]Epoch 7 batches:  96%|█████████▌| 691/720 [00:04<00:00, 156.89batch/s]Epoch 7 batches:  98%|█████████▊| 707/720 [00:04<00:00, 135.19batch/s]                                                                        batch 200/720 | loss=1.1214
+  batch 400/720 | loss=1.0859
+  batch 600/720 | loss=1.2831
+
+Epoch 7/40
+Loss: 1.2320
+Accuracy: 0.5312
+Macro F1: 0.4033
+Weighted F1: 0.5495
+Class F1:
+  NORM: 0.6998
+  MI: 0.1941
+  HYP: 0.1666
+  CD: 0.4728
+  STTC: 0.4832
+LR=0.001000 | epoch_time=5.2s
+  >> No improvement (3/10)
+
+========================================================================
+Epoch 8/40 START
+Epoch 8 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 8 batches:   1%|▏         | 10/720 [00:00<00:11, 59.37batch/s]Epoch 8 batches:   3%|▎         | 23/720 [00:00<00:07, 90.52batch/s]Epoch 8 batches:   5%|▌         | 36/720 [00:00<00:06, 104.56batch/s]Epoch 8 batches:   7%|▋         | 50/720 [00:00<00:05, 115.53batch/s]Epoch 8 batches:   9%|▉         | 63/720 [00:00<00:05, 120.31batch/s]Epoch 8 batches:  11%|█         | 76/720 [00:00<00:05, 122.62batch/s]Epoch 8 batches:  12%|█▎        | 90/720 [00:00<00:04, 126.15batch/s]Epoch 8 batches:  14%|█▍        | 104/720 [00:00<00:04, 129.61batch/s]Epoch 8 batches:  16%|█▋        | 118/720 [00:00<00:04, 130.82batch/s]Epoch 8 batches:  18%|█▊        | 133/720 [00:01<00:04, 133.48batch/s]Epoch 8 batches:  21%|██        | 148/720 [00:01<00:04, 136.33batch/s]Epoch 8 batches:  23%|██▎       | 165/720 [00:01<00:03, 145.39batch/s]Epoch 8 batches:  25%|██▌       | 182/720 [00:01<00:03, 151.73batch/s]Epoch 8 batches:  28%|██▊       | 199/720 [00:01<00:03, 155.62batch/s]                                                                      Epoch 8 batches:  28%|██▊       | 199/720 [00:01<00:03, 155.62batch/s]Epoch 8 batches:  30%|███       | 216/720 [00:01<00:03, 158.70batch/s]Epoch 8 batches:  32%|███▏      | 233/720 [00:01<00:03, 160.77batch/s]Epoch 8 batches:  35%|███▍      | 250/720 [00:01<00:02, 157.34batch/s]Epoch 8 batches:  37%|███▋      | 267/720 [00:01<00:02, 160.24batch/s]Epoch 8 batches:  40%|███▉      | 285/720 [00:02<00:02, 163.48batch/s]Epoch 8 batches:  42%|████▏     | 303/720 [00:02<00:02, 165.49batch/s]Epoch 8 batches:  45%|████▍     | 321/720 [00:02<00:02, 166.85batch/s]Epoch 8 batches:  47%|████▋     | 338/720 [00:02<00:02, 159.52batch/s]Epoch 8 batches:  49%|████▉     | 355/720 [00:02<00:02, 162.37batch/s]Epoch 8 batches:  52%|█████▏    | 372/720 [00:02<00:02, 163.98batch/s]Epoch 8 batches:  54%|█████▍    | 390/720 [00:02<00:01, 166.23batch/s]                                                                      Epoch 8 batches:  54%|█████▍    | 390/720 [00:02<00:01, 166.23batch/s]Epoch 8 batches:  57%|█████▋    | 407/720 [00:02<00:01, 166.19batch/s]Epoch 8 batches:  59%|█████▉    | 424/720 [00:02<00:01, 161.74batch/s]Epoch 8 batches:  61%|██████▏   | 441/720 [00:02<00:01, 162.98batch/s]Epoch 8 batches:  64%|██████▎   | 458/720 [00:03<00:01, 164.51batch/s]Epoch 8 batches:  66%|██████▌   | 475/720 [00:03<00:01, 165.78batch/s]Epoch 8 batches:  68%|██████▊   | 492/720 [00:03<00:01, 165.34batch/s]Epoch 8 batches:  71%|███████   | 509/720 [00:03<00:01, 165.36batch/s]Epoch 8 batches:  73%|███████▎  | 526/720 [00:03<00:01, 165.03batch/s]Epoch 8 batches:  75%|███████▌  | 543/720 [00:03<00:01, 164.00batch/s]Epoch 8 batches:  78%|███████▊  | 560/720 [00:03<00:00, 163.94batch/s]Epoch 8 batches:  80%|████████  | 577/720 [00:03<00:00, 163.58batch/s]Epoch 8 batches:  82%|████████▎ | 594/720 [00:03<00:00, 162.63batch/s]                                                                      Epoch 8 batches:  82%|████████▎ | 594/720 [00:03<00:00, 162.63batch/s]Epoch 8 batches:  85%|████████▍ | 611/720 [00:04<00:00, 160.44batch/s]Epoch 8 batches:  87%|████████▋ | 628/720 [00:04<00:00, 161.45batch/s]Epoch 8 batches:  90%|████████▉ | 645/720 [00:04<00:00, 162.62batch/s]Epoch 8 batches:  92%|█████████▏| 662/720 [00:04<00:00, 163.20batch/s]Epoch 8 batches:  94%|█████████▍| 679/720 [00:04<00:00, 163.04batch/s]Epoch 8 batches:  97%|█████████▋| 696/720 [00:04<00:00, 163.56batch/s]Epoch 8 batches:  99%|█████████▉| 713/720 [00:04<00:00, 164.14batch/s]                                                                        batch 200/720 | loss=1.0723
+  batch 400/720 | loss=1.4003
+  batch 600/720 | loss=1.1804
+
+Epoch 8/40
+Loss: 1.2200
+Accuracy: 0.5448
+Macro F1: 0.4085
+Weighted F1: 0.5614
+Class F1:
+  NORM: 0.7193
+  MI: 0.2098
+  HYP: 0.1676
+  CD: 0.4672
+  STTC: 0.4788
+LR=0.001000 | epoch_time=5.2s
+  >> No improvement (4/10)
+
+========================================================================
+Epoch 9/40 START
+Epoch 9 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 9 batches:   2%|▏         | 15/720 [00:00<00:04, 147.47batch/s]Epoch 9 batches:   4%|▍         | 31/720 [00:00<00:04, 152.71batch/s]Epoch 9 batches:   7%|▋         | 48/720 [00:00<00:04, 156.13batch/s]Epoch 9 batches:   9%|▉         | 65/720 [00:00<00:04, 158.22batch/s]Epoch 9 batches:  11%|█▏        | 82/720 [00:00<00:04, 158.95batch/s]Epoch 9 batches:  14%|█▍        | 99/720 [00:00<00:03, 159.45batch/s]Epoch 9 batches:  16%|█▌        | 116/720 [00:00<00:03, 160.52batch/s]Epoch 9 batches:  18%|█▊        | 133/720 [00:00<00:03, 160.44batch/s]Epoch 9 batches:  21%|██        | 150/720 [00:00<00:03, 159.14batch/s]Epoch 9 batches:  23%|██▎       | 166/720 [00:01<00:03, 155.34batch/s]Epoch 9 batches:  25%|██▌       | 182/720 [00:01<00:03, 156.58batch/s]Epoch 9 batches:  28%|██▊       | 199/720 [00:01<00:03, 157.74batch/s]                                                                      Epoch 9 batches:  28%|██▊       | 199/720 [00:01<00:03, 157.74batch/s]Epoch 9 batches:  30%|███       | 216/720 [00:01<00:03, 159.04batch/s]Epoch 9 batches:  32%|███▏      | 232/720 [00:01<00:03, 158.95batch/s]Epoch 9 batches:  34%|███▍      | 248/720 [00:01<00:02, 158.04batch/s]Epoch 9 batches:  37%|███▋      | 265/720 [00:01<00:02, 158.95batch/s]Epoch 9 batches:  39%|███▉      | 282/720 [00:01<00:02, 159.30batch/s]Epoch 9 batches:  42%|████▏     | 299/720 [00:01<00:02, 159.89batch/s]Epoch 9 batches:  44%|████▍     | 315/720 [00:01<00:02, 159.78batch/s]Epoch 9 batches:  46%|████▌     | 331/720 [00:02<00:02, 155.79batch/s]Epoch 9 batches:  48%|████▊     | 347/720 [00:02<00:02, 153.00batch/s]Epoch 9 batches:  50%|█████     | 363/720 [00:02<00:02, 155.01batch/s]Epoch 9 batches:  53%|█████▎    | 379/720 [00:02<00:02, 155.50batch/s]Epoch 9 batches:  55%|█████▍    | 395/720 [00:02<00:02, 150.89batch/s]                                                                      Epoch 9 batches:  55%|█████▍    | 395/720 [00:02<00:02, 150.89batch/s]Epoch 9 batches:  57%|█████▋    | 411/720 [00:02<00:02, 141.91batch/s]Epoch 9 batches:  59%|█████▉    | 426/720 [00:02<00:02, 137.22batch/s]Epoch 9 batches:  61%|██████▏   | 442/720 [00:02<00:01, 141.28batch/s]Epoch 9 batches:  64%|██████▎   | 458/720 [00:02<00:01, 145.12batch/s]Epoch 9 batches:  66%|██████▌   | 475/720 [00:03<00:01, 149.49batch/s]Epoch 9 batches:  68%|██████▊   | 491/720 [00:03<00:01, 150.06batch/s]Epoch 9 batches:  70%|███████   | 507/720 [00:03<00:01, 148.35batch/s]Epoch 9 batches:  73%|███████▎  | 523/720 [00:03<00:01, 151.24batch/s]Epoch 9 batches:  75%|███████▌  | 540/720 [00:03<00:01, 153.99batch/s]Epoch 9 batches:  77%|███████▋  | 556/720 [00:03<00:01, 155.30batch/s]Epoch 9 batches:  80%|███████▉  | 573/720 [00:03<00:00, 156.89batch/s]Epoch 9 batches:  82%|████████▏ | 589/720 [00:03<00:00, 155.40batch/s]                                                                      Epoch 9 batches:  82%|████████▏ | 589/720 [00:03<00:00, 155.40batch/s]Epoch 9 batches:  84%|████████▍ | 605/720 [00:03<00:00, 154.51batch/s]Epoch 9 batches:  86%|████████▋ | 621/720 [00:04<00:00, 156.03batch/s]Epoch 9 batches:  88%|████████▊ | 637/720 [00:04<00:00, 152.34batch/s]Epoch 9 batches:  91%|█████████ | 653/720 [00:04<00:00, 149.05batch/s]Epoch 9 batches:  93%|█████████▎| 668/720 [00:04<00:00, 113.09batch/s]Epoch 9 batches:  95%|█████████▌| 684/720 [00:04<00:00, 123.38batch/s]Epoch 9 batches:  97%|█████████▋| 701/720 [00:04<00:00, 132.98batch/s]Epoch 9 batches: 100%|█████████▉| 717/720 [00:04<00:00, 139.36batch/s]                                                                        batch 200/720 | loss=1.0912
+  batch 400/720 | loss=1.2235
+  batch 600/720 | loss=1.2617
+
+Epoch 9/40
+Loss: 1.2132
+Accuracy: 0.5271
+Macro F1: 0.4024
+Weighted F1: 0.5504
+Class F1:
+  NORM: 0.7011
+  MI: 0.2323
+  HYP: 0.1633
+  CD: 0.4510
+  STTC: 0.4642
+LR=0.000500 | epoch_time=5.4s
+  >> No improvement (5/10)
+
+========================================================================
+Epoch 10/40 START
+Epoch 10 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 10 batches:   2%|▏         | 11/720 [00:00<00:06, 104.79batch/s]Epoch 10 batches:   3%|▎         | 23/720 [00:00<00:06, 112.90batch/s]Epoch 10 batches:   5%|▍         | 35/720 [00:00<00:05, 116.04batch/s]Epoch 10 batches:   7%|▋         | 47/720 [00:00<00:05, 117.52batch/s]Epoch 10 batches:   8%|▊         | 60/720 [00:00<00:05, 120.70batch/s]Epoch 10 batches:  10%|█         | 73/720 [00:00<00:05, 123.64batch/s]Epoch 10 batches:  12%|█▏        | 87/720 [00:00<00:05, 126.30batch/s]Epoch 10 batches:  14%|█▍        | 101/720 [00:00<00:04, 130.21batch/s]Epoch 10 batches:  16%|█▌        | 115/720 [00:00<00:04, 129.52batch/s]Epoch 10 batches:  18%|█▊        | 128/720 [00:01<00:04, 129.40batch/s]Epoch 10 batches:  20%|█▉        | 141/720 [00:01<00:04, 128.83batch/s]Epoch 10 batches:  21%|██▏       | 154/720 [00:01<00:04, 124.32batch/s]Epoch 10 batches:  23%|██▎       | 167/720 [00:01<00:04, 125.14batch/s]Epoch 10 batches:  25%|██▌       | 181/720 [00:01<00:04, 128.45batch/s]Epoch 10 batches:  27%|██▋       | 195/720 [00:01<00:04, 129.30batch/s]                                                                       Epoch 10 batches:  27%|██▋       | 195/720 [00:01<00:04, 129.30batch/s]Epoch 10 batches:  29%|██▉       | 208/720 [00:01<00:03, 128.51batch/s]Epoch 10 batches:  31%|███       | 221/720 [00:01<00:03, 127.05batch/s]Epoch 10 batches:  32%|███▎      | 234/720 [00:01<00:04, 120.39batch/s]Epoch 10 batches:  34%|███▍      | 247/720 [00:01<00:03, 120.57batch/s]Epoch 10 batches:  36%|███▌      | 260/720 [00:02<00:03, 121.55batch/s]Epoch 10 batches:  38%|███▊      | 274/720 [00:02<00:03, 126.17batch/s]Epoch 10 batches:  40%|███▉      | 287/720 [00:02<00:03, 126.14batch/s]Epoch 10 batches:  42%|████▏     | 300/720 [00:02<00:03, 125.73batch/s]Epoch 10 batches:  43%|████▎     | 313/720 [00:02<00:03, 123.42batch/s]Epoch 10 batches:  45%|████▌     | 326/720 [00:02<00:03, 122.33batch/s]Epoch 10 batches:  47%|████▋     | 339/720 [00:02<00:03, 119.61batch/s]Epoch 10 batches:  49%|████▉     | 351/720 [00:02<00:03, 119.09batch/s]Epoch 10 batches:  51%|█████     | 365/720 [00:02<00:02, 123.54batch/s]Epoch 10 batches:  53%|█████▎    | 379/720 [00:03<00:02, 127.16batch/s]Epoch 10 batches:  55%|█████▍    | 395/720 [00:03<00:02, 134.60batch/s]                                                                       Epoch 10 batches:  55%|█████▍    | 395/720 [00:03<00:02, 134.60batch/s]Epoch 10 batches:  57%|█████▋    | 412/720 [00:03<00:02, 143.98batch/s]Epoch 10 batches:  59%|█████▉    | 427/720 [00:03<00:02, 143.30batch/s]Epoch 10 batches:  61%|██████▏   | 442/720 [00:03<00:02, 137.03batch/s]Epoch 10 batches:  63%|██████▎   | 456/720 [00:03<00:01, 136.76batch/s]Epoch 10 batches:  66%|██████▌   | 472/720 [00:03<00:01, 142.41batch/s]Epoch 10 batches:  68%|██████▊   | 488/720 [00:03<00:01, 146.63batch/s]Epoch 10 batches:  70%|███████   | 505/720 [00:03<00:01, 152.64batch/s]Epoch 10 batches:  72%|███████▎  | 522/720 [00:03<00:01, 155.62batch/s]Epoch 10 batches:  75%|███████▍  | 539/720 [00:04<00:01, 158.77batch/s]Epoch 10 batches:  77%|███████▋  | 556/720 [00:04<00:01, 160.63batch/s]Epoch 10 batches:  80%|███████▉  | 574/720 [00:04<00:00, 162.97batch/s]Epoch 10 batches:  82%|████████▏ | 591/720 [00:04<00:00, 160.71batch/s]                                                                       Epoch 10 batches:  82%|████████▏ | 591/720 [00:04<00:00, 160.71batch/s]Epoch 10 batches:  84%|████████▍ | 608/720 [00:04<00:00, 156.65batch/s]Epoch 10 batches:  87%|████████▋ | 624/720 [00:04<00:00, 155.04batch/s]Epoch 10 batches:  89%|████████▉ | 640/720 [00:04<00:00, 143.60batch/s]Epoch 10 batches:  91%|█████████ | 655/720 [00:04<00:00, 135.63batch/s]Epoch 10 batches:  93%|█████████▎| 669/720 [00:05<00:00, 133.11batch/s]Epoch 10 batches:  95%|█████████▍| 683/720 [00:05<00:00, 131.11batch/s]Epoch 10 batches:  97%|█████████▋| 697/720 [00:05<00:00, 133.46batch/s]Epoch 10 batches:  99%|█████████▉| 712/720 [00:05<00:00, 135.49batch/s]                                                                         batch 200/720 | loss=1.1556
+  batch 400/720 | loss=1.1659
+  batch 600/720 | loss=1.1419
+
+Epoch 10/40
+Loss: 1.1871
+Accuracy: 0.5588
+Macro F1: 0.4111
+Weighted F1: 0.5686
+Class F1:
+  NORM: 0.7325
+  MI: 0.2141
+  HYP: 0.1727
+  CD: 0.4561
+  STTC: 0.4802
+LR=0.000500 | epoch_time=5.9s
+
+Checkpoint confusion matrix (epoch 10):
+            NORM      MI     HYP      CD    STTC
+  NORM    12452     869    1830    1173    1717
+  MI       1403     788     354     337    1800
+  HYP       428      91     386      44     232
+  CD        995     194     231    1529     405
+  STTC      681     736     487     268    2922
+  >> No improvement (6/10)
+
+========================================================================
+Epoch 11/40 START
+Epoch 11 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 11 batches:   2%|▏         | 13/720 [00:00<00:05, 125.80batch/s]Epoch 11 batches:   4%|▎         | 26/720 [00:00<00:05, 125.37batch/s]Epoch 11 batches:   5%|▌         | 39/720 [00:00<00:05, 119.70batch/s]Epoch 11 batches:   7%|▋         | 52/720 [00:00<00:05, 120.11batch/s]Epoch 11 batches:   9%|▉         | 65/720 [00:00<00:05, 122.95batch/s]Epoch 11 batches:  11%|█         | 79/720 [00:00<00:05, 125.94batch/s]Epoch 11 batches:  13%|█▎        | 93/720 [00:00<00:04, 129.30batch/s]Epoch 11 batches:  15%|█▍        | 106/720 [00:00<00:04, 128.63batch/s]Epoch 11 batches:  17%|█▋        | 119/720 [00:00<00:04, 128.19batch/s]Epoch 11 batches:  18%|█▊        | 133/720 [00:01<00:04, 129.66batch/s]Epoch 11 batches:  20%|██        | 147/720 [00:01<00:04, 131.65batch/s]Epoch 11 batches:  22%|██▏       | 161/720 [00:01<00:04, 133.51batch/s]Epoch 11 batches:  24%|██▍       | 175/720 [00:01<00:04, 133.39batch/s]Epoch 11 batches:  26%|██▋       | 189/720 [00:01<00:04, 115.26batch/s]                                                                       Epoch 11 batches:  26%|██▋       | 189/720 [00:01<00:04, 115.26batch/s]Epoch 11 batches:  28%|██▊       | 202/720 [00:01<00:04, 117.00batch/s]Epoch 11 batches:  30%|███       | 216/720 [00:01<00:04, 121.94batch/s]Epoch 11 batches:  32%|███▏      | 229/720 [00:01<00:04, 120.88batch/s]Epoch 11 batches:  34%|███▎      | 242/720 [00:01<00:04, 116.88batch/s]Epoch 11 batches:  35%|███▌      | 255/720 [00:02<00:03, 118.53batch/s]Epoch 11 batches:  37%|███▋      | 269/720 [00:02<00:03, 122.94batch/s]Epoch 11 batches:  39%|███▉      | 283/720 [00:02<00:03, 127.72batch/s]Epoch 11 batches:  41%|████▏     | 297/720 [00:02<00:03, 130.31batch/s]Epoch 11 batches:  43%|████▎     | 311/720 [00:02<00:03, 132.51batch/s]Epoch 11 batches:  45%|████▌     | 325/720 [00:02<00:02, 132.65batch/s]Epoch 11 batches:  47%|████▋     | 339/720 [00:02<00:02, 133.68batch/s]Epoch 11 batches:  49%|████▉     | 353/720 [00:02<00:02, 134.45batch/s]Epoch 11 batches:  51%|█████     | 367/720 [00:02<00:02, 134.94batch/s]Epoch 11 batches:  53%|█████▎    | 381/720 [00:02<00:02, 134.76batch/s]Epoch 11 batches:  55%|█████▍    | 395/720 [00:03<00:02, 133.08batch/s]                                                                       Epoch 11 batches:  55%|█████▍    | 395/720 [00:03<00:02, 133.08batch/s]Epoch 11 batches:  57%|█████▋    | 409/720 [00:03<00:02, 134.02batch/s]Epoch 11 batches:  59%|█████▉    | 423/720 [00:03<00:02, 134.10batch/s]Epoch 11 batches:  61%|██████    | 437/720 [00:03<00:02, 134.47batch/s]Epoch 11 batches:  63%|██████▎   | 451/720 [00:03<00:02, 134.40batch/s]Epoch 11 batches:  65%|██████▍   | 465/720 [00:03<00:01, 134.20batch/s]Epoch 11 batches:  67%|██████▋   | 479/720 [00:03<00:02, 109.71batch/s]Epoch 11 batches:  68%|██████▊   | 493/720 [00:03<00:01, 115.69batch/s]Epoch 11 batches:  70%|███████   | 507/720 [00:04<00:01, 121.38batch/s]Epoch 11 batches:  72%|███████▏  | 521/720 [00:04<00:01, 124.47batch/s]Epoch 11 batches:  74%|███████▍  | 534/720 [00:04<00:01, 125.61batch/s]Epoch 11 batches:  76%|███████▌  | 548/720 [00:04<00:01, 128.15batch/s]Epoch 11 batches:  78%|███████▊  | 562/720 [00:04<00:01, 130.69batch/s]Epoch 11 batches:  80%|████████  | 576/720 [00:04<00:01, 133.09batch/s]Epoch 11 batches:  82%|████████▏ | 593/720 [00:04<00:00, 141.46batch/s]                                                                       Epoch 11 batches:  82%|████████▏ | 593/720 [00:04<00:00, 141.46batch/s]Epoch 11 batches:  85%|████████▍ | 610/720 [00:04<00:00, 148.79batch/s]Epoch 11 batches:  87%|████████▋ | 627/720 [00:04<00:00, 153.47batch/s]Epoch 11 batches:  89%|████████▉ | 644/720 [00:04<00:00, 157.36batch/s]Epoch 11 batches:  92%|█████████▏| 661/720 [00:05<00:00, 159.96batch/s]Epoch 11 batches:  94%|█████████▍| 679/720 [00:05<00:00, 163.30batch/s]Epoch 11 batches:  97%|█████████▋| 696/720 [00:05<00:00, 161.77batch/s]Epoch 11 batches:  99%|█████████▉| 713/720 [00:05<00:00, 158.23batch/s]                                                                         batch 200/720 | loss=1.1424
+  batch 400/720 | loss=1.2180
+  batch 600/720 | loss=1.0769
+
+Epoch 11/40
+Loss: 1.1794
+Accuracy: 0.5288
+Macro F1: 0.4012
+Weighted F1: 0.5501
+Class F1:
+  NORM: 0.7006
+  MI: 0.2123
+  HYP: 0.1587
+  CD: 0.4508
+  STTC: 0.4835
+LR=0.000500 | epoch_time=5.9s
+  >> No improvement (7/10)
+
+========================================================================
+Epoch 12/40 START
+Epoch 12 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 12 batches:   2%|▏         | 13/720 [00:00<00:05, 128.42batch/s]Epoch 12 batches:   4%|▍         | 27/720 [00:00<00:05, 135.00batch/s]Epoch 12 batches:   6%|▌         | 44/720 [00:00<00:04, 147.08batch/s]Epoch 12 batches:   8%|▊         | 60/720 [00:00<00:04, 151.96batch/s]Epoch 12 batches:  11%|█         | 76/720 [00:00<00:04, 145.46batch/s]Epoch 12 batches:  13%|█▎        | 92/720 [00:00<00:04, 148.31batch/s]Epoch 12 batches:  15%|█▌        | 109/720 [00:00<00:03, 152.98batch/s]Epoch 12 batches:  18%|█▊        | 126/720 [00:00<00:03, 156.08batch/s]Epoch 12 batches:  20%|█▉        | 143/720 [00:00<00:03, 158.18batch/s]Epoch 12 batches:  22%|██▏       | 159/720 [00:01<00:03, 156.21batch/s]Epoch 12 batches:  24%|██▍       | 175/720 [00:01<00:03, 155.45batch/s]Epoch 12 batches:  27%|██▋       | 191/720 [00:01<00:03, 154.04batch/s]                                                                       Epoch 12 batches:  27%|██▋       | 191/720 [00:01<00:03, 154.04batch/s]Epoch 12 batches:  29%|██▉       | 208/720 [00:01<00:03, 155.97batch/s]Epoch 12 batches:  31%|███       | 224/720 [00:01<00:03, 155.14batch/s]Epoch 12 batches:  33%|███▎      | 240/720 [00:01<00:03, 156.11batch/s]Epoch 12 batches:  36%|███▌      | 256/720 [00:01<00:03, 151.92batch/s]Epoch 12 batches:  38%|███▊      | 273/720 [00:01<00:02, 155.07batch/s]Epoch 12 batches:  40%|████      | 290/720 [00:01<00:02, 157.66batch/s]Epoch 12 batches:  42%|████▎     | 306/720 [00:02<00:02, 150.32batch/s]Epoch 12 batches:  45%|████▍     | 323/720 [00:02<00:02, 153.92batch/s]Epoch 12 batches:  47%|████▋     | 340/720 [00:02<00:02, 156.31batch/s]Epoch 12 batches:  50%|████▉     | 357/720 [00:02<00:02, 158.03batch/s]Epoch 12 batches:  52%|█████▏    | 373/720 [00:02<00:02, 158.20batch/s]Epoch 12 batches:  54%|█████▍    | 389/720 [00:02<00:02, 154.61batch/s]                                                                       Epoch 12 batches:  54%|█████▍    | 389/720 [00:02<00:02, 154.61batch/s]Epoch 12 batches:  56%|█████▋    | 405/720 [00:02<00:02, 154.45batch/s]Epoch 12 batches:  58%|█████▊    | 421/720 [00:02<00:01, 151.14batch/s]Epoch 12 batches:  61%|██████    | 437/720 [00:02<00:01, 145.73batch/s]Epoch 12 batches:  63%|██████▎   | 452/720 [00:02<00:01, 141.85batch/s]Epoch 12 batches:  65%|██████▌   | 468/720 [00:03<00:01, 144.96batch/s]Epoch 12 batches:  67%|██████▋   | 485/720 [00:03<00:01, 150.24batch/s]Epoch 12 batches:  70%|██████▉   | 502/720 [00:03<00:01, 153.49batch/s]Epoch 12 batches:  72%|███████▏  | 518/720 [00:03<00:01, 154.97batch/s]Epoch 12 batches:  74%|███████▍  | 535/720 [00:03<00:01, 157.19batch/s]Epoch 12 batches:  77%|███████▋  | 552/720 [00:03<00:01, 158.68batch/s]Epoch 12 batches:  79%|███████▉  | 569/720 [00:03<00:00, 159.91batch/s]Epoch 12 batches:  81%|████████▏ | 586/720 [00:03<00:00, 156.13batch/s]                                                                       Epoch 12 batches:  81%|████████▏ | 586/720 [00:03<00:00, 156.13batch/s]Epoch 12 batches:  84%|████████▎ | 602/720 [00:03<00:00, 154.53batch/s]Epoch 12 batches:  86%|████████▌ | 619/720 [00:04<00:00, 156.69batch/s]Epoch 12 batches:  88%|████████▊ | 636/720 [00:04<00:00, 158.79batch/s]Epoch 12 batches:  91%|█████████ | 653/720 [00:04<00:00, 160.45batch/s]Epoch 12 batches:  93%|█████████▎| 670/720 [00:04<00:00, 162.07batch/s]Epoch 12 batches:  95%|█████████▌| 687/720 [00:04<00:00, 161.28batch/s]Epoch 12 batches:  98%|█████████▊| 704/720 [00:04<00:00, 161.48batch/s]                                                                         batch 200/720 | loss=1.2094
+  batch 400/720 | loss=1.1539
+  batch 600/720 | loss=1.1318
+
+Epoch 12/40
+Loss: 1.1712
+Accuracy: 0.5347
+Macro F1: 0.4058
+Weighted F1: 0.5544
+Class F1:
+  NORM: 0.7062
+  MI: 0.2186
+  HYP: 0.1664
+  CD: 0.4606
+  STTC: 0.4774
+LR=0.000500 | epoch_time=5.2s
+  >> No improvement (8/10)
+
+========================================================================
+Epoch 13/40 START
+Epoch 13 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 13 batches:   2%|▏         | 14/720 [00:00<00:05, 133.05batch/s]Epoch 13 batches:   4%|▍         | 30/720 [00:00<00:04, 144.63batch/s]Epoch 13 batches:   6%|▋         | 45/720 [00:00<00:04, 145.64batch/s]Epoch 13 batches:   9%|▊         | 62/720 [00:00<00:04, 152.87batch/s]Epoch 13 batches:  11%|█         | 79/720 [00:00<00:04, 155.59batch/s]Epoch 13 batches:  13%|█▎        | 96/720 [00:00<00:03, 157.44batch/s]Epoch 13 batches:  16%|█▌        | 112/720 [00:00<00:04, 128.24batch/s]Epoch 13 batches:  18%|█▊        | 127/720 [00:00<00:04, 133.13batch/s]Epoch 13 batches:  20%|█▉        | 143/720 [00:01<00:04, 139.91batch/s]Epoch 13 batches:  22%|██▏       | 159/720 [00:01<00:03, 145.43batch/s]Epoch 13 batches:  24%|██▍       | 174/720 [00:01<00:03, 140.36batch/s]Epoch 13 batches:  26%|██▋       | 189/720 [00:01<00:03, 138.24batch/s]                                                                       Epoch 13 batches:  26%|██▋       | 189/720 [00:01<00:03, 138.24batch/s]Epoch 13 batches:  28%|██▊       | 204/720 [00:01<00:03, 136.80batch/s]Epoch 13 batches:  30%|███       | 218/720 [00:01<00:03, 135.80batch/s]Epoch 13 batches:  32%|███▏      | 232/720 [00:01<00:03, 135.08batch/s]Epoch 13 batches:  34%|███▍      | 246/720 [00:01<00:03, 134.05batch/s]Epoch 13 batches:  36%|███▌      | 260/720 [00:01<00:03, 133.87batch/s]Epoch 13 batches:  38%|███▊      | 274/720 [00:01<00:03, 132.54batch/s]Epoch 13 batches:  40%|████      | 288/720 [00:02<00:04, 107.14batch/s]Epoch 13 batches:  42%|████▏     | 302/720 [00:02<00:03, 113.75batch/s]Epoch 13 batches:  44%|████▍     | 316/720 [00:02<00:03, 119.71batch/s]Epoch 13 batches:  46%|████▌     | 330/720 [00:02<00:03, 123.34batch/s]Epoch 13 batches:  48%|████▊     | 344/720 [00:02<00:02, 127.21batch/s]Epoch 13 batches:  50%|████▉     | 358/720 [00:02<00:02, 130.59batch/s]Epoch 13 batches:  52%|█████▏    | 375/720 [00:02<00:02, 139.89batch/s]Epoch 13 batches:  55%|█████▍    | 393/720 [00:02<00:02, 148.88batch/s]                                                                       Epoch 13 batches:  55%|█████▍    | 393/720 [00:02<00:02, 148.88batch/s]Epoch 13 batches:  57%|█████▋    | 411/720 [00:02<00:01, 155.46batch/s]Epoch 13 batches:  59%|█████▉    | 427/720 [00:03<00:01, 155.31batch/s]Epoch 13 batches:  62%|██████▏   | 444/720 [00:03<00:01, 157.24batch/s]Epoch 13 batches:  64%|██████▍   | 461/720 [00:03<00:01, 160.16batch/s]Epoch 13 batches:  67%|██████▋   | 479/720 [00:03<00:01, 163.78batch/s]Epoch 13 batches:  69%|██████▉   | 497/720 [00:03<00:01, 167.08batch/s]Epoch 13 batches:  72%|███████▏  | 515/720 [00:03<00:01, 168.73batch/s]Epoch 13 batches:  74%|███████▍  | 533/720 [00:03<00:01, 169.84batch/s]Epoch 13 batches:  77%|███████▋  | 551/720 [00:03<00:00, 169.91batch/s]Epoch 13 batches:  79%|███████▉  | 569/720 [00:03<00:00, 170.47batch/s]Epoch 13 batches:  82%|████████▏ | 587/720 [00:04<00:00, 168.45batch/s]                                                                       Epoch 13 batches:  82%|████████▏ | 587/720 [00:04<00:00, 168.45batch/s]Epoch 13 batches:  84%|████████▍ | 604/720 [00:04<00:00, 164.88batch/s]Epoch 13 batches:  86%|████████▋ | 621/720 [00:04<00:00, 162.04batch/s]Epoch 13 batches:  89%|████████▉ | 639/720 [00:04<00:00, 164.62batch/s]Epoch 13 batches:  91%|█████████▏| 657/720 [00:04<00:00, 166.98batch/s]Epoch 13 batches:  94%|█████████▎| 674/720 [00:04<00:00, 167.56batch/s]Epoch 13 batches:  96%|█████████▌| 691/720 [00:04<00:00, 167.34batch/s]Epoch 13 batches:  98%|█████████▊| 708/720 [00:04<00:00, 166.45batch/s]                                                                         batch 200/720 | loss=1.1547
+  batch 400/720 | loss=1.3709
+  batch 600/720 | loss=1.2220
+
+Epoch 13/40
+Loss: 1.1668
+Accuracy: 0.5542
+Macro F1: 0.4109
+Weighted F1: 0.5635
+Class F1:
+  NORM: 0.7212
+  MI: 0.2110
+  HYP: 0.1763
+  CD: 0.4570
+  STTC: 0.4890
+LR=0.000500 | epoch_time=5.3s
+  >> No improvement (9/10)
+
+========================================================================
+Epoch 14/40 START
+Epoch 14 batches:   0%|          | 0/720 [00:00<?, ?batch/s]Epoch 14 batches:   2%|▏         | 15/720 [00:00<00:04, 148.33batch/s]Epoch 14 batches:   4%|▍         | 31/720 [00:00<00:04, 154.55batch/s]Epoch 14 batches:   7%|▋         | 48/720 [00:00<00:04, 157.56batch/s]Epoch 14 batches:   9%|▉         | 65/720 [00:00<00:04, 159.47batch/s]Epoch 14 batches:  11%|█▏        | 82/720 [00:00<00:03, 160.65batch/s]Epoch 14 batches:  14%|█▍        | 99/720 [00:00<00:03, 161.16batch/s]Epoch 14 batches:  16%|█▌        | 116/720 [00:00<00:03, 162.22batch/s]Epoch 14 batches:  18%|█▊        | 133/720 [00:00<00:03, 162.28batch/s]Epoch 14 batches:  21%|██        | 150/720 [00:00<00:03, 160.63batch/s]Epoch 14 batches:  23%|██▎       | 167/720 [00:01<00:03, 158.53batch/s]Epoch 14 batches:  25%|██▌       | 183/720 [00:01<00:03, 155.20batch/s]                                                                       Epoch 14 batches:  25%|██▌       | 183/720 [00:01<00:03, 155.20batch/s]Epoch 14 batches:  28%|██▊       | 200/720 [00:01<00:03, 156.56batch/s]Epoch 14 batches:  30%|███       | 217/720 [00:01<00:03, 158.13batch/s]Epoch 14 batches:  32%|███▏      | 233/720 [00:01<00:03, 158.62batch/s]Epoch 14 batches:  35%|███▍      | 250/720 [00:01<00:02, 159.89batch/s]Epoch 14 batches:  37%|███▋      | 267/720 [00:01<00:02, 160.09batch/s]Epoch 14 batches:  39%|███▉      | 284/720 [00:01<00:02, 161.27batch/s]Epoch 14 batches:  42%|████▏     | 301/720 [00:01<00:02, 162.81batch/s]Epoch 14 batches:  44%|████▍     | 318/720 [00:01<00:02, 162.56batch/s]Epoch 14 batches:  47%|████▋     | 335/720 [00:02<00:02, 161.81batch/s]Epoch 14 batches:  49%|████▉     | 352/720 [00:02<00:02, 156.79batch/s]Epoch 14 batches:  51%|█████     | 368/720 [00:02<00:02, 156.79batch/s]Epoch 14 batches:  53%|█████▎    | 385/720 [00:02<00:02, 159.01batch/s]                                                                       Epoch 14 batches:  53%|█████▎    | 385/720 [00:02<00:02, 159.01batch/s]Epoch 14 batches:  56%|█████▌    | 401/720 [00:02<00:02, 159.24batch/s]Epoch 14 batches:  58%|█████▊    | 417/720 [00:02<00:01, 159.12batch/s]Epoch 14 batches:  60%|██████    | 434/720 [00:02<00:01, 160.37batch/s]Epoch 14 batches:  63%|██████▎   | 451/720 [00:02<00:01, 161.21batch/s]Epoch 14 batches:  65%|██████▌   | 468/720 [00:02<00:01, 161.98batch/s]Epoch 14 batches:  67%|██████▋   | 485/720 [00:03<00:01, 162.18batch/s]Epoch 14 batches:  70%|██████▉   | 502/720 [00:03<00:01, 160.93batch/s]Epoch 14 batches:  72%|███████▏  | 519/720 [00:03<00:01, 158.55batch/s]Epoch 14 batches:  74%|███████▍  | 535/720 [00:03<00:01, 155.88batch/s]Epoch 14 batches:  77%|███████▋  | 552/720 [00:03<00:01, 157.46batch/s]Epoch 14 batches:  79%|███████▉  | 569/720 [00:03<00:00, 159.30batch/s]Epoch 14 batches:  81%|████████▏ | 586/720 [00:03<00:00, 161.00batch/s]                                                                       Epoch 14 batches:  81%|████████▏ | 586/720 [00:03<00:00, 161.00batch/s]Epoch 14 batches:  84%|████████▍ | 603/720 [00:03<00:00, 161.71batch/s]Epoch 14 batches:  86%|████████▌ | 620/720 [00:03<00:00, 161.55batch/s]Epoch 14 batches:  88%|████████▊ | 637/720 [00:03<00:00, 160.65batch/s]Epoch 14 batches:  91%|█████████ | 654/720 [00:04<00:00, 160.80batch/s]Epoch 14 batches:  93%|█████████▎| 671/720 [00:04<00:00, 161.63batch/s]Epoch 14 batches:  96%|█████████▌| 688/720 [00:04<00:00, 161.81batch/s]Epoch 14 batches:  98%|█████████▊| 705/720 [00:04<00:00, 157.30batch/s]                                                                         batch 200/720 | loss=1.2054
+  batch 400/720 | loss=1.1808
+  batch 600/720 | loss=1.1870
+
+Epoch 14/40
+Loss: 1.1605
+Accuracy: 0.5175
+Macro F1: 0.3965
+Weighted F1: 0.5409
+Class F1:
+  NORM: 0.6867
+  MI: 0.2102
+  HYP: 0.1581
+  CD: 0.4518
+  STTC: 0.4760
+LR=0.000250 | epoch_time=5.0s
+  >> No improvement (10/10)
+
+Early stopping at epoch 14
+
+[CNN training] finished in 75.9s (1.27 min)
+
+Saved CNN weights -> C:\Users\Dimi\Desktop\Uni Projects\Semester 4\Data Science Capstone Project\Project\ECG-Analysis-Pipeline\models\model2\savedTrainedWeights\cnn_beat_classifier.pt
+
+--- TEST (CNN + CLASS WEIGHTS) METRICS ---
+Accuracy:    0.5775
+Macro F1:    0.4105
+Weighted F1: 0.5656
+  NORM: P=0.747 R=0.740 F1=0.743
+  MI: P=0.370 R=0.123 F1=0.184
+  HYP: P=0.129 R=0.238 F1=0.167
+  CD: P=0.521 R=0.422 F1=0.466
+  STTC: P=0.388 R=0.672 F1=0.492
+
+Metrics summary -> C:\Users\Dimi\Desktop\Uni Projects\Semester 4\Data Science Capstone Project\Project\ECG-Analysis-Pipeline\models\model2\savedTrainedWeights\training_metrics_summary.json
+
+[Total CNN pipeline] finished in 190.7s (3.18 min)
