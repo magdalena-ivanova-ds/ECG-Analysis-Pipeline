@@ -1,9 +1,11 @@
-wfdb
-pandas
+# Python version: 3.11 recommended
 numpy
+pandas
 scipy
 scikit-learn
+matplotlib
+torch
+wfdb
 tqdm
 requests
-torch
-matplotlib
+joblib

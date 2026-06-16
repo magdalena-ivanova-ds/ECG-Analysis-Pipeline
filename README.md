@@ -1,164 +1,166 @@
 # ECG Analysis Pipeline
 
-## Overview
+A two-stage ECG analysis project for **R-peak detection** and **ECG disease classification**.
 
-This project implements a **two-stage ECG analysis system**:
+The project combines two connected tasks:
 
-### Model 1 – R-peak Detection
+1. **Model 1: R-peak detection**
+   - detects heartbeat positions in ECG signals
+   - trained on MIT-BIH ECG windows with R-peak labels
 
-* **Input:** raw ECG signal
-* **Output:** positions of R-peaks (heartbeats)
-* Goal: detect when each heartbeat occurs
+2. **Model 2: disease classification**
+   - classifies ECG beat segments into diagnostic classes
+   - trained on PTB-XL beat-level ECG data
 
----
-
-### Model 2 – Disease Classification
-
-* **Input:** ECG segments around R-peaks
-* **Output:** predicted heart condition
-* Goal: classify cardiac conditions based on heartbeat patterns
-
----
-
-## Full Pipeline Concept
+The full pipeline is:
 
 ```text
-raw ECG → Model 1 → R-peaks → segment extraction → Model 2 → diagnosis
+raw ECG signal -> Model 1 -> predicted R-peaks -> beat segmentation -> Model 2 -> disease class
 ```
 
-* Model 1 extracts structure (heartbeat timing)
-* Model 2 analyzes structure (heartbeat shape and patterns)
+Model 2 does **not** classify the direct output of Model 1. Model 1 only gives R-peak positions. These positions are then used to cut ECG beat segments, and those beat segments are used as input for Model 2.
 
 ---
 
-# What Was Done (Data + Preprocessing)
+## Project Overview
 
-All data handling and preprocessing is fully completed.
+This repository contains:
 
-## 1. Dataset Integration
+- ECG preprocessing scripts
+- processed training files
+- exploratory data analysis
+- Model 1 training and evaluation
+- Model 2 training scripts
+- trained model outputs
+- Model 1 to Model 2 handoff script
+- generated beat segments from Model 1 predictions
 
-Two datasets were used:
-
-### MIT-BIH (for Model 1)
-
-* raw ECG signals
-* annotated R-peaks
-
-### PTB-XL (for Model 2)
-
-* ECG recordings
-* diagnostic labels (SCP codes)
+The preprocessing and model pipeline are already completed. The processed `.npy` and `.csv` files are included, so the raw preprocessing doesn't need to be rerun for normal use.
 
 ---
 
-## 2. Signal Preprocessing
+## Datasets
 
-Applied to both datasets:
+Two datasets were used because the two models require different labels.
 
-* noise filtering (bandpass filtering)
-* normalization (standardization of signals)
+### MIT-BIH Arrhythmia Database
 
-Goal:
+MIT-BIH was used for **Model 1** because it contains ECG signals with annotated R-peak positions.
 
-* remove noise
-* make signals consistent
-* improve model performance
+In this project:
 
----
+- sampling rate: `360 Hz`
+- selected lead: one ECG lead
+- window length: `720` samples
+- window duration: `2 seconds`
+- label type: binary R-peak mask
 
-## 3. Model-Specific Data Preparation
+Model 1 input and output:
 
-### Model 1 (MIT-BIH)
+```text
+input:  ECG window with 720 samples
+output: binary sequence with 720 values
+```
 
-Process:
+Each output value indicates whether the corresponding signal position is an R-peak or not.
 
-* ECG signals split into fixed windows (720 samples)
-* R-peak annotations converted into binary sequences
+### PTB-XL ECG Dataset
 
-Result:
+PTB-XL was used for **Model 2** because it contains diagnostic ECG labels.
 
-* each sample = ECG window
-* label = sequence showing peak positions
+In this project:
 
----
+- sampling rate: `100 Hz`
+- selected lead: one ECG lead
+- record length: `1000` samples
+- beat segment length: `70` samples
+- label type: diagnostic class
 
-### Model 2 (PTB-XL)
+Model 2 input and output:
 
-Two versions created:
-
-## Beat-Level (recommended)
-
-* segments extracted around R-peaks (70 samples)
-* each segment labeled with a disease
-
-This focuses on:
-
-* QRS shape
-* heartbeat-level patterns
-
----
-
-## Record-Level
-
-* full ECG signals used (1000 samples)
-* one label per signal
+```text
+input:  ECG beat segment with 70 samples
+output: one disease class
+```
 
 ---
 
-## 4. Label Processing (Important)
+## PTB-XL Label Mapping
 
-PTB-XL provides labels as **SCP code dictionaries**, for example:
+PTB-XL labels are stored as SCP code dictionaries, for example:
 
 ```text
 {'IMI': 35.0, 'ABQRS': 0.0}
 ```
 
-These are:
+These SCP codes are detailed diagnostic ECG codes. Since one ECG record can contain multiple codes, the raw labels were mapped into five broader classes to make the classification task clearer.
 
-* detailed medical codes
-* multi-label
+| Code | Meaning |
+|---|---|
+| NORM | Normal ECG |
+| MI | Myocardial infarction |
+| HYP | Hypertrophy |
+| CD | Conduction disturbance |
+| STTC | ST/T wave changes |
 
-### Mapping Step
+The final Model 2 task is a five-class classification problem:
 
-Using `scp_statements.csv`, all SCP codes were mapped into 5 main classes:
-
-* NORM → normal ECG
-* MI → myocardial infarction
-* HYP → hypertrophy
-* CD → conduction disturbance
-* STTC → ST/T changes
-
-Each ECG (or beat) is assigned **one final label**.
-
----
-
-## 5. Train / Validation / Test Splits
-
-### Model 1
-
-* 70% train
-* 15% validation
-* 15% test
-
-### Model 2 (PTB-XL official split)
-
-* folds 1–8 → train
-* fold 9 → validation
-* fold 10 → test
+```text
+NORM, MI, HYP, CD, STTC
+```
 
 ---
 
-## 6. Final Output Files
+## Preprocessing
 
-All processed files are in:
+The preprocessing was completed before training. The main steps were:
+
+1. load ECG signals
+2. select one ECG lead
+3. apply z-score normalization
+4. apply bandpass filtering
+5. create model-specific input and label files
+6. create train / validation / test splits
+7. save the final arrays and metadata files
+
+A Butterworth bandpass filter was used to reduce baseline drift and high-frequency noise while preserving the relevant ECG signal shape.
+
+### Model 1 Preprocessing
+
+For MIT-BIH:
+
+- ECG records were split into fixed 2-second windows
+- each window contains `720` samples
+- R-peak annotations were converted into binary label sequences
+- each label sequence has the same length as the input window
+
+### Model 2 Preprocessing
+
+For PTB-XL, two versions were created:
+
+1. **Record-level data**
+   - full ECG records
+   - `1000` samples per record
+   - one label per record
+
+2. **Beat-level data**
+   - short ECG beat segments
+   - `70` samples per beat
+   - one label per beat
+
+The beat-level version is the main version for Model 2, because the final pipeline also classifies beat segments extracted around R-peaks.
+
+---
+
+## Final Processed Files
+
+All processed data is stored in:
 
 ```text
 data/processed/
 ```
 
----
-
-# Model 1 Files (R-peak Detection)
+### Model 1 Files
 
 Folder:
 
@@ -166,29 +168,30 @@ Folder:
 data/processed/model1/
 ```
 
-### Required Files
+Main files:
 
-* `X_model1.npy`
-  → ECG windows (input)
+```text
+X_model1.npy
+y_model1.npy
+model1_metadata.csv
+model1_splits.csv
+```
 
-* `y_model1.npy`
-  → binary peak labels (output)
+Final shapes:
 
-* `model1_splits.csv`
-  → train / val / test indices
+```text
+X_model1.npy -> (86592, 720)
+y_model1.npy -> (86592, 720)
+```
 
----
+Meaning:
 
-## What Model 1 should do
+- `X_model1.npy` contains the ECG input windows
+- `y_model1.npy` contains the binary R-peak labels
+- `model1_splits.csv` contains the train / validation / test split information
+- `model1_metadata.csv` contains metadata for the created windows
 
-Train a model that:
-
-* takes ECG signal as input
-* predicts positions of R-peaks
-
----
-
-# Model 2 Files (Disease Classification)
+### Model 2 Beat-Level Files
 
 Folder:
 
@@ -196,182 +199,129 @@ Folder:
 data/processed/model2/
 ```
 
----
-
-## Beat-Level (recommended)
-
-* `X_model2_beats.npy`
-  → ECG segments around peaks
-
-* `y_model2_beats.npy`
-  → disease labels
-
-* `model2_beat_splits.csv`
-  → train / val / test
-
----
-
-## Record-Level (alternative)
-
-* `X_model2_records.npy`
-* `y_model2_records.npy`
-* `model2_record_splits.csv`
-
----
-
-## What Model 2 should do
-
-Train a model that:
-
-* takes ECG segments (or full signals)
-* predicts heart condition
-
----
-
-# How the Two Models Connect
-
-## Training Phase (current)
-
-* Model 2 uses **ground truth R-peaks** (from dataset)
-* ensures clean and stable learning
-
----
-
-## Final Pipeline (integration)
-
-Once Model 1 is trained:
-
-1. Model 1 predicts R-peaks
-2. segments are extracted around predicted peaks
-3. Model 2 uses those segments
+Main beat-level files:
 
 ```text
-raw ECG → Model 1 → predicted peaks → segments → Model 2
+X_model2_beats.npy
+y_model2_beats.npy
+model2_beat_metadata.csv
+model2_beat_splits.csv
 ```
 
----
+Final shapes:
 
-# Workflow Between Team Members
+```text
+X_model2_beats.npy -> (320871, 70)
+y_model2_beats.npy -> (320871,)
+```
 
-## Person 1 (Data + Preprocessing)
+Meaning:
 
-Completed:
+- `X_model2_beats.npy` contains ECG beat segments
+- `y_model2_beats.npy` contains the disease labels
+- `model2_beat_splits.csv` contains the train / validation / test split information
+- `model2_beat_metadata.csv` contains beat-level metadata
 
-* dataset handling
-* cleaning and normalization
-* preprocessing
-* label mapping
-* train/val/test splits
-* creation of all final files
+### Model 2 Record-Level Files
 
----
+Record-level files are also available:
 
-## Person 2 (Model 1 – R-peak Detection)
+```text
+X_model2_records.npy
+y_model2_records.npy
+model2_record_metadata.csv
+model2_record_splits.csv
+```
 
-Use:
+Final shapes:
 
-* `X_model1.npy`
-* `y_model1.npy`
-* `model1_splits.csv`
+```text
+X_model2_records.npy -> (16244, 1000)
+y_model2_records.npy -> (16244,)
+```
 
-Task:
-
-* train model to detect R-peaks
-
----
-
-## Person 3 (Model 2 – Classification)
-
-### Phase 1 (now)
-
-Use:
-
-* `X_model2_beats.npy`
-* `y_model2_beats.npy`
-* `model2_beat_splits.csv`
-
-Task:
-
-* train classifier using clean data
+The record-level data is available as an alternative representation, but the beat-level data is the main input for Model 2.
 
 ---
 
-### Phase 2 (later)
+## Data Splits
 
-* replace ground truth peaks with Model 1 predictions
-* evaluate full pipeline
+### Model 1
 
----
+Model 1 uses a 70 / 15 / 15 split:
 
-# Important Note
+```text
+train:      70%
+validation: 15%
+test:       15%
+```
 
-Everything is already processed and uploaded.
+### Model 2
 
-## GitHub Status
+Model 2 follows the PTB-XL fold-based split:
 
-* All datasets are already preprocessed
-* All `.npy` and `.csv` files are included
-* No one needs to run preprocessing scripts
+```text
+folds 1-8 -> train
+fold 9    -> validation
+fold 10   -> test
+```
 
-You can directly:
-
-* load the files
-* start training models
-
----
-
-# Key Design Decisions
-
-* separated detection and classification
-* used clean labels for training
-* simplified SCP codes into 5 classes
-* prepared both beat-level and record-level data
-* used proper dataset splits
-
+For the beat-level data, beats from the same ECG record are kept in the same split to avoid information leakage.
 
 ---
 
-# Model 1 Status Update (Person 2)
+## Model 1: R-Peak Detection
 
-## Model 1 Implementation
+Model 1 is a 1D CNN for sequence-based R-peak detection.
 
-Model 1 has been implemented as a 1D CNN for sequence-based R-peak detection.
+### Input and Output
 
-### Input
-- ECG window of shape `(720,)`
+```text
+input:  ECG window of shape (720,)
+output: probability sequence of shape (720,)
+```
 
-### Output
-- probability sequence of shape `(720,)`
-- post-processed into predicted R-peak indices using `find_peaks(...)`
+The output probability sequence is post-processed into predicted R-peak positions using peak detection.
 
-### Final Model
-- architecture: `SimpleCNN`
-- framework: PyTorch
-- post-processing:
-  - `height = 0.25`
-  - `distance = 30`
-- evaluation tolerance:
-  - `tolerance = 10`
+### Architecture
 
----
+The implemented Model 1 architecture is `SimpleCNN`.
 
-## Model 1 Final Performance
+It uses 1D convolutional layers to process the ECG window and produce one prediction value for each position in the signal.
 
-### Validation Set
-- Precision: `0.9844`
-- Recall: `0.9203`
-- F1 Score: `0.9513`
+### Training Details
 
-### Test Set
-- Precision: `0.9834`
-- Recall: `0.9251`
-- F1 Score: `0.9534`
+Main setup:
 
-These results show strong and stable R-peak detection performance with good generalization from validation to test data.
+```text
+framework: PyTorch
+loss: binary cross-entropy
+optimizer: Adam
+post-processing: scipy.signal.find_peaks
+peak height threshold: 0.25
+minimum peak distance: 30
+evaluation tolerance: 10 samples
+```
 
----
+### Model 1 Performance
 
-## Saved Model
+Validation set:
+
+```text
+Precision: 0.9844
+Recall:    0.9203
+F1 Score:  0.9513
+```
+
+Test set:
+
+```text
+Precision: 0.9834
+Recall:    0.9251
+F1 Score:  0.9534
+```
+
+The results indicate good R-peak detection performance, with similar validation and test scores.
 
 The trained Model 1 weights are saved as:
 
@@ -379,92 +329,187 @@ The trained Model 1 weights are saved as:
 models/model1_simplecnn.pth
 ```
 
+Relevant files:
+
+```text
+scripts/train_model1.py
+scripts/pipeline_model1_to_model2.py
+models/model1_simplecnn.pth
+```
+
 ---
 
-## Model 1 → Model 2 Handoff
+## Model 2: Disease Classification
 
-A pipeline script was implemented to connect Model 1 outputs with Model 2 inputs:
+Model 2 classifies ECG beat segments into one of five diagnostic classes:
+
+```text
+NORM, MI, HYP, CD, STTC
+```
+
+The main Model 2 input data is:
+
+```text
+data/processed/model2/X_model2_beats.npy
+data/processed/model2/y_model2_beats.npy
+data/processed/model2/model2_beat_splits.csv
+```
+
+### Model 2 Approaches
+
+The repository contains two Model 2 training approaches:
+
+1. **Random Forest baseline**
+2. **Beat-level CNN classifier**
+
+### Random Forest Baseline
+
+Relevant file:
+
+```text
+models/model2/training/train_rf.py
+```
+
+The Random Forest baseline uses the beat segments as feature vectors. It provides a simpler baseline model for comparison with the CNN.
+
+Saved outputs include:
+
+```text
+models/model2/savedTrainedWeights/rf_baseline.joblib
+models/model2/savedTrainedWeights/rf_improved.joblib
+```
+
+### Beat-Level CNN
+
+Relevant file:
+
+```text
+models/model2/training/train_cnn.py
+```
+
+The CNN classifier uses 1D convolutional layers to learn patterns from the beat-level ECG segments.
+
+Relevant architecture file:
+
+```text
+models/model2/neuralNetworkArchitecture/beat_cnn.py
+```
+
+Saved output:
+
+```text
+models/model2/savedTrainedWeights/cnn_beat_classifier.pt
+```
+
+### Model 2 Reports and Outputs
+
+Model 2 outputs, metrics, and reports are saved in:
+
+```text
+models/model2/savedTrainedWeights/
+models/model2/reports/
+```
+
+Because the Model 2 dataset is imbalanced, evaluation should not rely only on accuracy. Precision, recall, F1-score, and the confusion matrix are more useful for understanding class-specific performance.
+
+---
+
+## Model 1 to Model 2 Handoff
+
+The Model 1 to Model 2 handoff is part of the final pipeline.
+
+The process is:
+
+1. Model 1 predicts R-peak positions.
+2. Beat segments are extracted around the predicted peaks.
+3. The extracted beat segments are passed to Model 2.
+
+The handoff script is:
 
 ```text
 scripts/pipeline_model1_to_model2.py
 ```
 
----
-
-## Exported Data for Model 2 (Ready to Use)
-
-To avoid running the pipeline manually, example outputs from Model 1 are already generated and saved.
-
-### Files
+Generated handoff output files are already included:
 
 ```text
-data/processed/model2/model1_predicted_beats_example.npy
-data/processed/model2/model1_predicted_beats_example_metadata.csv
+data/processed/model2/X_model2_beats_from_model1.npy
+data/processed/model2/model2_beats_from_model1_metadata.csv
+```
+
+These files contain beat segments generated using Model 1 predictions. They can be used to test the full pipeline connection between Model 1 and Model 2.
+
+The handoff script does not need to be rerun for normal submission because the output files are already generated. It is included for reproducibility.
+
+---
+
+## Exploratory Data Analysis
+
+The EDA was used to check whether the preprocessing output was correct and usable for training.
+
+### Model 1 EDA
+
+The Model 1 EDA checked:
+
+- input and label shapes
+- train / validation / test split sizes
+- number of windows per ECG record
+- number of R-peaks per ECG window
+- ECG windows plotted together with their R-peak labels
+
+The main visual check was whether the R-peak labels aligned with the visible heartbeat peaks.
+
+### Model 2 EDA
+
+The Model 2 EDA checked:
+
+- record-level and beat-level shapes
+- class distributions
+- beat-level class imbalance
+- beats per ECG record
+- average beat shape by disease class
+
+The main finding was that the beat-level Model 2 dataset is imbalanced. NORM is the largest class, while HYP is the smallest class.
+
+---
+
+## Project Structure
+
+Important folders:
+
+```text
+data/processed/                 final processed data files
+data/processed/model1/           Model 1 input, labels, metadata, splits
+data/processed/model2/           Model 2 input, labels, metadata, splits
+scripts/                         preprocessing, Model 1 training, handoff scripts
+models/model2/                   Model 2 architecture, loaders, training scripts, outputs
+models/model2/reports/           Model 2 reports and plots
+models/model2/savedTrainedWeights/ saved Model 2 weights and metrics
+notebook_eda/                    EDA notebook
+```
+
+Main documentation files:
+
+```text
+README.md       project explanation
+RUN_GUIDE.md    short reproduction / run instructions
 ```
 
 ---
 
-### What is inside?
+## Important Notes and Limitations
 
-#### `model1_predicted_beats_example.npy`
-
-- shape: `(n_beats, 70)`
-- each row = one ECG beat centered around a predicted R-peak
-- directly usable as input for Model 2
-
----
-
-#### `model1_predicted_beats_example_metadata.csv`
-
-- columns:
-  - `signal_idx` → original ECG window index
-  - `peak_idx` → detected R-peak position
-
-- each row corresponds to one beat in the `.npy` file
+- MIT-BIH and PTB-XL use different sampling rates.
+- MIT-BIH is sampled at `360 Hz`, while PTB-XL is sampled at `100 Hz`.
+- Model 1 peak sample indices cannot be directly reused for PTB-XL-style Model 2 input without converting them based on time or handling the sampling-rate difference.
+- Model 2 beat-level data was created during preprocessing and is the main training input.
+- The Model 1 to Model 2 handoff output is already generated and included.
+- Model 2 has class imbalance, so accuracy alone is not enough for evaluation.
+- The project separates R-peak detection and disease classification so that both parts can be trained and evaluated more clearly.
 
 ---
 
-## How to Use (Person 3)
+## Dataset Links
 
-### Recommended (training)
-Use clean dataset:
-```text
-X_model2_beats.npy
-y_model2_beats.npy
-```
-
----
-
-### ### Pipeline Simulation (using Model 1 output instead of ground truth)
-
-For testing the full pipeline:
-
-```text
-model1_predicted_beats_example.npy
-```
-
----
-
-## Important Notes
-
-- Model 1 predictions are highly accurate but not perfect
-- recall < 1.0 → some beats may be missing
-- edge peaks are removed if no full 70-sample window exists
-- labels are NOT included → must be handled separately
-
----
-
-## Status
-
-Model 1 is fully complete:
-- trained
-- evaluated (validation + test)
-- saved
-- integrated into pipeline
-- producing Model 2-ready input
-
-No further work required.
-
-
-
-
+- MIT-BIH Arrhythmia Database: https://physionet.org/content/mitdb/1.0.0/
+- PTB-XL ECG Dataset: https://physionet.org/content/ptb-xl/1.0.3/
