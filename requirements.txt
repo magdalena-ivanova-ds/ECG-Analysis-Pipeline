@@ -5,4 +5,5 @@ scipy
 scikit-learn
 tqdm
 requests
+torch
 matplotlib
