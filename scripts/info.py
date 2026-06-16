@@ -2,13 +2,13 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
-from config import MODEL1_DIR, MODEL2_DIR
+from config import model1_dir, model2_dir
 
 # MODEL 1: MIT-BIH exact counts
-X1 = np.load(MODEL1_DIR / "X_model1.npy")
-y1 = np.load(MODEL1_DIR / "y_model1.npy")
-meta1 = pd.read_csv(MODEL1_DIR / "model1_metadata.csv")
-splits1 = pd.read_csv(MODEL1_DIR / "model1_splits.csv")
+X1 = np.load(model1_dir / "X_model1.npy")
+y1 = np.load(model1_dir / "y_model1.npy")
+meta1 = pd.read_csv(model1_dir / "model1_metadata.csv")
+splits1 = pd.read_csv(model1_dir / "model1_splits.csv")
 
 train1 = splits1["train_idx"].dropna().astype(int)
 val1 = splits1["val_idx"].dropna().astype(int)
@@ -31,17 +31,17 @@ print(windows_per_record)
 print()
 
 # MODEL 2: PTB-XL exact counts
-X2_records = np.load(MODEL2_DIR / "X_model2_records.npy", allow_pickle=True)
-y2_records = np.load(MODEL2_DIR / "y_model2_records.npy", allow_pickle=True)
+X2_records = np.load(model2_dir / "X_model2_records.npy", allow_pickle=True)
+y2_records = np.load(model2_dir / "y_model2_records.npy", allow_pickle=True)
 
-X2_beats = np.load(MODEL2_DIR / "X_model2_beats.npy")
-y2_beats = np.load(MODEL2_DIR / "y_model2_beats.npy", allow_pickle=True)
+X2_beats = np.load(model2_dir / "X_model2_beats.npy")
+y2_beats = np.load(model2_dir / "y_model2_beats.npy", allow_pickle=True)
 
-record_meta2 = pd.read_csv(MODEL2_DIR / "model2_record_metadata.csv")
-beat_meta2 = pd.read_csv(MODEL2_DIR / "model2_beat_metadata.csv")
+record_meta2 = pd.read_csv(model2_dir / "model2_record_metadata.csv")
+beat_meta2 = pd.read_csv(model2_dir / "model2_beat_metadata.csv")
 
-record_splits2 = pd.read_csv(MODEL2_DIR / "model2_record_splits.csv")
-beat_splits2 = pd.read_csv(MODEL2_DIR / "model2_beat_splits.csv")
+record_splits2 = pd.read_csv(model2_dir / "model2_record_splits.csv")
+beat_splits2 = pd.read_csv(model2_dir / "model2_beat_splits.csv")
 
 train2_records = record_splits2["train_idx"].dropna().astype(int)
 val2_records = record_splits2["val_idx"].dropna().astype(int)
