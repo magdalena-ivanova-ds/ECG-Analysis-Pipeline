@@ -414,6 +414,16 @@ Because the Model 2 dataset is imbalanced, evaluation should not rely only on ac
 
 ---
 
+### Model 2 Results
+
+The best Model 2 CNN with class weights reached a test Macro F1 of `0.411` and test accuracy of `0.577`.
+
+The improved Random Forest baseline reached a higher test accuracy of `0.632`, but a lower Macro F1 of `0.395`.
+
+Since the dataset is imbalanced, Macro F1 was treated as more important than accuracy. Accuracy alone can be misleading because a model can perform well on the majority class while still missing smaller disease classes.
+
+---
+
 ## Model 1 to Model 2 Handoff
 
 The Model 1 to Model 2 handoff is part of the final pipeline.
